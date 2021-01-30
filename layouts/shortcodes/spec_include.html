@@ -1,0 +1,3 @@
+{{ $file := .Get 0 | readFile }}
+{{$lines := split $file "\n"}}
+{{ delimit (after 1 $lines) "\n"|markdownify }}

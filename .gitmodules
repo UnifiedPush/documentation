@@ -1,0 +1,3 @@
+[submodule "static/includes/spec"]
+	path = static/includes/spec
+	url = https://github.com/UnifiedPush/specifications.git

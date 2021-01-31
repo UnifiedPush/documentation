@@ -10,15 +10,16 @@ Gotify is "a simple server for sending and receiving messages".
 * [Server](https://github.com/gotify/server)
 <!-- TODO F-Droid link? some sort of easy install link -->
 
-
-The version of the android application working as a distributor is on the [unifiedpush branch](https://github.com/gotify/android/tree/unifiedpush). This version is available on the repo.unifiedpush.org repository.
+The version of the android application working as a distributor is on the [UnifiedPush branch](https://github.com/gotify/android/tree/unifiedpush). This version is available on the [UnifiedPush F-Droid](https://repo.unifiedpush.org/) repository.
 
 ## Rewrite Proxies
 
 ### Nginx
+
 Gotify server needs a new reverse proxy rule to work.
 The additional rule is as follows:
-```
+
+```nginx
 location /UP {
     access_by_lua_block{
         ngx.req.read_body()
@@ -52,4 +53,3 @@ location  /UP {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```
-

@@ -16,8 +16,10 @@ This distributor is built-in to the FCM added versions of the UnifiedPush librar
 FCM needs a reverse proxy to work as a UnifiedPush distributor. This rewrite proxy will need to be hosted by someone who has access to the Firebase secret key.
 
 ### Nginx
-The additional rule is as follow:
-```
+
+The additional rule is as follows:
+
+```nginx
 location /FCM {
     access_by_lua_block{
         ngx.req.read_body()
@@ -30,10 +32,10 @@ location /FCM {
         local newreq, n, err = ngx.re.gsub(newreq, "$", "\"}}")
         ngx.req.set_body_data(newreq)
     }
-    proxy_set_header		Authorization key=<SERVER_KEY>;
-    proxy_set_header		Content-Type application/json;
-    proxy_pass			https://fcm.googleapis.com/fcm/send;
-    proxy_set_header            Host fcm.googleapis.com;
+    proxy_set_header        Authorization key=<SERVER_KEY>;
+    proxy_set_header        Content-Type application/json;
+    proxy_pass              https://fcm.googleapis.com/fcm/send;
+    proxy_set_header        Host fcm.googleapis.com;
 
     # Force https
     if ($scheme = http) {
@@ -53,4 +55,3 @@ location  /FCM {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```
-

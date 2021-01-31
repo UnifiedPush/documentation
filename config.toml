@@ -1,4 +1,4 @@
-baseURL = "http://unifiedpush.org/"
+baseURL = "https://unifiedpush.org/"
 languageCode = "en-us"
 title = "UnifiedPush"
 theme = "hugo-geekdoc"

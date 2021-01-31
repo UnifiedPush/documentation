@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "UnifiedPush"
 theme = "hugo-geekdoc"
 
+relativeURLs = true
 # Required to get well formatted code blocks
 pygmentsUseClasses = true
 pygmentsCodeFences = true

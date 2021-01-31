@@ -1,0 +1,6 @@
+---
+more:
+  - name: GitHub
+    ref: "https://github.com/UnifiedPush"
+    external: true
+    icon: "github"

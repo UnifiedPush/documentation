@@ -41,3 +41,11 @@ jobs:
           pinata-secret-api-key: ${{ secrets.PINATASECRETAPIKEY }}
           verbose: true
           remove-old: true
+        id: deploy
+      - name: Gotify Notification
+        uses: eikendev/gotify-action@master
+        with:
+          gotify_api_base: '${{ secrets.gotify_api_base }}' #without /message
+          gotify_app_token: '${{ secrets.gotify_app_token }}'
+          notification_title: 'UP Docs Website Deploy Complete'
+          notification_message: "Your build was completed. Hash: ${{ steps.deploy.outputs.HASH }}" 

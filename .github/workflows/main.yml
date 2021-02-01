@@ -41,3 +41,7 @@ jobs:
           pinata-secret-api-key: ${{ secrets.PINATASECRETAPIKEY }}
           verbose: true
           remove-old: true
+        id: deploy
+      - name: Gotify
+        run: "curl ${{ secrets.gotify_url }} -F 'title=UP Docs Website Deploy Complete' -F 'message=Your build was completed. Hash: '${{ steps.deploy.outputs.HASH }} -F 'priority=7'"
+        # set gotify_url in the form https://gotify.com/message?token=AAAAA

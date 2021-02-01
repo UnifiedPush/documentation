@@ -7,10 +7,9 @@ more:
   - name: Matrix Chat
     ref: "https://matrix.to/#/#unifiedpush:matrix.org"
     external: true
-  - name: Freenode \#unifiedpush
+  - name: "Freenode #unifiedpush"
     ref: "https://webchat.freenode.net/#unifiedpush"
     external: true
   - name: F-Droid App repository
     ref: "https://repo.unifiedpush.org/"
     external: true
-    icon: "android"

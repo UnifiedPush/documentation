@@ -1,11 +1,7 @@
 name: hugo deploy
 
 # Controls when the action will run. 
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-
+on: [pull_request]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -32,12 +28,3 @@ jobs:
 
       - name: Build
         run: hugo --minify
-      - name: Deploy
-        uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4 
-        with:
-          pin-name: 'updocs'
-          path: './public'
-          pinata-api-key: ${{ secrets.PINATAAPIKEY }}
-          pinata-secret-api-key: ${{ secrets.PINATASECRETAPIKEY }}
-          verbose: true
-          remove-old: true

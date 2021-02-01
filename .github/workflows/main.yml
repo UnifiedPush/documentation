@@ -42,6 +42,6 @@ jobs:
           verbose: true
           remove-old: true
         id: deploy
-      - name: Gotify
-        run: "curl ${{ secrets.gotify_url }} -F 'title=UP Docs Website Deploy Complete' -F 'message=Your build was completed. Hash: '${{ steps.deploy.outputs.HASH }} -F 'priority=7'"
-        # set gotify_url in the form https://gotify.com/message?token=AAAAA
+      - name: Mail
+        run: 'printf  "From: noreply@unifiedpush.org\nTo: deploy@unifiedpush.org\nSubject: Build was completed\n\nHash: ${{ steps.deploy.outputs.HASH }}\n" > mail.txt'
+        run: 'curl --ssl-reqd --url "smtps://mail.gandi.net:465" --user "noreply@unifiedpush.org:${{ secrets.MAILPASS }}" --mail-from "noreply@unifiedpush.org" --mail-rcpt "deploy@unifiedpush.org" --upload-file mail.txt'

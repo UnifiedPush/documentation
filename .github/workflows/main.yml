@@ -43,5 +43,4 @@ jobs:
           remove-old: true
         id: deploy
       - name: Mail
-        run: 'printf  "From: noreply@unifiedpush.org\nTo: deploy@unifiedpush.org\nSubject: Build was completed\n\nHash: ${{ steps.deploy.outputs.HASH }}\n" > mail.txt'
-        run: 'curl --ssl-reqd --url "smtps://mail.gandi.net:465" --user "noreply@unifiedpush.org:${{ secrets.MAILPASS }}" --mail-from "noreply@unifiedpush.org" --mail-rcpt "deploy@unifiedpush.org" --upload-file mail.txt'
+        run: 'printf  "From: noreply@unifiedpush.org\nTo: deploy@unifiedpush.org\nSubject: Build was completed\n\nHash: ${{ steps.deploy.outputs.HASH }}\n" > mail.txt ; curl --ssl-reqd --url "smtps://mail.gandi.net:465" --user "noreply@unifiedpush.org:${{ secrets.MAILPASS }}" --mail-from "noreply@unifiedpush.org" --mail-rcpt "deploy@unifiedpush.org" --upload-file mail.txt'

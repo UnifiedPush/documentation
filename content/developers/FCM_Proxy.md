@@ -3,21 +3,11 @@ title: FCM Rewrite Proxy
 weight: 10
 ---
 
-As a developer, if you're using the FCM added version of the libraries, you will have to follow the following for FCM-fallback for users who don't have a UnifiedPush Distributor.
+As a developer, if you're using the FCM added version of the libraries, you will need a rewrite proxy for FCM-fallback for users who don't have a UnifiedPush Distributor. It is close to the ususal needed gateway to FCM or [trusted server](https://firebase.google.com/docs/cloud-messaging/server)
 
-## Links
+The rewrite proxy can be done in many ways, here are some.
 
-* [Docs](https://firebase.google.com/docs/cloud-messaging)
-
-## Using FCM as a UnifiedPush provider
-
-This distributor is built-in to the FCM added versions of the UnifiedPush libraries.
-
-FCM needs a reverse proxy to work as a UnifiedPush distributor. This rewrite proxy will need to be hosted by someone who has access to the Firebase secret key.
-
-### Nginx
-
-The additional rule is as follows:
+## Nginx
 
 ```nginx
 location /FCM {
@@ -44,7 +34,7 @@ location /FCM {
 }
 ```
 
-### Go
+## Go
 
 [Golang Rewrite Proxy](https://github.com/karmanyaahm/golang-unified-push-rewrite-proxy) is a program can be installed to run as a rewrite proxy for FCM.
 
@@ -55,3 +45,4 @@ location  /FCM {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```
+

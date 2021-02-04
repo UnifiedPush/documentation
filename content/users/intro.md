@@ -12,7 +12,7 @@ weight: -10
 
 If you want to receive notifications from an app using UnifiedPush, you need a **Distributor**. You can find a list on the [distributors page](/users/distributors). You will probably need to find a **Provider** to connect to, or to self host it, it depends on which you install.
 
-## Special Case : the embedded FCM distributor
+### Special Case : the embedded FCM distributor
 
 Some applications using UnifiedPush installed from the Play Store automatically use Google's Firebase Cloud Messaging if no UnifiedPush Distributor is detected.
 

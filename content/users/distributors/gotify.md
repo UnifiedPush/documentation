@@ -4,20 +4,29 @@ title: Gotify
 
 Gotify is "a simple server for sending and receiving messages".
 
-## Links
+* License: MIT
+* Sources: <https://github.com/gotify/android/tree/unifiedpush>
+* Server: <https://github.com/gotify/server>
+* Download for Android:
+  * [F-Droid](https://f-droid.org/de/packages/com.github.gotify/) ⚠️  **You need to add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️
 
-* [Android application](https://github.com/gotify/android/tree/unifiedpush)
-* [Server](https://github.com/gotify/server)
-<!-- TODO F-Droid link? some sort of easy install link -->
+## Requirements
 
-The version of the android application working as a distributor is on the [UnifiedPush branch](https://github.com/gotify/android/tree/unifiedpush). This version is available on the [UnifiedPush F-Droid](https://repo.unifiedpush.org/) repository.
+* A server to connect to. There is, at this moment, no server opened to registration. But if you can't self-host yours, come on matrix (or IRC) unifiedpush room to ask if someone can create an account for you. Maybe someone will!
 
-## Rewrite Proxies
+## Setting Up
+
+* Install the application.
+* Connect to the server.
+* You're ready!
+
+## Self Hosting
+
+If you are self-hosting the server, you will need to add a rewrite-proxy to the default configuration.
 
 ### Nginx
 
-Gotify server needs a new reverse proxy rule to work.
-The additional rule is as follows:
+It can be achieved with the following nginx rule (which uses lua):
 
 ```nginx
 location /UP {
@@ -44,7 +53,7 @@ location /UP {
 
 ### Go
 
-[Golang Rewrite Proxy](https://github.com/karmanyaahm/golang-unified-push-rewrite-proxy) is a program can be installed to run as a rewrite proxy for Gotify.
+It can be achieved with [Golang Rewrite Proxy](https://github.com/karmanyaahm/golang-unified-push-rewrite-proxy), a program that can be installed to run as a rewrite proxy for Gotify.
 
 Traffic from /UP on any reverse proxy running Gotify can be proxied to it. The following is an example for Nginx.
 
@@ -53,3 +62,4 @@ location  /UP {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```
+

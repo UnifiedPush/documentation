@@ -5,19 +5,14 @@ weight: -10
 
 ## Definitions TLDR
 
-* A Push Provider, or just Provider, is usually the server that collects these push notifications.
-* A Distributor is the app on your device which connects to the Push Provider and forwards the notification contents to the individual apps on your device.
+* The **Distributor** is the application you install on your device to get notifications. It receives notifications and distribute them to the other applications.
+* The (Push) **Provider** is the server reachable from the Internet that listen for incoming notifications for you. The Distributor is connected to the Provider to get the notifications.
 
-## Setup your own Distributor
+## Install a Distributor !
 
-As a user of applications implementing UnifiedPush, the first time you're setting up UnifiedPush on your device, you need to do the following.
+If you want to receive notifications from an app using UnifiedPush, you need a **Distributor**. You can find a list on the [distributors page](/users/distributors). You will probably need to find a **Provider** to connect to, or to self host it, it depends on which you install.
 
-* Set up a distributor-provider pair. A list of those is available on the [distributors page](/users/distributors/). 
+## Special Case : the embedded FCM distributor
 
-* Unless, the provider is natively compatible with UnifiedPush, it will also need a rewrite proxy that translates UnifiedPush compatible requests to those compatible with the provider. The details about this will be on the distributor page.
+Some applications using UnifiedPush installed from the Play Store automatically use Google's Firebase Cloud Messaging if no UnifiedPush Distributor is detected.
 
-## Use FCM as a distributor
-
-Usually, apps using UnifiedPush installed from the Play Store automatically use Google's Firebase Cloud Messaging if no UnifiedPush distributor is detected. If your Application doesn't have the FCM version of the library - due to being installed from F-Droid or the developer not implementing it - you can use the FCM distributor that forwards UnifiedPush to FCM.
-
-You can find the [FCM app here](/users/distributors/fcm).

@@ -8,3 +8,4 @@ This is a non-exhaustive list of the first few end-user applications that start 
 | Name                                 | Date         |
 | :-------------                       | :----------: |
 | [FluffyChat](https://fluffychat.im/) | January 2021 |
+

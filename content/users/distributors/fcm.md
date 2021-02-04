@@ -3,8 +3,19 @@ title: FCM (Google)
 weight: 10
 ---
 
-This is Google's default push provider for Android.
+This Distributor doesn't need anything to do but use Google's services.
 
-Usually, apps using UnifiedPush installed from the Play Store automatically use Google's Firebase Cloud Messaging if no UnifiedPush distributor is detected. If your Application doesn't have the FCM version of the library - due to being installed from F-Droid or the developer not implementing it - you can use the FCM distributor that forwards UnifiedPush to FCM.
+* License: Apache2
+* Sources: <https://github.com/UnifiedPush/fcm-distributor>
+* Server: - (Google)
+* Download for Android:
+  * [F-Droid](https://f-droid.org/packages/org.unifiedpush.distributor.fcm/) ⚠️  **You need to     add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️
 
-You can find the FCM distributor app on the F-Droid repo at <https://repo.unifiedpush.org/>.
+## Requirements
+
+* Google Services (or microG) on your device.
+
+## Setting Up
+
+Nothing special.
+

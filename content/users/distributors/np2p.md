@@ -2,7 +2,7 @@
 title: NoProvider2Push
 ---
 
-In it's own words
+In its own words
 > NoProvider2Push is a UnifiedPush distributor able to provide push notifications without a push provider. For this, it needs a static address even with the roaming. It is achievable with a custom network such as a VPN (eg. wireguard) or the yggdrasil network.
 
 * License: Apache2
@@ -13,13 +13,13 @@ In it's own words
 
 ## Requirements
 
-* A Static IP on your phone. This is achievable by using a VPN (such as wireguard) or a meshing network like Yggdrasil.
-* A Proxy to reach your phone from Internet. There is not known public proxy at this moment, see [Self Hosting](#self-hosting) to host your own.
+* A Static IP on your phone. This is achievable by using a VPN (such as Wireguard) or a meshing network like Yggdrasil.
+* A Proxy to reach your phone from Internet. There is no known public proxy at this moment, see [Self Hosting](#self-hosting) to host your own.
 
 ## Setting Up
 
 * Install the application.
-* Set you static IP and your proxy in the settings.
+* Set your static IP and your proxy in the settings.
 * You're ready!
 
 ## Self Hosting

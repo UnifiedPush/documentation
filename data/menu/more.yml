@@ -13,3 +13,7 @@ more:
   - name: F-Droid App repository
     ref: "https://repo.unifiedpush.org/"
     external: true
+  - name: Liberapay
+    ref: "https://liberapay.com/S1m/"
+    external: true
+

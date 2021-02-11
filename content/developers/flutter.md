@@ -56,9 +56,16 @@ UnifiedPush.unregisterApp()
 
 ## Receiving Push Messages
 
-To receive Push Messages you need to initialize UnifiedPush as following:
+There is 2 ways to initialize UnifiedPush to receive Push Messages:
+* [prefered] Using a callback for messages when the app is killed.
+* [if you need] Setting a receiver in the application.
+
+#### Receiving Push Messages using a callback
+
+In your application, just initialize UnifiedPush with `initializeWithCallback`:
+
 ```flutter
-    UnifiedPush.initialize(
+    UnifiedPush.initializeWithCallback(
         onNewEndpoint, // takes String endpoint in arg
         onRegistrationFailed,
         onRegistrationRefused,
@@ -70,10 +77,95 @@ To receive Push Messages you need to initialize UnifiedPush as following:
     );
 ```
 
+#### Receiving Push Messages using a receiver
+
+1. Set the engine on the android side of your app:
+
+  ```kotlin
+class MainActivity : FlutterActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    };
+
+    override fun provideFlutterEngine(context: Context): FlutterEngine? {
+        return provideEngine(this)
+    }
+
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        // do nothing, because the engine was been configured in provideEngine
+    }
+
+    companion object {
+        var engine: FlutterEngine? = null
+        fun provideEngine(context: Context): FlutterEngine {
+            var eng = engine ?: FlutterEngine(context, emptyArray(), true, false)
+            engine = eng
+            return eng
+        }
+    }
+}
+  ```
+
+2. Add `implementation 'com.github.UnifiedPush:android-connector:{{VERSION}}'` to the android app build.gradle.
+
+3. Declare the Receiver for UnifiedPush events (android side):
+
+  ```kotlin
+import org.unifiedpush.flutter.connector.UnifiedPushHandler
+import org.unifiedpush.android.connector.MessagingReceiver
+
+val receiverHandler = object : UnifiedPushService() {
+    override fun getEngine(context: Context): FlutterEngine {
+        return provideEngine(context)
+    }
+
+    fun provideEngine(context: Context): FlutterEngine {
+        var engine = MainActivity.engine
+        if (engine == null) {
+            engine = MainActivity.provideEngine(context)
+            engine.getLocalizationPlugin().sendLocalesToFlutter(
+                context.getResources().getConfiguration())
+            engine.getDartExecutor().executeDartEntrypoint(
+                DartEntrypoint.createDefault())
+        }
+        return engine
+    }
+}
+
+class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
+  ```
+
+4. Add the UnifiedPush related actions to the (android side) manifest:
+
+  ```
+        <receiver android:exported="true"  android:enabled="true"  android:name=".UnifiedPushReceiver">
+            <intent-filter>
+                <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
+                <action android:name="org.unifiedpush.android.connector.UNREGISTERED"/>
+                <action android:name="org.unifiedpush.android.connector.NEW_ENDPOINT"/>
+                <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED" />
+                <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED" />
+            </intent-filter>
+        </receiver>
+  ```
+
+5. Flutter side, initialize UnifiedPush with `initializeWithReceiver`:
+
+  ```flutter
+    UnifiedPush.initializeWithReceiver(
+        onNewEndpoint, // takes String endpoint in arg
+        onRegistrationFailed,
+        onRegistrationRefused,
+        onUnregistered,
+        onMessage, // takes String message in arg
+    );
+  ```
+
 ## Sending Push Messages
 (From the application server)
 
 To send a message to an application you need the "endpoint". You get it in the onNewEndpoint method once it is available. You can then use it to send a message using for example curl. The POST body is the message received by the function onMessage.
+
 ```bash
 curl -X POST "$endpoint" --data "Any message body that is desired."
 ```

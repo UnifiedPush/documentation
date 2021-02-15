@@ -128,6 +128,20 @@ class CustomReceiver extends MessagingReceiver {
 }
 ```
 
+You will also need to declare the receiver in your manifest:
+
+```
+      <receiver android:exported="true"  android:enabled="true"  android:name=".CustomReceiver">
+          <intent-filter>
+              <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
+              <action android:name="org.unifiedpush.android.connector.UNREGISTERED"/>
+              <action android:name="org.unifiedpush.android.connector.NEW_ENDPOINT"/>
+              <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED" />
+              <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED" />
+          </intent-filter>
+      </receiver>
+```
+
 ## Sending Push Messages
 (From the application server)
 

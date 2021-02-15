@@ -63,7 +63,9 @@ unregisterApp(context)
 
 ## Receiving Push Messages
 
-To receive Push Messages you should extend the class _MessagingReceiver_ and implement the three methods
+To receive Push Messages you should extend the class _MessagingReceiver_ and implement the 5 following methods:
+
+Kotlin
 ```kotlin
 val handler = object: MessagingReceiverHandler{
     override fun onMessage(context: Context?, message: String) {
@@ -73,13 +75,57 @@ val handler = object: MessagingReceiverHandler{
     override fun onNewEndpoint(context: Context?, endpoint: String) {
         // Called when a new endpoint be used for sending push messages
     }
-
+    
+    override fun onRegistrationFailed(context: Context?) {
+        // called when the registration is not possible, eg. no network
+    }
+    
+    override fun onRegistrationRefused(context: Context?) {
+        // called when the registration is refused, eg. an application with the same Id and another token is registered
+    }
+    
     override fun onUnregistered(context: Context?){
         // called when this application is unregistered from receiving push messages
     }
 }
 
 class CustomReceiver: MessagingReceiver(handler)
+```
+
+Java
+```java
+class handler implements MessagingReceiverHandler {
+    @Override
+    public void onNewEndpoint(@Nullable Context context, @NotNull String s) {
+        // Called when a new endpoint be used for sending push messages
+    }
+
+    @Override
+    public void onRegistrationFailed(@Nullable Context context) {
+        // called when the registration is not possible, eg. no network
+    }
+
+    @Override
+    public void onRegistrationRefused(@Nullable Context context) {
+        // called when the registration is refused, eg. an application with the same Id and another token is registered
+    }
+
+    @Override
+    public void onUnregistered(@Nullable Context context) {
+        // called when this application is unregistered from receiving push messages
+    }
+
+    @Override
+    public void onMessage(@Nullable Context context, @NotNull String s) {
+        // Called when a new message is received. The String contains the full POST body of the push message
+    }
+}
+
+class CustomReceiver extends MessagingReceiver {
+    public UnifiedPushService() {
+        super(new handler());
+    }
+}
 ```
 
 ## Sending Push Messages

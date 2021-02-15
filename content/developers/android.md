@@ -122,7 +122,7 @@ class handler implements MessagingReceiverHandler {
 }
 
 class CustomReceiver extends MessagingReceiver {
-    public UnifiedPushService() {
+    public CustomReceiver() {
         super(new handler());
     }
 }
@@ -136,8 +136,8 @@ You will also need to declare the receiver in your manifest:
               <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
               <action android:name="org.unifiedpush.android.connector.UNREGISTERED"/>
               <action android:name="org.unifiedpush.android.connector.NEW_ENDPOINT"/>
-              <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED" />
-              <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED" />
+              <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED"/>
+              <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED"/>
           </intent-filter>
       </receiver>
 ```

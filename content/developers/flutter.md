@@ -15,17 +15,12 @@ An [example application](https://github.com/UnifiedPush/flutter-connector/tree/m
 
 ## Install Library
 
-Add the following code to your pubspec.lock. For the moment, you have to use commit hash.
+Add the following code to your pubspec.yaml. At the moment you still have to add it as a git dependency.
 ```pubspec
   unifiedpush:
-    dependency: "direct main"
-    description:
-      path: "."
+    git:
+      url: https://github.com/UnifiedPush/flutter-connector.git
       ref: main
-      resolved-ref: "{{COMMIT_HASH}}"
-      url: "https://github.com/UnifiedPush/flutter-connector.git"
-    source: git
-    version: "0.0.1"
 ```
 
 ## Register for Push
@@ -79,9 +74,9 @@ In your application, just initialize UnifiedPush with `initializeWithCallback`:
 
 #### Receiving Push Messages using a receiver
 
-1. Set the engine on the android side of your app:
+1. Set the engine on the android side of your app (typically in `android/app/src/main/kotlin/your/app/id/MainActivity.kt`):
 
-  ```kotlin
+```kotlin
 class MainActivity : FlutterActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,13 +99,13 @@ class MainActivity : FlutterActivity() {
         }
     }
 }
-  ```
+```
 
 2. Add `implementation 'com.github.UnifiedPush:android-connector:{{VERSION}}'` to the android app build.gradle.
 
 3. Declare the Receiver for UnifiedPush events (android side):
 
-  ```kotlin
+```kotlin
 import org.unifiedpush.flutter.connector.UnifiedPushHandler
 import org.unifiedpush.android.connector.MessagingReceiver
 
@@ -133,11 +128,11 @@ val receiverHandler = object : UnifiedPushService() {
 }
 
 class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
-  ```
+```
 
 4. Add the UnifiedPush related actions to the (android side) manifest:
 
-  ```
+```
         <receiver android:exported="true"  android:enabled="true"  android:name=".UnifiedPushReceiver">
             <intent-filter>
                 <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
@@ -147,11 +142,11 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
                 <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED" />
             </intent-filter>
         </receiver>
-  ```
+```
 
 5. Flutter side, initialize UnifiedPush with `initializeWithReceiver`:
 
-  ```flutter
+```flutter
     UnifiedPush.initializeWithReceiver(
         onNewEndpoint, // takes String endpoint in arg
         onRegistrationFailed,
@@ -159,7 +154,7 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
         onUnregistered,
         onMessage, // takes String message in arg
     );
-  ```
+```
 
 ## Sending Push Messages
 (From the application server)
@@ -180,4 +175,3 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 For instance, you can find a difference between fcm_added and main of the example here <https://github.com/UnifiedPush/flutter-connector_fcm_added/commit/6ab2e64636686bcf41f26967a1db6dc7ed44f0fc>.
 
 You, as developper, will need a [FCM Rewrite Proxy](/developers/FCM_Proxy/) for FCM to work.
-

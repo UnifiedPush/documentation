@@ -12,18 +12,16 @@ The rewrite proxy can be done in many ways, here are some.
 ```nginx
 location /FCM {
     access_by_lua_block{
+        local json=require("cjson")
         ngx.req.read_body()
         local args = ngx.req.get_uri_args()
         local token = args["token"]
         local req = ngx.req.get_body_data()
-        local newreq, n, err = ngx.re.gsub(req, '\\\\', '\\\\')
-        local newreq, n, err = ngx.re.gsub(newreq, '"', '\\"')
-        local newreq, n, err = ngx.re.gsub(newreq, '\r', '\\r')
-        local newreq, n, err = ngx.re.gsub(newreq, '\n', '\\n')
-        local newreq, n, err = ngx.re.gsub(newreq, "^", "{\"to\":\"" .. token .. "\",\"data\":{\"body\":\"")
-        local newreq, n, err = ngx.re.gsub(newreq, "$", "\"}}")
-        ngx.req.set_body_data(newreq)
+        local newreq =  { ["to"] = token, ["data"] = { ["body"] = req } }
+        local body = json.encode(newreq)
+        ngx.req.set_body_data(body)
     }
+
     proxy_set_header        Authorization key=<SERVER_KEY>;
     proxy_set_header        Content-Type application/json;
     proxy_pass              https://fcm.googleapis.com/fcm/send;

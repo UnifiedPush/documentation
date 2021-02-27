@@ -31,15 +31,12 @@ It can be achieved with the following nginx rule (which uses lua):
 ```nginx
 location /UP {
     access_by_lua_block{
+        local json=require("cjson")
         ngx.req.read_body()
         local req = ngx.req.get_body_data()
-        local newreq, n, err = ngx.re.gsub(req, '\\\\', '\\\\')
-        local newreq, n, err = ngx.re.gsub(newreq, '"', '\\"')
-        local newreq, n, err = ngx.re.gsub(newreq, '\r', '\\r')
-        local newreq, n, err = ngx.re.gsub(newreq, '\n', '\\n')
-        local newreq, n, err = ngx.re.gsub(newreq, "^", "{\"message\":\"")
-        local newreq, n, err = ngx.re.gsub(newreq, "$", "\"}")
-        ngx.req.set_body_data(newreq)
+        local newreq = { ["message"] = req }
+        local body = json.encode(newreq)
+        ngx.req.set_body_data(body)
     }
 
     proxy_set_header        Content-Type application/json;

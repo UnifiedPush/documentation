@@ -50,22 +50,24 @@ location /FCM {
         ngx.req.read_body()
         local args = ngx.req.get_uri_args()
         local token = args["token"]
+        local instance = args["instance"]
         local req = ngx.req.get_body_data()
-        local newreq =  { ["to"] = token, ["data"] = { ["body"] = req } }
+        local newreq =  { ["to"] = token, ["data"] = { ["body"] = req, ["instance"] = instance } }
         local body = json.encode(newreq)
         ngx.req.set_body_data(body)
     }
 
-    proxy_set_header        Authorization key=<SERVER_KEY>;
-    proxy_set_header        Content-Type application/json;
-    proxy_pass              https://fcm.googleapis.com/fcm/send;
-    proxy_set_header        Host fcm.googleapis.com;
+    proxy_set_header		Authorization key=<YOUR FCM KEY>;
+    proxy_set_header		Content-Type application/json;
+    proxy_pass			https://fcm.googleapis.com/fcm/send;
+    proxy_set_header            Host fcm.googleapis.com;
 
     # Force https
     if ($scheme = http) {
         rewrite ^ https://$server_name$request_uri? permanent;
-    }
+     }
 }
+
 ```
 
 #### Go

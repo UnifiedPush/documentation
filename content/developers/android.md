@@ -153,7 +153,7 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 ## Using the FCM-added version
 
 * Add `classpath 'com.google.gms:google-services:4.3.4'` to your project level build.gradle.
-* Add `id 'com.google.gms.google-services'` and `implementation 'com.github.UnifiedPush:UP-lib_fcm-added:{VERSION}'` to your app level build.gradle.
+* Add `id 'com.google.gms.google-services'` and `implementation 'com.github.UnifiedPush:android-connector_fcm_added:{VERSION}'` to your app level build.gradle.
 * Add the google-services.json file from firebase to your app directory.
 * Change the registration class from `org.unifiedpush.android.connector.Registration` to `org.unifiedpush.android.connector_fcm_added.RegistrationFCM`.
 * Add the receiver handler `org.unifiedpush.android.connector_fcm_added.GetEndpointHandler`. The `getEndpoint` function needs to return the endpoint of the FCM rewrite proxy.

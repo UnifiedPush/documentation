@@ -167,5 +167,5 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 
 ## Application With Embedded Distributor
 
-You will need, on android side to importe and declare the embedded distributor. Please refere to [Embedded FCM Distributor](/developers/FCM_Proxy) for more information.
+You will need, on android side to importe and declare the embedded distributor. Please refere to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
 

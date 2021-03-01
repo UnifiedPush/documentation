@@ -158,5 +158,5 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 
 ## Application With Embedded Distributor
 
-Please refere to [Embedded FCM Distributor](/developers/FCM_Proxy) for more information.
+Please refere to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
 

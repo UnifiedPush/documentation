@@ -18,7 +18,7 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 
 val handlerFCM = object: GetEndpointHandler {
     override fun getEndpoint(context: Context?, token: String, instance: String): String {
-        // This returns the ednpoint of your FCM Rewrite-Proxy
+        // This returns the endpoint of your FCM Rewrite-Proxy
         return "https://<your.domain.tld>/FCM?instance=$instance&token=$token"
     }
 }

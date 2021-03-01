@@ -165,13 +165,7 @@ To send a message to an application you need the "endpoint". You get it in the o
 curl -X POST "$endpoint" --data "Any message body that is desired."
 ```
 
-## Using the FCM-added version
+## Application With Embedded Distributor
 
-* Add `getEndpoint` to the UnifiedPush initialization. It have to take `String token` as an arg and returns `String endpoint` of the FCM proxy.
-* Add `apply plugin: 'com.google.gms.google-services'` to your android app level build.gradle.
-* Add the google-services.json file from firebase to your app directory.
-* Change the pubspec.lock to use `flutter-connector_fcm_added` instead of `flutter-connector`
+You will need, on android side to importe and declare the embedded distributor. Please refere to [Embedded FCM Distributor](/developers/FCM_Proxy) for more information.
 
-For instance, you can find a difference between fcm_added and main of the example here <https://github.com/UnifiedPush/flutter-connector_fcm_added/commit/6ab2e64636686bcf41f26967a1db6dc7ed44f0fc>.
-
-You, as developper, will need a [FCM Rewrite Proxy](/developers/FCM_Proxy/) for FCM to work.

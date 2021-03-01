@@ -61,6 +61,12 @@ registerApp(context)
 unregisterApp(context)
 ```
 
+**Multi-connection app**
+You may need multiple connections for your app, you will need to use, as above, the following functions:
+* `registerAppWithDialog(context, instance)`
+* `registerApp(context, instance)`
+* `unregisterApp(context, instance)`
+
 ## Receiving Push Messages
 
 To receive Push Messages you should extend the class _MessagingReceiver_ and implement the 5 following methods:
@@ -68,23 +74,23 @@ To receive Push Messages you should extend the class _MessagingReceiver_ and imp
 Kotlin
 ```kotlin
 val handler = object: MessagingReceiverHandler{
-    override fun onMessage(context: Context?, message: String) {
+    override fun onMessage(context: Context?, message: String, instance: String) {
         // Called when a new message is received. The String contains the full POST body of the push message
     }
 
-    override fun onNewEndpoint(context: Context?, endpoint: String) {
+    override fun onNewEndpoint(context: Context?, endpoint: String, instance: String) {
         // Called when a new endpoint be used for sending push messages
     }
     
-    override fun onRegistrationFailed(context: Context?) {
+    override fun onRegistrationFailed(context: Context?, instance: String) {
         // called when the registration is not possible, eg. no network
     }
     
-    override fun onRegistrationRefused(context: Context?) {
+    override fun onRegistrationRefused(context: Context?, instance: String) {
         // called when the registration is refused, eg. an application with the same Id and another token is registered
     }
     
-    override fun onUnregistered(context: Context?){
+    override fun onUnregistered(context: Context?, instance: String){
         // called when this application is unregistered from receiving push messages
     }
 }
@@ -96,27 +102,27 @@ Java
 ```java
 class handler implements MessagingReceiverHandler {
     @Override
-    public void onNewEndpoint(@Nullable Context context, @NotNull String s) {
+    public void onNewEndpoint(@Nullable Context context, @NotNull String endpoint, @NotNull String instance) {
         // Called when a new endpoint be used for sending push messages
     }
 
     @Override
-    public void onRegistrationFailed(@Nullable Context context) {
+    public void onRegistrationFailed(@Nullable Context context, @NotNull String instance) {
         // called when the registration is not possible, eg. no network
     }
 
     @Override
-    public void onRegistrationRefused(@Nullable Context context) {
+    public void onRegistrationRefused(@Nullable Context context, @NotNull String instance) {
         // called when the registration is refused, eg. an application with the same Id and another token is registered
     }
 
     @Override
-    public void onUnregistered(@Nullable Context context) {
+    public void onUnregistered(@Nullable Context context, @NotNull String instance) {
         // called when this application is unregistered from receiving push messages
     }
 
     @Override
-    public void onMessage(@Nullable Context context, @NotNull String s) {
+    public void onMessage(@Nullable Context context, @NotNull String message, @NotNull String instance) {
         // Called when a new message is received. The String contains the full POST body of the push message
     }
 }
@@ -150,17 +156,7 @@ To send a message to an application you need the "endpoint". You get it in the o
 curl -X POST "$endpoint" --data "Any message body that is desired."
 ```
 
-## Using the FCM-added version
+## Application With Embedded Distributor
 
-* Add `classpath 'com.google.gms:google-services:4.3.4'` to your project level build.gradle.
-* Add `id 'com.google.gms.google-services'` and `implementation 'com.github.UnifiedPush:android-connector_fcm_added:{VERSION}'` to your app level build.gradle.
-* Add the google-services.json file from firebase to your app directory.
-* Change the registration class from `org.unifiedpush.android.connector.Registration` to `org.unifiedpush.android.connector_fcm_added.RegistrationFCM`.
-* Add the receiver handler `org.unifiedpush.android.connector_fcm_added.GetEndpointHandler`. The `getEndpoint` function needs to return the endpoint of the FCM rewrite proxy.
-* Add a `org.unifiedpush.android.connector_fcm_added.FakeDistributorReceiver` receiver.
-* Add to the manifest the newly created receiver, with the actions `org.unifiedpush.android.distributor.REGISTER` and `org.unifiedpush.android.distributor.UNREGISTER`. It has to be non-exported (with `android:exported="false"`)
-
-For instance, you can find a difference between fcm_added and main of the example here <https://github.com/UnifiedPush/android-example/compare/fcm-added>.
-
-You, as developper, will need a [FCM Rewrite Proxy](/developers/FCM_Proxy/) for FCM to work.
+Please refere to [Embedded FCM Distributor](/developers/FCM_Proxy) for more information.
 

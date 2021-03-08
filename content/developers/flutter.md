@@ -15,12 +15,9 @@ An [example application](https://github.com/UnifiedPush/flutter-connector/tree/m
 
 ## Install Library
 
-Add the following code to your pubspec.yaml. At the moment you still have to add it as a git dependency.
+Add the following code to your pubspec.yaml.
 ```yaml
-  unifiedpush:
-    git:
-      url: https://github.com/UnifiedPush/flutter-connector.git
-      ref: main
+  unifiedpush: ^1.0.1
 ```
 
 ## Register for Push

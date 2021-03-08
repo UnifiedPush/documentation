@@ -14,5 +14,8 @@
             <a href="{{ . | relURL }}" class="gdoc-footer__link">Privacy Policy</a>
         </span>
         {{ end }}
+        <span class="gdoc-footer__item" style="margin-left: auto;">
+	{{if not (eq .GitInfo  nil)  }} Version: {{.GitInfo.AbbreviatedHash}} {{end}}
+        </span>
     </div>
 </footer>

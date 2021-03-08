@@ -136,7 +136,7 @@ class CustomReceiver extends MessagingReceiver {
 
 You will also need to declare the receiver in your manifest:
 
-```
+```xml
       <receiver android:exported="true"  android:enabled="true"  android:name=".CustomReceiver">
           <intent-filter>
               <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
@@ -158,5 +158,5 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 
 ## Application With Embedded Distributor
 
-Please refere to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
+Please refer to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
 

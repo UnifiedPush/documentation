@@ -14,7 +14,7 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 * Add `id 'com.google.gms.google-services'` and `implementation 'com.github.UnifiedPush:android-embedded_fcm_distributor:{VERSION}'` to your app level build.gradle.
 * Add the google-services.json file from firebase to your app directory.
 * Add the receiver to your code:
-```
+```kotlin
 
 val handlerFCM = object: GetEndpointHandler {
     override fun getEndpoint(context: Context?, token: String, instance: String): String {
@@ -26,7 +26,7 @@ val handlerFCM = object: GetEndpointHandler {
 class EmbeddedDistrib: EmbeddedDistributorReceiver(handlerFCM) {}
 ```
 * Declare it on your Manifest:
-```
+```xml
         <receiver android:enabled="true"  android:name=".EmbeddedDistrib" android:exported="false">
             <intent-filter>
                 <action android:name="org.unifiedpush.android.distributor.REGISTER"/>

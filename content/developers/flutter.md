@@ -15,12 +15,9 @@ An [example application](https://github.com/UnifiedPush/flutter-connector/tree/m
 
 ## Install Library
 
-Add the following code to your pubspec.yaml. At the moment you still have to add it as a git dependency.
-```pubspec
-  unifiedpush:
-    git:
-      url: https://github.com/UnifiedPush/flutter-connector.git
-      ref: main
+Add the following code to your pubspec.yaml.
+```yaml
+  unifiedpush: ^1.0.1
 ```
 
 ## Register for Push
@@ -28,13 +25,13 @@ Add the following code to your pubspec.yaml. At the moment you still have to add
 To register for receiving push services you have two options, after initializing:
 
 1. Have the library handle distributor selection
-```flutter
+```dart
 // Call the library function
 UnifiedPush.registerAppWithDialog()
 ```
 
 2. Handle selection yourself
-```flutter
+```dart
 // Get a list of distributors that are available
 final distributors = await UnifiedPush.getDistributors()
 // select one or show a dialog or whatever
@@ -44,7 +41,7 @@ UnifiedPush.registerApp()
 ```
 
 **unregister**
-```flutter
+```dart
 // inform the library that you would like to unregister from receiving push messages
 UnifiedPush.unregisterApp()
 ```
@@ -59,7 +56,7 @@ There is 2 ways to initialize UnifiedPush to receive Push Messages:
 
 In your application, just initialize UnifiedPush with `initializeWithCallback`:
 
-```flutter
+```dart
     UnifiedPush.initializeWithCallback(
         onNewEndpoint, // takes String endpoint in arg
         onRegistrationFailed,
@@ -132,7 +129,7 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
 
 4. Add the UnifiedPush related actions to the (android side) manifest:
 
-```
+```xml
         <receiver android:exported="true"  android:enabled="true"  android:name=".UnifiedPushReceiver">
             <intent-filter>
                 <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
@@ -146,7 +143,7 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
 
 5. Flutter side, initialize UnifiedPush with `initializeWithReceiver`:
 
-```flutter
+```dart
     UnifiedPush.initializeWithReceiver(
         onNewEndpoint, // takes String endpoint in arg
         onRegistrationFailed,

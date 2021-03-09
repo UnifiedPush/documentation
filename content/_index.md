@@ -8,14 +8,14 @@ UnifiedPush is specifications and tools that let the user choose how push notifi
 
 ### I'm a user who wants push notifications for apps using UP, what should I do?
 
-The applications that gives notifications is called a Distributor. Then look at the download links of [fcm-distributor](/users/distributors/fcm) (based on Google FCM). 
+The applications that gives notifications is called a Distributor. If you don't care about using Google's FCM, look at the download links of [fcm-distributor](/users/distributors/fcm). 
 
 ### But I don't want to rely on Google
 
 Currently, the simplest way is to host your own [Gotify](/users/distributors/gotify) server and install the associated distributor.
 
 ### I'm an app developer who wants my users to get push notifications without Google, what should I do?
-You should use one of the UnifedPush [connector libraries](/developers/) for your framework. If it doesn't already exist for your framework/language, contributions are welcome.
+You should use the UnifedPush [connector library](/developers/) for your framework. If it doesn't already exist for your framework/language, contributions are welcome.
 
 {{< toc >}}
 
@@ -27,7 +27,7 @@ The [distributors page](/users/distributors/) has a great TLDR of all the option
 Most users would want to use Gotify at the moment.
 
 #### Does/will app X support UnifiedPush?
-See the list at </users/apps>
+See the list at </users/apps>. If an app isn't in there, feel free to ask in the UnifiedPush Matrix or Freenode chat.
 
 #### Will UP ever work on iOS?
 IOS doesn't support running services in the background, so running a UnifiedPush distributor won't be possible without jailbreaking or Apple's approval for the foreseeable future. If someone has a solution, share that in the chat.

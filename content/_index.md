@@ -6,7 +6,7 @@ UnifiedPush is specifications and tools that let the user choose how push notifi
 
 ### I'm a user who wants push notifications for apps using UP, what should I do?
 
-The applications that gives notifications is called a Distributor. If you don't care about using Google's FCM, look at the download links of [fcm-distributor](/users/distributors/fcm). 
+The application that gives notifications is called a Distributor. If you don't care about using Google's FCM, look at the download links of [fcm-distributor](/users/distributors/fcm). 
 
 ### But I don't want to rely on Google
 

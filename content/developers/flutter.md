@@ -48,7 +48,7 @@ UnifiedPush.unregisterApp()
 
 ## Receiving Push Messages
 
-There is 2 ways to initialize UnifiedPush to receive Push Messages:
+There are 2 ways to initialize UnifiedPush to receive Push Messages:
 * [prefered] Using a callback for messages when the app is killed.
 * [if you need] Setting a receiver in the application.
 
@@ -164,5 +164,5 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 
 ## Application With Embedded Distributor
 
-You will need, on android side to importe and declare the embedded distributor. Please refere to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
+On the Android side, you will need to import and declare the embedded distributor. Please refere to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
 

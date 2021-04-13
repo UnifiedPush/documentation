@@ -12,7 +12,7 @@ Gotify is "a simple server for sending and receiving messages".
 
 ## Requirements
 
-* A server to connect to. There is, at this moment, no server opened to registration. But if you can't self-host yours, come on matrix (or IRC) unifiedpush room to ask if someone can create an account for you. Maybe someone will!
+* A server to connect to. There is, at this moment, no server open for registration. But if you can't self-host yours, come on matrix (or IRC) unifiedpush room to ask if someone can create an account for you. Maybe someone will!
 
 ## Setting Up
 
@@ -57,7 +57,7 @@ It can be achieved with [Golang Rewrite Proxy](https://github.com/karmanyaahm/go
 Traffic from /UP on any reverse proxy running Gotify can be proxied to it. The following is an example for Nginx.
 
 ```nginx
-location  /UP {    
+location  /UP {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```

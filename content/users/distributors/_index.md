@@ -8,9 +8,9 @@ title: Distributors
 
 #### Gotify
 
-Gotify works with a server. 
+Gotify works with a server.
 
-At this moment there is not any public server (open to registration) but you can ask on the matrix chat (or IRC) if someone want to accept you on her/his server or self-host it. 
+At this moment there is no public server (open to registration) but you can ask on the matrix chat (or IRC) if someone wants to accept you on her/his server or self-host it.
 
 
 #### NoProvider2Push

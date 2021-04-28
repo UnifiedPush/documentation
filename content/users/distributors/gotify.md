@@ -5,7 +5,7 @@ title: Gotify
 Gotify is "a simple server for sending and receiving messages".
 
 * License: MIT
-* Sources: <https://github.com/gotify/android/tree/unifiedpush>
+* Sources: <https://github.com/UnifiedPus/gotify-android/tree/unifiedpush>
 * Server: <https://github.com/gotify/server>
 * Download for Android:
   * [F-Droid](https://f-droid.org/de/packages/com.github.gotify/) ⚠️  **You need to add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️
@@ -52,7 +52,7 @@ location /UP {
 
 ### Go
 
-It can be achieved with [Golang Rewrite Proxy](https://github.com/karmanyaahm/golang-unified-push-rewrite-proxy), a program that can be installed to run as a rewrite proxy for Gotify.
+It can be achieved with [Golang Rewrite Proxy](https://github.com/UnifiedPush/common-proxies), a program that can be installed to run as a rewrite proxy for Gotify.
 
 Traffic from /UP on any reverse proxy running Gotify can be proxied to it. The following is an example for Nginx.
 

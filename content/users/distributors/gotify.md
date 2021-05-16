@@ -12,7 +12,7 @@ Gotify is "a simple server for sending and receiving messages".
 
 ## Requirements
 
-* A server to connect to. There is, at this moment, no server open for registration. But if you can't self-host yours, come on matrix (or IRC) unifiedpush room to ask if someone can create an account for you. Maybe someone will!
+* A server to connect to. A server is open to registration at <https://gotify1.unifiedpush.org>, though it is recommended to host your own so your data stays private and the public server doesn't overload.
 
 ## Setting Up
 

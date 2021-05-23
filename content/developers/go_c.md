@@ -68,12 +68,13 @@ else
     {{< tab "C" >}}
 
 ```c
-bool ok = UPInitializeAndCheck("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
+bool ok = UPInitializeAndCheck("org.example.app", *newMessage, *newEndpoint, *unregistered);
 // or
-bool ok = UPInitialize("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
-if (containsString("UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION", argv)) { //containsString needs to be a function
+bool ok = UPInitialize("org.example.app", *newMessage, *newEndpoint, *unregistered);
+if (containsString("UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION", argv)) { // containsString needs to be defined
+    // your code here, for instance:
     sleep(5);
-    // this gives time for the functions to be called
+    // this gives the callback functions some time to run
     exit(0);
 }
 ```
@@ -82,11 +83,13 @@ if (containsString("UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION", argv)) { //contains
     {{< tab "Go" >}} 
 
 ```go
-up.InitializeAndCheck("xyz.yourdomain.yourapp", handlerStruct)
+up.InitializeAndCheck("org.example.app", handlerStruct)
 // or
-up.Initialize("net.yourorganization.yourproduct.yourappname", handlerStruct)
-if containsString(os.Args, "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION") {// containsString needs to be defined
-    time.Sleep(5 * time.Second) // this gives the callback functions some time to run
+up.Initialize("org.example.app", handlerStruct)
+if containsString(os.Args, "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION") { // containsString needs to be defined
+    // your code here, for instance:
+    time.Sleep(5 * time.Second) 
+    // this gives the callback functions some time to run
     os.Exit(0)
 }
 ```
@@ -204,6 +207,6 @@ This directory is usually `share/dbus-1/services/` in `~/.local` or `/usr`
 
 ```service
 [D-BUS Service]
-Name=cc.malhotra.karmanyaah.testapp.cgo
+Name=org.example.app
 Exec=<path to binary>/appBinaryname UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION
 ```

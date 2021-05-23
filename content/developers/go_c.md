@@ -5,16 +5,16 @@ title = "Go and C"
 These two libraries are grouped together since they're based on the same code.
 
 - [Repository](github.com/UnifiedPush/go_dbus_connector)
+- [Go Documentation](//pkg.go.dev/unifiedpush.org/go/dbus_connector)
 
 An example app can be found in the [\_examples folder](//github.com/UnifiedPush/go_dbus_connector/tree/main/_examples) of this module's repository.
-A link to the documentation of this module can be found [here](/go/dbus_connector).
 
-### C
+{{<toc>}}
 
 ## Installation
 
 {{< tabs "installation" >}}
-{{< tab "C" >}} 
+{{< tab "C" >}}
 The header files for the C library contains basic documentation, since it is only a wrapper around the Go lib the godoc will be very relevant.
 
 It can be built from source using just the Go command (check Makefile). The releases contain statically linkable .a files and dynamically loadable .so files.
@@ -23,7 +23,7 @@ It can be built from source using just the Go command (check Makefile). The rele
 #include "libunifiedpush.h"
 ```
 {{< /tab >}}
-{{< tab "Go" >}} 
+{{< tab "Go" >}}
 
 
 An example import statement for the Go library is
@@ -42,27 +42,31 @@ go get -u unifiedpush.org/go/dbus_connector
 {{< /tabs >}}
 
 
-### Usage
 
-#### Initialization
+## Usage
 
-On startup the program should check if it was awaken for push first. If so, it should initialize as little as required to notify the user. The background status is in an argument.
+### Initialization
 
-Running `up.Initialize` requires manually checking for the argument. `UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION` is the recommended argument to be used in the DBus service file.  
+Every time the application starts up, it needs to initialize the UnifiedPush connector to be able to receive incoming messages. This is done with the function `up.Initialize` which takes in [handlers](#handler) and the name of your app in [reverse DNS notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation).
 
+When the application starts, it should check if it has been awaken by an incoming message before running its main program. This is done by checking if `UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION` is one of the given arguments, which is given by the DBus [service](#background-activation).
+
+The method `up.InitializeAndCheck` does both and so it's preferred to run that.
 In pseudocode, the function `up.InitializeAndCheck` does the following
 
 ```
 up.Initialize(whatever arguments are required)
-if (program is in background) //UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION is given
+bool programInBackground = "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION" in os.args
+if (programInBackground) 
 	Call background handlers
-	once the handlers return, exit
+	wait for handlers to return
+	exit
 else
 	return and the continue the program like normal in the foreground
 ```
 
 {{< tabs "initialization" >}}
-	{{< tab "C" >}} 
+	{{< tab "C" >}}
 ```c
 bool ok = UPInitializeAndCheck("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
 // or
@@ -70,7 +74,7 @@ bool ok = UPInitialize("org.yourapp.domain", *newMessage, *newEndpoint, *unregis
 if (containsString("UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION", argv)) { //containsString needs to be a function
 	sleep(5);
 	// this gives time for the functions to be called
-	exit(0);	
+	exit(0);
 }
 ```
 	{{< /tab >}}
@@ -87,9 +91,9 @@ if containsString(os.Args, "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION") {// contain
 	{{< /tab >}}
 {{< /tabs >}}
 
-**C**
+### Distributor Selection
 
-```c
+If a distributor isn't already picked, the program should pick a distributor. If there are 0 distributors the program should stop using UnifiedPush; if there's 1, that should be auto-selected; and if there are more distributors, the user should be prompted to pick one.
 
 {{< tabs "dist_selection" >}}
 	{{< tab "C" >}} 
@@ -107,7 +111,7 @@ if len(up.GetDistributor()) == 0 {
 	{{< /tab >}}
 {{< /tabs >}}
 
-#### (Re)Registration
+### (Re)Registration
 
 Every program should register each instance of notifications on startup, so that any updated endpoints can be sent.
 
@@ -132,9 +136,7 @@ The reason is usually a user-readable error message.
 After this, your app can receive push notifications!
     Some other functions are provided to unregister and/or change the UP config which are available in the Godoc and every method there also has a C version.
 
-### Handler
-
-#### C
+## Handler
 
 The notification handlers should not be dependent on any state to exist since they can be called at any time.
 

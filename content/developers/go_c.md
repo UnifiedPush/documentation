@@ -22,26 +22,25 @@ It can be built from source using just the Go command (check Makefile). The rele
 ```c
 #include "libunifiedpush.h"
 ```
+
 {{< /tab >}}
 {{< tab "Go" >}}
-
 
 An example import statement for the Go library is
 
 ```go
 import (
-	up "unifiedpush.org/go/dbus_connector/api"
-	"unifiedpush.org/go/dbus_connector/definitions"
+    up "unifiedpush.org/go/dbus_connector/api"
+    "unifiedpush.org/go/dbus_connector/definitions"
 )
 ```
 
 ```bash
 go get -u unifiedpush.org/go/dbus_connector
 ```
+
 {{< /tab >}}
 {{< /tabs >}}
-
-
 
 ## Usage
 
@@ -54,41 +53,45 @@ When the application starts, it should check if it has been awaken by an incomin
 The method `up.InitializeAndCheck` does both and so it's preferred to run that.
 In pseudocode, the function `up.InitializeAndCheck` does the following
 
-```
+```cpp
 up.Initialize(whatever arguments are required)
 bool programInBackground = "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION" in os.args
 if (programInBackground) 
-	Call background handlers
-	wait for handlers to return
-	exit
+    Call background handlers
+    wait for handlers to return
+    exit
 else
-	return and the continue the program like normal in the foreground
+    return and the continue the program like normal in the foreground
 ```
 
 {{< tabs "initialization" >}}
-	{{< tab "C" >}}
+    {{< tab "C" >}}
+
 ```c
 bool ok = UPInitializeAndCheck("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
 // or
 bool ok = UPInitialize("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
 if (containsString("UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION", argv)) { //containsString needs to be a function
-	sleep(5);
-	// this gives time for the functions to be called
-	exit(0);
+    sleep(5);
+    // this gives time for the functions to be called
+    exit(0);
 }
 ```
-	{{< /tab >}}
-	{{< tab "Go" >}} 
+
+    {{< /tab >}}
+    {{< tab "Go" >}} 
+
 ```go
 up.InitializeAndCheck("xyz.yourdomain.yourapp", handlerStruct)
 // or
 up.Initialize("net.yourorganization.yourproduct.yourappname", handlerStruct)
 if containsString(os.Args, "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION") {// containsString needs to be defined
-	time.Sleep(5 * time.Second) // this gives the callback functions some time to run
-	os.Exit(0)
+    time.Sleep(5 * time.Second) // this gives the callback functions some time to run
+    os.Exit(0)
 }
 ```
-	{{< /tab >}}
+
+    {{< /tab >}}
 {{< /tabs >}}
 
 ### Distributor Selection
@@ -96,39 +99,46 @@ if containsString(os.Args, "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION") {// contain
 If a distributor isn't already picked, the program should pick a distributor. If there are 0 distributors the program should stop using UnifiedPush; if there's 1, that should be auto-selected; and if there are more distributors, the user should be prompted to pick one.
 
 {{< tabs "dist_selection" >}}
-	{{< tab "C" >}} 
+    {{< tab "C" >}}
+
 ```c
 if (strnlen(UPGetDistributor(), 1) == 0)
-	pickDistributors();
+    pickDistributors();
 ```
-	{{< /tab >}}
-	{{< tab "Go" >}} 
+
+    {{< /tab >}}
+    {{< tab "Go" >}} 
+
 ```go
 if len(up.GetDistributor()) == 0 {
-	pickDist()
+    pickDist()
 }
 ```
-	{{< /tab >}}
+
+    {{< /tab >}}
 {{< /tabs >}}
 
 ### (Re)Registration
 
 Every program should register each instance of notifications on startup, so that any updated endpoints can be sent.
 
-
 {{< tabs "registration" >}}
-	{{< tab "C" >}} 
+    {{< tab "C" >}}
+
 ```c
 struct UPRegister_return ret = UPRegister("");
 char *reason = ret.r1;
 int status = ret.r0;
 ```
-	{{< /tab >}}
-	{{< tab "Go" >}} 
+
+    {{< /tab >}}
+    {{< tab "Go" >}} 
+
 ```go
 result, reason, err := up.Register("")
 ```
-	{{< /tab >}}
+
+    {{< /tab >}}
 {{< /tabs >}}
 
 The reason is usually a user-readable error message.
@@ -141,43 +151,45 @@ After this, your app can receive push notifications!
 The notification handlers should not be dependent on any state to exist since they can be called at any time.
 
 {{< tabs "handler" >}}
-	{{< tab "C" >}} 
+    {{< tab "C" >}}
 The functions below are passed into the initialization. The function arguments are freed after the function returns so the data should be copied out if required. Each call gets an instance name which is the same as the one registered with.
 
 ```c
 static void newMessage(char *instance, char *msg, char *id){
-	printf("new message: %s\n", msg);
+    printf("new message: %s\n", msg);
 }
 
 static void newEndpoint(char *instance, char *endpoint){
-	printf("new endpoint received: %s\n", endpoint);
+    printf("new endpoint received: %s\n", endpoint);
 }
 
 static void unregistered(char *instance){
-	printf("instance unregistered\n");
+    printf("instance unregistered\n");
 }
 ```
-	{{< /tab >}}
-	{{< tab "Go" >}} 
 
+    {{< /tab >}}
+    {{< tab "Go" >}} 
 A struct is passed during initialization which must contain the following methods.
+
 ```go
 type NotificationHandler struct{}
 
 func (n NotificationHandler) Message(instance, message, id string) {
-	fmt.Println("new message received")
-	_ := beeep.Notify("title", message, "")
+    fmt.Println("new message received")
+    _ := beeep.Notify("title", message, "")
 }
 
 func (n NotificationHandler) NewEndpoint(instance, endpoint string) {
-	fmt.Println("New endpoint received", endpoint)
+    fmt.Println("New endpoint received", endpoint)
 }
 
 func (n NotificationHandler) Unregistered(instance string) {
-	fmt.Println("endpoint unregistered")
+    fmt.Println("endpoint unregistered")
 }
 ```
-	{{< /tab >}}
+
+    {{< /tab >}}
 {{< /tabs >}}
 
 - NewMessage receives a string that can be deserialized into whatever format the server sends (json, etc).
@@ -189,6 +201,7 @@ func (n NotificationHandler) Unregistered(instance string) {
 A D-Bus service file needs to be packaged with your application and placed in the D-Bus activation directory to let it activate for a background notification. The name here is the same argument passed to initialize; Exec is the binary being executed with the activation argument.
 
 This directory is usually `share/dbus-1/services/` in `~/.local` or `/usr`
+
 ```service
 [D-BUS Service]
 Name=cc.malhotra.karmanyaah.testapp.cgo

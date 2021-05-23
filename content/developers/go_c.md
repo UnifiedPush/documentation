@@ -35,6 +35,8 @@ import (
 )
 ```
 
+To download the library:
+
 ```bash
 go get -u unifiedpush.org/go/dbus_connector
 ```

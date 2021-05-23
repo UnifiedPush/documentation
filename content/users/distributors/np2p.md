@@ -9,7 +9,7 @@ In its own words
 * Sources: <https://github.com/NoProvider2Push/android>
 * Server: -
 * Download for Android:
-  * [F-Droid](https://f-droid.org/packages/com.flyingpanda.noprovider2push/) ⚠️  **You need to add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️
+  * [F-Droid](https://f-droid.org/packages/com.flyingpanda.noprovider2push/)
 
 ## Requirements
 

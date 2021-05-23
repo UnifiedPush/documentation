@@ -1,0 +1,13 @@
+diff --git a/themes/hugo-geekdoc/layouts/partials/site-footer.html b/themes/hugo-geekdoc/layouts/partials/site-footer.html
+index af2fd89d..34c5df09 100644
+--- a/themes/hugo-geekdoc/layouts/partials/site-footer.html
++++ b/themes/hugo-geekdoc/layouts/partials/site-footer.html
+@@ -14,5 +14,8 @@
+             <a href="{{ . | relURL }}" class="gdoc-footer__link">Privacy Policy</a>
+         </span>
+         {{ end }}
++        <span class="gdoc-footer__item" style="margin-left: auto;">
++	{{if not (eq .GitInfo  nil)  }} Version: {{.GitInfo.AbbreviatedHash}} {{end}}
++        </span>
+     </div>
+ </footer>

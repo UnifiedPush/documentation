@@ -70,3 +70,5 @@ enableGitInfo = true
 
   # (Optional, default true) Copy anchor url to clipboard on click.
   geekdocAnchorCopy = true
+[minify]
+  disableHTML = true

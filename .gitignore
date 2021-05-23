@@ -10,4 +10,5 @@ hugo.darwin
 hugo.linux
 
 .vscode
+themes/hugo-geekdoc
 

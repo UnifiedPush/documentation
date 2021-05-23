@@ -3,7 +3,7 @@ more:
   - name: GitHub
     ref: "https://github.com/UnifiedPush"
     external: true
-    icon: "github" 
+    icon: "gdoc_github"
   - name: Matrix Chat
     ref: "https://matrix.to/#/#unifiedpush:matrix.org"
     external: true

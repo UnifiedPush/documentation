@@ -183,3 +183,14 @@ func (n NotificationHandler) Unregistered(instance string) {
 - NewMessage receives a string that can be deserialized into whatever format the server sends (json, etc).
 - NewEndpoint is called when a new endpoint needs to be saved or sent to the server.
 - Unregister is called when the distributor has unregistered the app either due to request or something on the distributor side.
+
+## Background activation
+
+A D-Bus service file needs to be packaged with your application and placed in the D-Bus activation directory to let it activate for a background notification. The name here is the same argument passed to initialize; Exec is the binary being executed with the activation argument.
+
+This directory is usually `share/dbus-1/services/` in `~/.local` or `/usr`
+```service
+[D-BUS Service]
+Name=cc.malhotra.karmanyaah.testapp.cgo
+Exec=<path to binary>/appBinaryname UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION
+```

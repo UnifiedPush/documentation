@@ -15,6 +15,10 @@ The header files for the C library contains basic documentation, since it is onl
 
 It can be built from source using just the Go command (check Makefile). The releases contain statically linkable .a files and dynamically loadable .so files.
 
+```c
+#include "libunifiedpush.h"
+```
+
 ### Go
 
 [Go Documentation](//pkg.go.dev/unifiedpush.org/go/dbus_connector)
@@ -51,7 +55,7 @@ else
 	return and the program continues like normal in the foreground
 ```
 
-In Go,
+**Go**
 
 ```go
 	up.InitializeAndCheck("cc.malhotra.karmanyaah.testapp.golibrary", handlerStruct)
@@ -59,7 +63,7 @@ In Go,
 	up.Initialize("cc.malhotra.karmanyaah.testapp.golibrary", handlerStruct)
 ```
 
-The same applies to C except Initialize(AndCheck) takes in each function individually.
+**C**
 
 ```c
 	bool ok = UPInitializeAndCheck("cc.malhotra.karmanyaah.testapp.cgo", *newMessage, *newEndpoint, *unregistered);
@@ -71,11 +75,15 @@ The same applies to C except Initialize(AndCheck) takes in each function individ
 
 If a distributor isn't already picked, the program should pick a distributor. If there are 0 distributors the program should stop using UnifiedPush; if there's 1, that should be auto-selected; and if there are more distributors, the user should be prompted to pick one.
 
+**Go**
+
 ```go
 	if len(up.GetDistributor()) == 0 {
 		pickDist()
 	}
 ```
+
+**C**
 
 ```c
 
@@ -87,9 +95,13 @@ If a distributor isn't already picked, the program should pick a distributor. If
 
 Every program should register each instance of notifications on startup, so that any updated endpoints can be sent.
 
+**Go**
+
 ```go
 	result, reason, err := up.Register("")
 ```
+
+**C**
 
 ```c
 	struct UPRegister_return ret = UPRegister("");
@@ -103,6 +115,8 @@ After this, your app can receive push notifications!
     Some other functions are provided to unregister and/or change the UP config which are available in the Godoc and every method there also has a C version.
 
 ### Handler
+
+#### C
 
 The notification handlers should not be dependent on any state to exist since they can be called at any time.
 
@@ -125,6 +139,10 @@ static void unregistered(char *instance)
 
 The functions above are passed into the initialization. In C, the function arguments are freed after the function returns so the data should be copied out if required. Each call gets an instance name which is the same as the one registered with.
 
+#### Go
+
+In Go, a struct is passed during initialization which must contain the following methods.
+
 ```go
 type NotificationHandler struct{}
 
@@ -141,8 +159,6 @@ func (n NotificationHandler) Unregistered(instance string) {
 	fmt.Println("endpoint unregistered")
 }
 ```
-
-In Go, a struct is passed during initialization which must contain the above methods.
 
 - NewMessage receives a string that can be deserialized into whatever format the server sends (json, etc).
 - NewEndpoint is called when a new endpoint needs to be saved or sent to the server.

@@ -11,6 +11,10 @@ A link to the documentation of this module can be found [here](/go/dbus_connecto
 
 ### C
 
+## Installation
+
+{{< tabs "installation" >}}
+{{< tab "C" >}} 
 The header files for the C library contains basic documentation, since it is only a wrapper around the Go lib the godoc will be very relevant.
 
 It can be built from source using just the Go command (check Makefile). The releases contain statically linkable .a files and dynamically loadable .so files.
@@ -18,10 +22,9 @@ It can be built from source using just the Go command (check Makefile). The rele
 ```c
 #include "libunifiedpush.h"
 ```
+{{< /tab >}}
+{{< tab "Go" >}} 
 
-### Go
-
-[Go Documentation](//pkg.go.dev/unifiedpush.org/go/dbus_connector)
 
 An example import statement for the Go library is
 
@@ -35,6 +38,9 @@ import (
 ```bash
 go get -u unifiedpush.org/go/dbus_connector
 ```
+{{< /tab >}}
+{{< /tabs >}}
+
 
 ### Usage
 
@@ -52,62 +58,74 @@ if (program is in background) //UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION is given
 	Call background handlers
 	once the handlers return, exit
 else
-	return and the program continues like normal in the foreground
+	return and the continue the program like normal in the foreground
 ```
 
-**Go**
-
+{{< tabs "initialization" >}}
+	{{< tab "C" >}} 
+```c
+bool ok = UPInitializeAndCheck("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
+// or
+bool ok = UPInitialize("org.yourapp.domain", *newMessage, *newEndpoint, *unregistered);
+if (containsString("UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION", argv)) { //containsString needs to be a function
+	sleep(5);
+	// this gives time for the functions to be called
+	exit(0);	
+}
+```
+	{{< /tab >}}
+	{{< tab "Go" >}} 
 ```go
-	up.InitializeAndCheck("cc.malhotra.karmanyaah.testapp.golibrary", handlerStruct)
-	// or
-	up.Initialize("cc.malhotra.karmanyaah.testapp.golibrary", handlerStruct)
+up.InitializeAndCheck("xyz.yourdomain.yourapp", handlerStruct)
+// or
+up.Initialize("net.yourorganization.yourproduct.yourappname", handlerStruct)
+if containsString(os.Args, "UNIFIEDPUSH_DBUS_BACKGROUND_ACTIVATION") {// containsString needs to be defined
+	time.Sleep(5 * time.Second) // this gives the callback functions some time to run
+	os.Exit(0)
+}
 ```
+	{{< /tab >}}
+{{< /tabs >}}
 
 **C**
 
 ```c
-	bool ok = UPInitializeAndCheck("cc.malhotra.karmanyaah.testapp.cgo", *newMessage, *newEndpoint, *unregistered);
-	// or
-	bool ok = UPInitialize("cc.malhotra.karmanyaah.testapp.cgo", *newMessage, *newEndpoint, *unregistered);
-```
 
-#### Distributor Selection
-
-If a distributor isn't already picked, the program should pick a distributor. If there are 0 distributors the program should stop using UnifiedPush; if there's 1, that should be auto-selected; and if there are more distributors, the user should be prompted to pick one.
-
-**Go**
-
-```go
-	if len(up.GetDistributor()) == 0 {
-		pickDist()
-	}
-```
-
-**C**
-
+{{< tabs "dist_selection" >}}
+	{{< tab "C" >}} 
 ```c
-
-	if (strnlen(UPGetDistributor(), 1) == 0)
-		pickDistributors();
+if (strnlen(UPGetDistributor(), 1) == 0)
+	pickDistributors();
 ```
+	{{< /tab >}}
+	{{< tab "Go" >}} 
+```go
+if len(up.GetDistributor()) == 0 {
+	pickDist()
+}
+```
+	{{< /tab >}}
+{{< /tabs >}}
 
 #### (Re)Registration
 
 Every program should register each instance of notifications on startup, so that any updated endpoints can be sent.
 
-**Go**
 
-```go
-	result, reason, err := up.Register("")
-```
-
-**C**
-
+{{< tabs "registration" >}}
+	{{< tab "C" >}} 
 ```c
-	struct UPRegister_return ret = UPRegister("");
-	char *reason = ret.r1;
-	int status = ret.r0;
+struct UPRegister_return ret = UPRegister("");
+char *reason = ret.r1;
+int status = ret.r0;
 ```
+	{{< /tab >}}
+	{{< tab "Go" >}} 
+```go
+result, reason, err := up.Register("")
+```
+	{{< /tab >}}
+{{< /tabs >}}
 
 The reason is usually a user-readable error message.
 
@@ -120,29 +138,27 @@ After this, your app can receive push notifications!
 
 The notification handlers should not be dependent on any state to exist since they can be called at any time.
 
+{{< tabs "handler" >}}
+	{{< tab "C" >}} 
+The functions below are passed into the initialization. The function arguments are freed after the function returns so the data should be copied out if required. Each call gets an instance name which is the same as the one registered with.
+
 ```c
-static void newMessage(char *instance, char *msg, char *id)
-{
+static void newMessage(char *instance, char *msg, char *id){
 	printf("new message: %s\n", msg);
 }
 
-static void newEndpoint(char *instance, char *endpoint)
-{
+static void newEndpoint(char *instance, char *endpoint){
 	printf("new endpoint received: %s\n", endpoint);
 }
 
-static void unregistered(char *instance)
-{
+static void unregistered(char *instance){
 	printf("instance unregistered\n");
 }
 ```
+	{{< /tab >}}
+	{{< tab "Go" >}} 
 
-The functions above are passed into the initialization. In C, the function arguments are freed after the function returns so the data should be copied out if required. Each call gets an instance name which is the same as the one registered with.
-
-#### Go
-
-In Go, a struct is passed during initialization which must contain the following methods.
-
+A struct is passed during initialization which must contain the following methods.
 ```go
 type NotificationHandler struct{}
 
@@ -159,6 +175,8 @@ func (n NotificationHandler) Unregistered(instance string) {
 	fmt.Println("endpoint unregistered")
 }
 ```
+	{{< /tab >}}
+{{< /tabs >}}
 
 - NewMessage receives a string that can be deserialized into whatever format the server sends (json, etc).
 - NewEndpoint is called when a new endpoint needs to be saved or sent to the server.

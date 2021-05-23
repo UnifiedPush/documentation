@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="go-import" content="{{.Params.root}}{{substr .RelPermalink 0 -1}} git {{.Params.vanity}}">
+  <meta name="go-source" content="{{.Params.root}}{{substr .RelPermalink 0 -1}} https://{{.Params.vanity}} https://{{.Params.vanity}}/tree/main{/dir} https://{{.Params.vanity}}/blob/main{/dir}/{file}#L{line}">
+</head>
+<body>
+	<ol>
+		<li>Find more info at <a href="//{{.Params.vanity}}">{{.Params.vanity}}</a></li>
+		<li>Find docs at <a href="//pkg.go.dev/{{.Params.vanity}}">pkg.go.dev</a></li>
+	</ol>
+</body>
+</html>

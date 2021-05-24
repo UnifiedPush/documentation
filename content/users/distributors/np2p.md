@@ -29,8 +29,8 @@ If you are self-hosting a proxy, you can use one of the following.
 ### Nginx
 
 ```nginx
-location ~ ^/proxy/(?<address>[^:]+):(?<port>[^/]+)/(.*)$ {
-    proxy_pass                 http://$address:51515/$3;
+location /proxy/allowed.address:51515/ {
+    proxy_pass                 http://allowed.address:51515/;
     client_max_body_size        50M;
     # Force https
     if ($scheme = http) {

@@ -5,7 +5,7 @@ title: Gotify
 Gotify is "a simple server for sending and receiving messages".
 
 * License: MIT
-* Sources: <https://github.com/UnifiedPush/gotify-android/tree/unifiedpush>
+* Sources: <https://github.com/UnifiedPush/gotify-android/>
 * Server: <https://github.com/gotify/server>
 * Download for Android:
   * [F-Droid](https://f-droid.org/de/packages/com.github.gotify/) ⚠️  **You need to add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️

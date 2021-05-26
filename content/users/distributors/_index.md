@@ -10,7 +10,7 @@ title: Distributors
 
 Gotify works with a server.
 
-At this moment there is no public server (open to registration) but you can ask on the matrix chat (or IRC) if someone wants to accept you on her/his server or self-host it.
+Right now Gotify is UnifiedPush's primary distributor. There is a public server and more information available on the [Gotify page](./gotify.md)
 
 ### NoProvider2Push
 

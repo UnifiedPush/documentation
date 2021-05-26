@@ -10,7 +10,7 @@ title: Distributors
 
 Gotify works with a server.
 
-Right now Gotify is UnifiedPush's primary distributor. There is a public server and more information available on the [Gotify page](./gotify.md)
+Right now Gotify is UnifiedPush's primary distributor. There are public servers and more information available on the [Gotify page](./gotify.md)
 
 ### NoProvider2Push
 

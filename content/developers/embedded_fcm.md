@@ -40,7 +40,7 @@ class EmbeddedDistrib: EmbeddedDistributorReceiver(handlerFCM) {}
 
 ### FCM Rewrite Proxy
 
-As a developer, if you're using the FCM added version of the libraries, you will need a rewrite proxy for FCM-fallback for users who don't have a UnifiedPush Distributor. It is close to the usually needed gateway to FCM or [trusted server](https://firebase.google.com/docs/cloud-messaging/server)
+As a developer, if you're using the FCM embedded distributor, you will need a rewrite proxy for FCM-fallback for users who don't have a UnifiedPush Distributor. It is close to the usually needed gateway to FCM or [trusted server](https://firebase.google.com/docs/cloud-messaging/server)
 
 The rewrite proxy can be done in many ways, here are some.
 

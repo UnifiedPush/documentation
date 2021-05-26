@@ -19,4 +19,3 @@ This Distributor doesn't need to do anything but use Google's services.
 ## Setting Up
 
 Nothing special.
-

@@ -14,6 +14,7 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 * Add `id 'com.google.gms.google-services'` and `implementation 'com.github.UnifiedPush:android-embedded_fcm_distributor:{VERSION}'` to your app level build.gradle.
 * Add the google-services.json file from firebase to your app directory.
 * Add the receiver to your code:
+
 ```kotlin
 
 val handlerFCM = object: GetEndpointHandler {
@@ -25,7 +26,9 @@ val handlerFCM = object: GetEndpointHandler {
 
 class EmbeddedDistrib: EmbeddedDistributorReceiver(handlerFCM) {}
 ```
+
 * Declare it on your Manifest:
+
 ```xml
         <receiver android:enabled="true"  android:name=".EmbeddedDistrib" android:exported="false">
             <intent-filter>
@@ -37,7 +40,7 @@ class EmbeddedDistrib: EmbeddedDistributorReceiver(handlerFCM) {}
 
 ### FCM Rewrite Proxy
 
-As a developer, if you're using the FCM added version of the libraries, you will need a rewrite proxy for FCM-fallback for users who don't have a UnifiedPush Distributor. It is close to the ususally needed gateway to FCM or [trusted server](https://firebase.google.com/docs/cloud-messaging/server)
+As a developer, if you're using the FCM added version of the libraries, you will need a rewrite proxy for FCM-fallback for users who don't have a UnifiedPush Distributor. It is close to the usually needed gateway to FCM or [trusted server](https://firebase.google.com/docs/cloud-messaging/server)
 
 The rewrite proxy can be done in many ways, here are some.
 
@@ -81,4 +84,3 @@ location  /FCM {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```
-

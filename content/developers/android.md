@@ -6,18 +6,19 @@ An [example application](https://github.com/UnifiedPush/android-example) is avai
 
 ## Index
 
-* [Install Library](#install-library)
-* [Register For Push](#register-for-push)
-* [Receiving Push Messages](#receiving-push-messages)
-* [Sending Push Messages](#sending-push-messages) (from the application server)
-* [Using the FCM-added version](#using-the-fcm-added-version)
-
+- [Index](#index)
+- [Install Library](#install-library)
+- [Register for Push](#register-for-push)
+- [Receiving Push Messages](#receiving-push-messages)
+- [Sending Push Messages](#sending-push-messages)
+- [Application With Embedded Distributor](#application-with-embedded-distributor)
 
 ## Install Library
 
-Add the following two code snippeds to your corresponding build files to include the library in your project.
+Add the following two code snippets to your corresponding build files to include the library in your project.
 
 Add the jitpack repo to the **project level** build.gradle:
+
 ```gradle
 allprojects {
     repositories {
@@ -28,6 +29,7 @@ allprojects {
 ```
 
 Add the dependency to the **app** build.gradle. Replace {VERSION} with the release you wish to use
+
 ```gradle
 dependencies {
     // ...
@@ -40,12 +42,14 @@ dependencies {
 To register for receiving push services you have two options:
 
 1. Have the library handle distributor selection
+
 ```kotlin
 // Call the library function
 registerAppWithDialog(context)
 ```
 
 2. Handle selection yourself
+
 ```kotlin
 // Get a list of distributors that are available
 val distributors = getDistributors(context)
@@ -56,6 +60,7 @@ registerApp(context)
 ```
 
 **unregister**
+
 ```kotlin
 // inform the library that you would like to unregister from receiving push messages
 unregisterApp(context)
@@ -63,15 +68,17 @@ unregisterApp(context)
 
 **Multi-connection app**
 You may need multiple connections for your app, you will need to use, as above, the following functions:
-* `registerAppWithDialog(context, instance)`
-* `registerApp(context, instance)`
-* `unregisterApp(context, instance)`
+
+- `registerAppWithDialog(context, instance)`
+- `registerApp(context, instance)`
+- `unregisterApp(context, instance)`
 
 ## Receiving Push Messages
 
 To receive Push Messages you should extend the class _MessagingReceiver_ and implement the 5 following methods:
 
 Kotlin
+
 ```kotlin
 val handler = object: MessagingReceiverHandler{
     override fun onMessage(context: Context?, message: String, instance: String) {
@@ -99,6 +106,7 @@ class CustomReceiver: MessagingReceiver(handler)
 ```
 
 Java
+
 ```java
 class handler implements MessagingReceiverHandler {
     @Override
@@ -149,9 +157,11 @@ You will also need to declare the receiver in your manifest:
 ```
 
 ## Sending Push Messages
+
 (From the application server)
 
 To send a message to an application you need the "endpoint". You get it in the onNewEndpoint method once it is available. You can then use it to send a message using for example curl. The POST body is the message received by the function onMessage.
+
 ```bash
 curl -X POST "$endpoint" --data "Any message body that is desired."
 ```
@@ -159,4 +169,3 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 ## Application With Embedded Distributor
 
 Please refer to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
-

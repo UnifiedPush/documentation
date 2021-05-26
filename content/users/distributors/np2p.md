@@ -44,4 +44,3 @@ location /proxy/allowed.address:51515/ {
 With this proxy, messages that can't reach your phone will be saved in a database until the phone is reachable again.
 
 For more information, follow this link : <https://github.com/NoProvider2Push/enqueued-proxy>
-

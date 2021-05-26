@@ -15,4 +15,3 @@ If you want to receive notifications from an app using UnifiedPush, you need a *
 ### Special Case : the embedded FCM distributor
 
 Some applications using UnifiedPush installed from the Play Store automatically use Google's Firebase Cloud Messaging if no UnifiedPush Distributor is detected.
-

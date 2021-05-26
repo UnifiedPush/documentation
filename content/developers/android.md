@@ -6,12 +6,7 @@ An [example application](https://github.com/UnifiedPush/android-example) is avai
 
 ## Index
 
-- [Index](#index)
-- [Install Library](#install-library)
-- [Register for Push](#register-for-push)
-- [Receiving Push Messages](#receiving-push-messages)
-- [Sending Push Messages](#sending-push-messages)
-- [Application With Embedded Distributor](#application-with-embedded-distributor)
+{{<toc>}}
 
 ## Install Library
 

@@ -4,7 +4,7 @@ title = "Go and C"
 
 These two libraries are grouped together since they're based on the same code.
 
-- [Repository](github.com/UnifiedPush/go_dbus_connector)
+- [Repository](//github.com/UnifiedPush/go_dbus_connector)
 - [Go Documentation](//pkg.go.dev/unifiedpush.org/go/dbus_connector)
 
 An example app can be found in the [\_examples folder](//github.com/UnifiedPush/go_dbus_connector/tree/main/_examples) of this module's repository.

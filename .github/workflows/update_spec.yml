@@ -1,0 +1,15 @@
+name: Update Spec
+on: workflow_dispatch
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Submodule update
+        run: make update-spec-version
+      - name: Commit report
+        run: |
+          git config --global user.name 'UP Github Action'
+          git config --global user.email 'noreply@unifiedpush.org'
+          /bin/sh -c 'git commit -am "Spec Update $(date)"'
+          git push

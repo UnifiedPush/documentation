@@ -1,5 +1,5 @@
 ---
-title: Gotify
+title: Gotify-UP
 ---
 
 Gotify is "a simple server for sending and receiving messages".
@@ -8,7 +8,7 @@ Gotify is "a simple server for sending and receiving messages".
 * Sources: <https://github.com/UnifiedPush/gotify-android/>
 * Server: <https://github.com/gotify/server>
 * Download for Android:
-  * [F-Droid](https://f-droid.org/de/packages/com.github.gotify/) ⚠️  **You need to add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️
+  * [F-Droid](https://f-droid.org/de/packages/com.github.gotify.up/)
 
 ## Requirements
 

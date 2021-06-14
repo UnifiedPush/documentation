@@ -5,7 +5,7 @@ UnifiedPush is specifications and tools that let the user choose how push notifi
 
 ## Getting Started
 
-### I'm a user who wants push notifications for apps using UP, what should I do?
+### I'm a user who wants push notifications for apps using UnifiedPush, what should I do?
 
 The application that gives notifications is called a Distributor. If you don't care about using Google's FCM, look at the download links of [fcm-distributor](/users/distributors/fcm).
 
@@ -29,7 +29,7 @@ You should use the UnifiedPush [connector library](/developers/) for your framew
 
 The [distributors page](/users/distributors/) has a recap of all the options.
 
-### Will UP ever work on iOS?
+### Will UnifiedPush ever work on iOS?
 
 iOS doesn't support running services in the background, so running a UnifiedPush distributor won't be possible without jailbreaking or Apple's approval for the foreseeable future. If someone has a solution, share that in the chat.
 

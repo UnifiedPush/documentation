@@ -149,7 +149,7 @@ result, reason, err := up.Register("")
 The reason is usually a user-readable error message.
 
 After this, your app can receive push notifications!
-    Some other functions are provided to unregister and/or change the UP config which are available in the Godoc and every method there also has a C version.
+    Some other functions are provided to unregister and/or change the UnifiedPush config which are available in the Godoc and every method there also has a C version.
 
 ## Handler
 

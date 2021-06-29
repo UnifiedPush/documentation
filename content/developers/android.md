@@ -35,38 +35,46 @@ dependencies {
 ## Register for Push
 
 To register for receiving push services you have two options:
-
 1. Have the library handle distributor selection
 
 ```kotlin
+val up = Registration()
 // Call the library function
-registerAppWithDialog(context)
+up.registerAppWithDialog(context)
 ```
 
 2. Handle selection yourself
 
 ```kotlin
+val up = Registration()
+// Check if a distributor is already registered
+if (up.getDistributor(context).isNotEmpty()) {
+    // Re-register in case something broke
+    up.registerApp(context)
+    return
+}
 // Get a list of distributors that are available
-val distributors = getDistributors(context)
+val distributors = up.getDistributors(context)
 // select one or show a dialog or whatever
+val userDistrib = yourFunc(distributors)
 // the below line will crash the app if no distributors are available
-saveDistributor(context, distributors[0])
-registerApp(context)
+up.saveDistributor(context, userDistrib)
+up.registerApp(context)
 ```
 
 **unregister**
 
 ```kotlin
 // inform the library that you would like to unregister from receiving push messages
-unregisterApp(context)
+up.unregisterApp(context)
 ```
 
 **Multi-connection app**
 You may need multiple connections for your app, you will need to use, as above, the following functions:
 
-- `registerAppWithDialog(context, instance)`
-- `registerApp(context, instance)`
-- `unregisterApp(context, instance)`
+- `up.registerAppWithDialog(context, instance)`
+- `up.registerApp(context, instance)`
+- `up.unregisterApp(context, instance)`
 
 ## Receiving Push Messages
 

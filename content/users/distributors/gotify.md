@@ -24,34 +24,6 @@ Gotify is "a simple server for sending and receiving messages".
 
 If you are self-hosting the server, you will need to add a rewrite-proxy to the default configuration.
 
-### Docker Compose quick setup
-
-1. Download this [docker-compose.yml](./docker-compose.yml) in a new directory.
-
-1. Save one of the following files to .env in the same directory, depending on your needs.
-
-	If HTTPS is needed and the ports 443 and 80 have nothing else running on them.
-	```env
-	DOMAIN=mydomain.example.com
-	
-	LISTEN_DOMAIN="http://${DOMAIN} https://${DOMAIN}"
-	HTTP=80
-	HTTPS=443
-	```
-	
-	If you have another reverse proxy doing TLS and have that running on ports 80 and 443.
-	```env
-	HTTP=127.0.0.1:4567
-	
-	DOMAIN=*
-	LISTEN_DOMAIN="http://${DOMAIN} https://${DOMAIN}"
-	HTTPS=127.0.0.1:0 # essentially disables it
-	```
-	
-	These two are just basic configurations, things can be modified for more custom needs.
-
-3. Run `docker-compose up -d` in that directory.
-
 ### Nginx
 
 It can be achieved with the following nginx rule (which uses lua):
@@ -78,9 +50,40 @@ location /UP {
 }
 ```
 
-### Go
+### Common-Proxies
 
-It can be achieved with [Golang Rewrite Proxy](https://github.com/UnifiedPush/common-proxies), a program that can be installed to run as a rewrite proxy for Gotify.
+It can be achieved with [UnifiedPush Common Proxies](https://github.com/UnifiedPush/common-proxies), a program that can be installed to run as a rewrite proxy for Gotify.
+
+
+### Docker Compose quick setup
+
+1. Download this [docker-compose.yml](./docker-compose.yml) in a new directory.
+
+1. Save one of the following files to .env in the same directory, depending on your needs.
+
+	If HTTPS is needed and the ports 443 and 80 have nothing else running on them.
+	```env
+	DOMAIN=mydomain.example.com
+	
+	LISTEN_DOMAIN="http://${DOMAIN} https://${DOMAIN}"
+	HTTP=80
+	HTTPS=443
+	```
+	
+	If you have another reverse proxy doing TLS and have that running on ports 80 and 443.
+	```env
+	HTTP=127.0.0.1:4567
+	
+	DOMAIN=*
+	LISTEN_DOMAIN="http://${DOMAIN} https://${DOMAIN}"
+	HTTPS=127.0.0.1:0 # essentially disables it
+	```
+	
+	These two are just basic configurations, things can be modified for more custom needs.
+
+1. Run `docker-compose up -d` in that directory.
+
+### With an existing Gotify Installation
 
 Traffic from /UP on any reverse proxy running Gotify can be proxied to it. The following is an example for Nginx.
 

@@ -55,7 +55,7 @@ location /UP {
 It can be achieved with [UnifiedPush Common Proxies](https://github.com/UnifiedPush/common-proxies), a program that can be installed to run as a rewrite proxy for Gotify.
 
 
-### Docker Compose quick setup
+#### Docker Compose quick setup
 
 1. Download this [docker-compose.yml](./docker-compose.yml) in a new directory.
 
@@ -83,7 +83,7 @@ It can be achieved with [UnifiedPush Common Proxies](https://github.com/UnifiedP
 
 1. Run `docker-compose up -d` in that directory.
 
-### With an existing Gotify Installation
+#### With an existing Gotify Installation
 
 Traffic from /UP on any reverse proxy running Gotify can be proxied to it. The following is an example for Nginx.
 

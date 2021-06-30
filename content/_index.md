@@ -36,3 +36,8 @@ iOS doesn't support running services in the background, so running a UnifiedPush
 ### Can we use transport X to deliver notifications to the device?
 
 Yes! UnifiedPush doesn't define a transport between the *provider* and the *distributor*. Just implement the UnifiedPush distributor API, and your service will be compatible with any existing app that uses UnifiedPush!
+
+### What is the difference between UnifiedPush and OpenPush?
+
+UnifiedPush was born in the OpenPush chat. There are some similar core ideas as well; but operationally, the projects are not related. The goals of the projects are the same, except UnifiedPush allows for various different distributors rather than one.
+

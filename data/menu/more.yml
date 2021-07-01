@@ -7,8 +7,8 @@ more:
   - name: Matrix Chat
     ref: "https://matrix.to/#/#unifiedpush:matrix.org"
     external: true
-  - name: "Freenode #unifiedpush"
-    ref: "https://webchat.freenode.net/#unifiedpush"
+  - name: "IRC Libera Chat #unifiedpush"
+    ref: "https://web.libera.chat/#unifiedpush"
     external: true
   - name: F-Droid App repository
     ref: "https://repo.unifiedpush.org/"

@@ -2,7 +2,7 @@
 title: Embedded FCM Distributor
 ---
 
-You may want to embedded a FCM distributor to make notifications invisible for many users. Embedding a FCM Distributor is a solution : if the user doesn't have another distributor installed, this one will be used.
+You may want to make it so that UnifiedPush is invisible for users who aren't specifically trying to avoid FCM. Embedding an FCM Distributor is a solution: if the user doesn't have another distributor installed, this one will be used.
 
 ## Installation
 

@@ -15,7 +15,7 @@ Currently, the simplest way is to connect to a [Gotify](/users/distributors/goti
 
 ### Which apps does UnifiedPush work with?
 
-Apps need to support the UnifiedPush protocol before they can use self-hosted push notifications. See [the application list](users/apps). If an app isn't in there, feel free to ask in the UnifiedPush Matrix (bridged on Freenode IRC) or ask the application's dev team.
+Apps need to support the UnifiedPush protocol before they can use self-hosted push notifications. See [the application list](users/apps). If an app isn't in there, feel free to ask in the UnifiedPush Matrix (bridged on Libera Chat IRC) or ask the application's dev team.
 
 ### Basic description of how UnifiedPush works
 

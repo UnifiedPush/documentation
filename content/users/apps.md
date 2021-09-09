@@ -12,9 +12,9 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [FluffyChat](https://fluffychat.im/)                               | January 2021 | v0.26.1       |
 | [Fedilab](https://fedilab.app/)                                    | March 2021   | v2.38.0-rc-1  |
 | [Tox Push Message App](https://github.com/zoff99/tox_push_msg_app) | May 2021     | v1.0.3        |
+| [SchildiChat](https://github.com/SchildiChat/SchildiChat-android/) | Septmber 2021| v1.2.0.sc42   |
 
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
 - Element Android
-- SchildiChat Android
 - Nhekho on Linux

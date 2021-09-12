@@ -6,12 +6,7 @@ An [example application](https://github.com/UnifiedPush/android-example) is avai
 
 ## Index
 
-* [Install Library](#install-library)
-* [Register For Push](#register-for-push)
-* [Receiving Push Messages](#receiving-push-messages)
-* [Sending Push Messages](#sending-push-messages) (from the application server)
-* [Using the FCM-added version](#using-the-fcm-added-version)
-
+{{<toc>}}
 
 ## Install Library
 
@@ -37,28 +32,32 @@ dependencies {
 
 ## Register for Push
 
+{{< tabs "registration" >}}
+{{< tab "Kotlin" >}}
 To register for receiving push services you have two options:
 
 1. Have the library handle distributor selection
 ```kotlin
+val up = Registration()
 // Call the library function
-registerAppWithDialog(context)
+up.registerAppWithDialog(context)
 ```
 
 2. Handle selection yourself
 ```kotlin
+val up = Registration()
 // Get a list of distributors that are available
-val distributors = getDistributors(context)
+val distributors = up.getDistributors(context)
 // select one or show a dialog or whatever
-// the below line will crash the app if no distributors are available
-saveDistributor(context, distributors[0])
-registerApp(context)
+val distributor = yourFunctionToGetUserChoice(distributors)
+up.saveDistributor(context, distributor)
+up.registerApp(context)
 ```
 
 **unregister**
 ```kotlin
 // inform the library that you would like to unregister from receiving push messages
-unregisterApp(context)
+up.unregisterApp(context)
 ```
 
 **Multi-connection app**
@@ -67,11 +66,48 @@ You may need multiple connections for your app, you will need to use, as above, 
 * `registerApp(context, instance)`
 * `unregisterApp(context, instance)`
 
+{{< /tab >}}
+{{< tab "Java" >}}
+To register for receiving push services you have two options:
+
+1. Have the library handle distributor selection
+```java
+// Call the library function
+Registration up = new Registration();
+up.registerAppWithDialog(context)
+```
+
+2. Handle selection yourself
+```java
+Registration up = new Registration();
+// Get a list of distributors that are available
+List<String> distributors = up.getDistributors(context)
+// select one or show a dialog or whatever
+String distributor = yourFunctionToGetUserChoice(distributors)
+up.saveDistributor(context, distributor)
+up.registerApp(context)
+```
+
+**unregister**
+```java
+// inform the library that you would like to unregister from receiving push messages
+up.unregisterApp(context)
+```
+
+**Multi-connection app**
+You may need multiple connections for your app, you will need to use, as above, the following functions:
+* `registerAppWithDialog(context, instance)`
+* `registerApp(context, instance)`
+* `unregisterApp(context, instance)`
+{{< /tab >}}
+{{< /tabs >}}
+
 ## Receiving Push Messages
 
 To receive Push Messages you should extend the class _MessagingReceiver_ and implement the 5 following methods:
 
-Kotlin
+{{< tabs "Receiver" >}}
+{{< tab "Kotlin" >}}
 ```kotlin
 val handler = object: MessagingReceiverHandler{
     override fun onMessage(context: Context?, message: String, instance: String) {
@@ -97,8 +133,9 @@ val handler = object: MessagingReceiverHandler{
 
 class CustomReceiver: MessagingReceiver(handler)
 ```
+{{< /tab >}}
+{{< tab "Java" >}}
 
-Java
 ```java
 class handler implements MessagingReceiverHandler {
     @Override
@@ -133,6 +170,8 @@ class CustomReceiver extends MessagingReceiver {
     }
 }
 ```
+{{ /tab }}
+{{ /tabs }}
 
 You will also need to declare the receiver in your manifest:
 

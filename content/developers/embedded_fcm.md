@@ -11,7 +11,14 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 ### Android
 
 * Add `classpath 'com.google.gms:google-services:4.3.8'` to your project level build.gradle.
-* Add `id 'com.google.gms.google-services'` and `implementation 'com.github.UnifiedPush:android-embedded_fcm_distributor:{VERSION}'` to your app level build.gradle.
+* Add `id 'com.google.gms.google-services'` and the following implementation to your app level build.gradle.
+```
+    implementation('com.github.UnifiedPush:android-embedded_fcm_distributor:1.1.0') {
+        exclude group: 'com.google.firebase', module: 'firebase-core'
+        exclude group: 'com.google.firebase', module: 'firebase-analytics'
+        exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
+    }
+```
 * Add the google-services.json file from firebase to your app directory.
 * Add the receiver to your code:
 

@@ -34,6 +34,8 @@ dependencies {
 
 ## Register for Push
 
+{{< tabs "registration" >}}
+{{< tab "Kotlin" >}}
 To register for receiving push services you have two options:
 1. Have the library handle distributor selection
 
@@ -71,16 +73,59 @@ up.unregisterApp(context)
 
 **Multi-connection app**
 You may need multiple connections for your app, you will need to use, as above, the following functions:
-
 - `up.registerAppWithDialog(context, instance)`
 - `up.registerApp(context, instance)`
 - `up.unregisterApp(context, instance)`
+
+{{< /tab >}}
+{{< tab "Java" >}}
+To register for receiving push services you have two options:
+
+1. Have the library handle distributor selection
+```java
+// Call the library function
+Registration up = new Registration();
+up.registerAppWithDialog(context);
+```
+
+2. Handle selection yourself
+```java
+Registration up = new Registration();
+// Check if a distributor is already registered
+if (!up.getDistributor(context).isEmpty()) {
+    // Re-register in case something broke
+    up.registerApp(context);
+    return;
+}
+// Get a list of distributors that are available
+List<String> distributors = up.getDistributors(context);
+// select one or show a dialog or whatever
+String userDistrib = yourFunc(distributors);
+// the below line will crash the app if no distributors are available
+up.saveDistributor(context, userDistrib);
+up.registerApp(context);
+```
+
+**unregister**
+```java
+// inform the library that you would like to unregister from receiving push messages
+up.unregisterApp(context);
+```
+
+**Multi-connection app**
+You may need multiple connections for your app, you will need to use, as above, the following functions:
+- `up.registerAppWithDialog(context, instance);`
+- `up.registerApp(context, instance);`
+- `up.unregisterApp(context, instance);`
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Receiving Push Messages
 
 To receive Push Messages you should extend the class _MessagingReceiver_ and implement the 5 following methods:
 
-Kotlin
+{{< tabs "Receiver" >}}
+{{< tab "Kotlin" >}}
 
 ```kotlin
 val handler = object: MessagingReceiverHandler{
@@ -107,9 +152,8 @@ val handler = object: MessagingReceiverHandler{
 
 class CustomReceiver: MessagingReceiver(handler)
 ```
-
-Java
-
+{{< /tab >}}
+{{< tab "Java" >}}
 ```java
 class handler implements MessagingReceiverHandler {
     @Override
@@ -144,6 +188,8 @@ class CustomReceiver extends MessagingReceiver {
     }
 }
 ```
+{{ /tab }}
+{{ /tabs }}
 
 You will also need to declare the receiver in your manifest:
 

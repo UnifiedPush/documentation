@@ -4,7 +4,6 @@ root = "unifiedpush.org"
 
 # aliases for user convinience, not mandatory for things to work
 aliases = [
-    "dbus/distributor",
     "dbus/config",
     "dbus/storage",
     "dbus/utils",

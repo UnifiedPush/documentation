@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /go/
+
+Sitemap: {{.Site.BaseURL}}sitemap.xml

@@ -10,9 +10,10 @@ An [example application](https://github.com/UnifiedPush/android-example) is avai
 
 ## Install Library
 
-Add the following two code snippeds to your corresponding build files to include the library in your project.
+Add the following two code snippets to your corresponding build files to include the library in your project.
 
 Add the jitpack repo to the **project level** build.gradle:
+
 ```gradle
 allprojects {
     repositories {
@@ -23,6 +24,7 @@ allprojects {
 ```
 
 Add the dependency to the **app** build.gradle. Replace {VERSION} with the release you wish to use
+
 ```gradle
 dependencies {
     // ...
@@ -35,8 +37,8 @@ dependencies {
 {{< tabs "registration" >}}
 {{< tab "Kotlin" >}}
 To register for receiving push services you have two options:
-
 1. Have the library handle distributor selection
+
 ```kotlin
 val up = Registration()
 // Call the library function
@@ -44,17 +46,26 @@ up.registerAppWithDialog(context)
 ```
 
 2. Handle selection yourself
+
 ```kotlin
 val up = Registration()
+// Check if a distributor is already registered
+if (up.getDistributor(context).isNotEmpty()) {
+    // Re-register in case something broke
+    up.registerApp(context)
+    return
+}
 // Get a list of distributors that are available
 val distributors = up.getDistributors(context)
 // select one or show a dialog or whatever
-val distributor = yourFunctionToGetUserChoice(distributors)
-up.saveDistributor(context, distributor)
+val userDistrib = yourFunc(distributors)
+// the below line will crash the app if no distributors are available
+up.saveDistributor(context, userDistrib)
 up.registerApp(context)
 ```
 
 **unregister**
+
 ```kotlin
 // inform the library that you would like to unregister from receiving push messages
 up.unregisterApp(context)
@@ -62,9 +73,9 @@ up.unregisterApp(context)
 
 **Multi-connection app**
 You may need multiple connections for your app, you will need to use, as above, the following functions:
-* `registerAppWithDialog(context, instance)`
-* `registerApp(context, instance)`
-* `unregisterApp(context, instance)`
+- `up.registerAppWithDialog(context, instance)`
+- `up.registerApp(context, instance)`
+- `up.unregisterApp(context, instance)`
 
 {{< /tab >}}
 {{< tab "Java" >}}
@@ -74,31 +85,38 @@ To register for receiving push services you have two options:
 ```java
 // Call the library function
 Registration up = new Registration();
-up.registerAppWithDialog(context)
+up.registerAppWithDialog(context);
 ```
 
 2. Handle selection yourself
 ```java
 Registration up = new Registration();
+// Check if a distributor is already registered
+if (!up.getDistributor(context).isEmpty()) {
+    // Re-register in case something broke
+    up.registerApp(context);
+    return;
+}
 // Get a list of distributors that are available
-List<String> distributors = up.getDistributors(context)
+List<String> distributors = up.getDistributors(context);
 // select one or show a dialog or whatever
-String distributor = yourFunctionToGetUserChoice(distributors)
-up.saveDistributor(context, distributor)
-up.registerApp(context)
+String userDistrib = yourFunc(distributors);
+// the below line will crash the app if no distributors are available
+up.saveDistributor(context, userDistrib);
+up.registerApp(context);
 ```
 
 **unregister**
 ```java
 // inform the library that you would like to unregister from receiving push messages
-up.unregisterApp(context)
+up.unregisterApp(context);
 ```
 
 **Multi-connection app**
 You may need multiple connections for your app, you will need to use, as above, the following functions:
-* `registerAppWithDialog(context, instance)`
-* `registerApp(context, instance)`
-* `unregisterApp(context, instance)`
+- `up.registerAppWithDialog(context, instance);`
+- `up.registerApp(context, instance);`
+- `up.unregisterApp(context, instance);`
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -108,6 +126,7 @@ To receive Push Messages you should extend the class _MessagingReceiver_ and imp
 
 {{< tabs "Receiver" >}}
 {{< tab "Kotlin" >}}
+
 ```kotlin
 val handler = object: MessagingReceiverHandler{
     override fun onMessage(context: Context?, message: String, instance: String) {
@@ -135,7 +154,6 @@ class CustomReceiver: MessagingReceiver(handler)
 ```
 {{< /tab >}}
 {{< tab "Java" >}}
-
 ```java
 class handler implements MessagingReceiverHandler {
     @Override
@@ -188,9 +206,11 @@ You will also need to declare the receiver in your manifest:
 ```
 
 ## Sending Push Messages
+
 (From the application server)
 
 To send a message to an application you need the "endpoint". You get it in the onNewEndpoint method once it is available. You can then use it to send a message using for example curl. The POST body is the message received by the function onMessage.
+
 ```bash
 curl -X POST "$endpoint" --data "Any message body that is desired."
 ```
@@ -198,4 +218,3 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 ## Application With Embedded Distributor
 
 Please refer to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
-

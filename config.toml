@@ -9,6 +9,7 @@ pygmentsUseClasses = true
 pygmentsCodeFences = true
 disablePathToLower = true
 enableGitInfo = true
+enableRobotsTXT = true
 
 
 [markup]

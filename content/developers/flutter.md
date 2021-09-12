@@ -6,16 +6,12 @@ An [example application](https://github.com/UnifiedPush/flutter-connector/tree/m
 
 ## Index
 
-* [Install Library](#install-library)
-* [Register For Push](#register-for-push)
-* [Receiving Push Messages](#receiving-push-messages)
-* [Sending Push Messages](#sending-push-messages) (from the application server)
-* [Using the FCM-added version](#using-the-fcm-added-version)
-
+{{<toc>}}
 
 ## Install Library
 
 Add the following code to your pubspec.yaml.
+
 ```yaml
   unifiedpush: ^1.0.1
 ```
@@ -25,12 +21,14 @@ Add the following code to your pubspec.yaml.
 To register for receiving push services you have two options, after initializing:
 
 1. Have the library handle distributor selection
+
 ```dart
 // Call the library function
 UnifiedPush.registerAppWithDialog()
 ```
 
 2. Handle selection yourself
+
 ```dart
 // Get a list of distributors that are available
 final distributors = await UnifiedPush.getDistributors()
@@ -41,6 +39,7 @@ UnifiedPush.registerApp()
 ```
 
 **unregister**
+
 ```dart
 // inform the library that you would like to unregister from receiving push messages
 UnifiedPush.unregisterApp()
@@ -49,10 +48,11 @@ UnifiedPush.unregisterApp()
 ## Receiving Push Messages
 
 There are 2 ways to initialize UnifiedPush to receive Push Messages:
-* [prefered] Using a callback for messages when the app is killed.
+
+* [preferred] Using a callback for messages when the app is killed.
 * [if you need] Setting a receiver in the application.
 
-#### Receiving Push Messages using a callback
+### Receiving Push Messages using a callback
 
 In your application, just initialize UnifiedPush with `initializeWithCallback`:
 
@@ -154,6 +154,7 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
 ```
 
 ## Sending Push Messages
+
 (From the application server)
 
 To send a message to an application you need the "endpoint". You get it in the onNewEndpoint method once it is available. You can then use it to send a message using for example curl. The POST body is the message received by the function onMessage.
@@ -164,5 +165,4 @@ curl -X POST "$endpoint" --data "Any message body that is desired."
 
 ## Application With Embedded Distributor
 
-On the Android side, you will need to import and declare the embedded distributor. Please refere to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.
-
+On the Android side, you will need to import and declare the embedded distributor. Please refer to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.

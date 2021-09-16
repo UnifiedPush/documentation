@@ -9,9 +9,8 @@ This Distributor doesn't need to do anything but use Google's services.
 * Sources: <https://github.com/UnifiedPush/fcm-distributor>
 * Server: - (Google)
 * Download for Android:
-  * [Direct Download](https://github.com/UnifiedPush/fcm-distributor/releases)
-  * [F-Droid](https://f-droid.org/packages/org.unifiedpush.distributor.fcm/) ⚠️  **You need to add the** [unifiedpush repo](https://repo.unifiedpush.org) **first!** ⚠️
-
+  * [Playstore](https://play.google.com/store/apps/details?id=org.unifiedpush.distributor.fcm)
+  
 ## Requirements
 
 * Google Services (or microG) on your device.

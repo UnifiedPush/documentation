@@ -113,6 +113,7 @@ up.unregisterApp(context);
 ```
 
 **Multi-connection app**
+
 You may need multiple connections for your app, you will need to use, as above, the following functions:
 - `up.registerAppWithDialog(context, instance);`
 - `up.registerApp(context, instance);`

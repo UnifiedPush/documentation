@@ -75,40 +75,82 @@ If your application needs multiple connections, for instance if it is multi-acco
 
 {{< tabs "receiving" >}}
 {{< tab "Using a Callback" >}}
-{{< tabs "instances" >}}
-{{< tab "Single Instance" >}}
-In your application, just initialize UnifiedPush with `initializeWithCallback`:
+
+For a **single instance** initialization, use `initializeWithCallback`:
 
 ```dart
     UnifiedPush.initializeWithCallback(
-        onNewEndpoint, // takes (String endpoint) in arg
+        onNewEndpoint, // takes (String endpoint) in args
         onRegistrationFailed, // takes no arg
         onRegistrationRefused, // takes no arg
         onUnregistered, // takes no arg
-        onMessage, // takes (String message) in arg
-        bgNewEndpoint, // called when new endpoint in background, need to be static, takes (dynamic args) in arg
-        bgUnregistered, // called when unregistered in background, need to be static, takes (dynamic args) in arg
-        bgOnMessage // called when receiving a message in background, need to be static, takes (dynamic args) in arg
+        onMessage, // takes (String message) in args
+        bgNewEndpoint, // called when new endpoint in background, need to be static, takes (dynamic args) in args
+        bgUnregistered, // called when unregistered in background, need to be static, takes (dynamic args) in args
+        bgOnMessage // called when receiving a message in background, need to be static, takes (dynamic args) in args
     );
+    
+    void onNewEndpoint(String endpoint) {}
+
+    void onRegistrationRefused() {
+
+    void onRegistrationFailed() {}
+
+    void onUnregistered() {}
+
+    void onMessage(String message) {}
+
+    static bgOnMessage(dynamic args) {
+        final message = args["message"];
+    }
+
+    static bgNewEndpoint(dynamic args) {
+        final endpoint = args["endpoint"];
+    }
+
+    static bgUnregistered(dynamic args) {}
 ```
-{{< /tab >}}
-{{< tab "Instanciated" >}}
-In your application, just initialize UnifiedPush with `initializeWithCallbackInstantiated`:
+
+
+If you need **instanciated functions**, use `initializeWithCallbackInstantiated`:
 
 ```dart
     UnifiedPush.initializeWithCallbackInstantiated(
-        onNewEndpoint, // takes (String endpoint, String instance) in arg
-        onRegistrationFailed, // takes (String instance) in arg
-        onRegistrationRefused, // takes (String instance) in arg
-        onUnregistered, // takes (String instance) in arg
-        onMessage, // takes (String message, String instance) in arg
-        bgNewEndpoint, // called when new endpoint in background, need to be static, takes (dynamic args) in arg
-        bgUnregistered, // called when unregistered in background, need to be static, takes (dynamic args) in arg
-        bgOnMessage // called when receiving a message in background, need to be static, takes (dynamic args) in arg
+        onNewEndpoint, // takes (String endpoint, String instance) in args
+        onRegistrationFailed, // takes (String instance) in args
+        onRegistrationRefused, // takes (String instance) in args
+        onUnregistered, // takes (String instance) in args
+        onMessage, // takes (String message, String instance) in args
+        bgNewEndpoint, // called when new endpoint in background, need to be static, takes (dynamic args) in args
+        bgUnregistered, // called when unregistered in background, need to be static, takes (dynamic args) in args
+        bgOnMessage // called when receiving a message in background, need to be static, takes (dynamic args) in args
     );
+    
+    void onNewEndpoint(String endpoint, String instance) {}
+
+    void onRegistrationRefused(String instance) {
+
+    void onRegistrationFailed(String instance) {}
+
+    void onUnregistered(String instance) {}
+
+    void onMessage(String message, String instance) {}
+
+    static bgOnMessage(dynamic args) {
+        final message = args["message"];
+        final instance = args["instance"];
+    }
+
+    static bgNewEndpoint(dynamic args) {
+        final endpoint = args["endpoint"];
+        final instance = args["instance"];
+    }
+
+    static bgUnregistered(dynamic args) {
+        final instance = args["instance"];
+    }
 ```
-{{< /tab >}}
-{{< /tabs >}}
+
 {{< /tab >}}
 {{< tab "Using a Receiver" >}}
 
@@ -184,8 +226,8 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
 
 5. Flutter side, initialize UnifiedPush:
 
-{{< tabs "instances" >}}
-{{< tab "Single Instance" >}}
+5.a. For a **single instance** initialization, use `initializeWithReceiver`:
+
 ```dart
     UnifiedPush.initializeWithReceiver(
         onNewEndpoint, // takes (String endpoint) in args
@@ -195,8 +237,9 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
         onMessage, // takes (String message) in args
     );
 ```
-{{< /tab >}}
-{{< tab "Instanciated" >}}
+
+5.b. If you need **instanciated functions**, use `initializeWithReceiverInstantiated`:
+
 ```dart
     UnifiedPush.initializeWithReceiverInstantiated(
         onNewEndpoint, // takes (String endpoint, String instance) in args
@@ -206,8 +249,7 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
         onMessage, // takes (String message, String instance) in args
     );
 ```
-{{< /tab >}}
-{{< /tabs >}}
+
 {{< /tab >}}
 {{< /tabs >}}
 

@@ -189,8 +189,8 @@ class CustomReceiver extends MessagingReceiver {
     }
 }
 ```
-{{ /tab }}
-{{ /tabs }}
+{{< /tab >}}
+{{< /tabs >}}
 
 You will also need to declare the receiver in your manifest:
 

@@ -59,8 +59,9 @@ if (up.getDistributor(context).isNotEmpty()) {
 val distributors = up.getDistributors(context)
 // select one or show a dialog or whatever
 val userDistrib = yourFunc(distributors)
-// the below line will crash the app if no distributors are available
+// save the distributor
 up.saveDistributor(context, userDistrib)
+// register your app to the distributor
 up.registerApp(context)
 ```
 

@@ -10,9 +10,6 @@ more:
   - name: "IRC Libera Chat #unifiedpush"
     ref: "https://web.libera.chat/#unifiedpush"
     external: true
-  - name: F-Droid App repository
-    ref: "https://repo.unifiedpush.org/"
-    external: true
   - name: Liberapay
     ref: "https://liberapay.com/S1m/"
     external: true

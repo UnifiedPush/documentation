@@ -13,7 +13,7 @@ An [example application](https://github.com/UnifiedPush/flutter-connector/tree/m
 Add the following code to your pubspec.yaml.
 
 ```yaml
-  unifiedpush: ^2.0.0
+  unifiedpush: ^3.0.0
 ```
 
 ## Register for Push
@@ -181,7 +181,7 @@ class MainActivity : FlutterActivity() {
 }
 ```
 
-2. Add `implementation 'com.github.UnifiedPush:android-connector:{{VERSION}}'` to the android app build.gradle.
+2. Add `implementation 'com.github.UnifiedPush:android-connector:{{VERSION}}'` to the android app build.gradle (android/app/build.gradle).
 
 3. Declare the Receiver for UnifiedPush events (android side):
 
@@ -189,7 +189,7 @@ class MainActivity : FlutterActivity() {
 import org.unifiedpush.flutter.connector.UnifiedPushHandler
 import org.unifiedpush.android.connector.MessagingReceiver
 
-val receiverHandler = object : UnifiedPushService() {
+val receiverHandler = object : UnifiedPushHandler() {
     override fun getEngine(context: Context): FlutterEngine {
         return provideEngine(context)
     }

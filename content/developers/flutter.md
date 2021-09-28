@@ -230,11 +230,11 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
 
 ```dart
     UnifiedPush.initializeWithReceiver(
-        onNewEndpoint, // takes (String endpoint) in args
-        onRegistrationFailed, // takes no arg
-        onRegistrationRefused, // takes no arg
-        onUnregistered, // takes no arg
-        onMessage, // takes (String message) in args
+        onNewEndpoint: onNewEndpoint, // takes (String endpoint) in args
+        onRegistrationFailed: onRegistrationFailed, // takes no arg
+        onRegistrationRefused: onRegistrationRefused, // takes no arg
+        onUnregistered: onUnregistered, // takes no arg
+        onMessage: onMessage, // takes (String message) in args
     );
 ```
 
@@ -242,11 +242,11 @@ class UnifiedPushReceiver : MessagingReceiver(receiverHandler)
 
 ```dart
     UnifiedPush.initializeWithReceiverInstantiated(
-        onNewEndpoint, // takes (String endpoint, String instance) in args
-        onRegistrationFailed, // takes (String instance) in args
-        onRegistrationRefused, // takes (String instance) in args
-        onUnregistered, // takes (String instance) in args
-        onMessage, // takes (String message, String instance) in args
+        onNewEndpoint: onNewEndpoint, // takes (String endpoint, String instance) in args
+        onRegistrationFailed: onRegistrationFailed, // takes (String instance) in args
+        onRegistrationRefused: onRegistrationRefused, // takes (String instance) in args
+        onUnregistered: onUnregistered, // takes (String instance) in args
+        onMessage: onMessage, // takes (String message, String instance) in args
     );
 ```
 

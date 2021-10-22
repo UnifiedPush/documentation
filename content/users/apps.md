@@ -17,4 +17,4 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
 - Element Android
-- Nhekho on Linux
+- Nheko on Linux

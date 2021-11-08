@@ -38,6 +38,10 @@ location /UP {
         local body = json.encode(newreq)
         ngx.req.set_body_data(body)
     }
+    
+    if ($request_method = GET ) { 
+        return 200 '{"unifiedpush":{"version":1}}';
+    }
 
     proxy_set_header        Content-Type application/json;
     proxy_pass            http://127.0.0.1:8080/message;

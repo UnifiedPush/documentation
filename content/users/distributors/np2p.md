@@ -9,9 +9,8 @@ In its own words
 
 * License: Apache2
 * Sources: <https://github.com/NoProvider2Push/android>
-* Server: -
-* Download for Android:
-  * [F-Droid](https://f-droid.org/packages/org.unifiedpush.distributor.noprovider2push/)
+* Server: N/A
+* Download for Android: <span class="app-store-logos"> {{< figure alt="Get it on F-Droid" src="/img/f-droid-badge.png" link="https://f-droid.org/en/packages/org.unifiedpush.distributor.noprovider2push" >}}</span>
 
 ## Requirements
 

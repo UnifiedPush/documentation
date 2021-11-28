@@ -8,6 +8,7 @@ NextPush is a push provider that runs within a Nextcloud instance for easy setup
 * Sources: <https://github.com/UP-NextPush/android>
 * Server: <https://github.com/UP-NextPush/server-app>
 * Download for Android: <span class=app-store-logos>{{< figure alt="Get it on IzzyOnDroid" src="/img/IzzyOnDroid.png" link="https://apt.izzysoft.de/fdroid/index/apk/org.unifiedpush.distributor.nextpush" >}}</span>
+* Technology: HTTP Server Sent Events
 
 ## Requirements
 

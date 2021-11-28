@@ -11,6 +11,7 @@ In its own words
 * Sources: <https://github.com/NoProvider2Push/android>
 * Server: N/A
 * Download for Android: <span class="app-store-logos"> {{< figure alt="Get it on F-Droid" src="/img/f-droid-badge.png" link="https://f-droid.org/en/packages/org.unifiedpush.distributor.noprovider2push" >}}</span>
+* Technology: HTTP Listener
 
 ## Requirements
 

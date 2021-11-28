@@ -8,6 +8,7 @@ Gotify is "a simple server for sending and receiving messages".
 * Sources: <https://github.com/UnifiedPush/gotify-android/>
 * Server: <https://github.com/gotify/server>
 * Download for Android: <span class="app-store-logos"> {{< figure alt="Get it on F-Droid" src="/img/f-droid-badge.png" link="https://f-droid.org/en/packages/com.github.gotify.up" >}}</span>
+* Technology: WebSocket
 
 ## Requirements
 

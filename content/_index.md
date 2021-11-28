@@ -5,13 +5,9 @@ UnifiedPush is specifications and tools that let the user choose how push notifi
 
 ## Getting Started
 
-### I'm a user who wants push notifications for apps using UnifiedPush, what should I do?
+### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
 
-The application that gives notifications is called a Distributor. If you don't care about using Google's FCM, look at the download links of [fcm-distributor](/users/distributors/fcm).
-
-### But I don't want to rely on Google
-
-Currently, the simplest way is to connect to a [Gotify](/users/distributors/gotify) server and install the associated distributor.
+You should visit the [user introduction](./users/intro) page to learn what UnifiedPush is and get instructions to use it.
 
 ### Which apps does UnifiedPush work with?
 
@@ -24,10 +20,6 @@ Apps need to support the UnifiedPush protocol before they can use self-hosted pu
 ### I'm an app developer who wants my users to get push notifications without Google, what should I do?
 
 You should use the UnifiedPush [connector library](/developers/) for your framework. If it doesn't already exist for your framework/language, contributions are welcome.
-
-### What options do I have for distributors?
-
-The [distributors page](/users/distributors/) has a recap of all the options.
 
 ### Will UnifiedPush ever work on iOS?
 

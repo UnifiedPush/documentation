@@ -1,9 +1,13 @@
 ---
 title: UnifiedPush
 ---
-UnifiedPush is specifications and tools that let the user choose how push notifications are delivered. All in a free and open source way.
+UnifiedPush is a set of specifications and tools that lets the user choose how push notifications are delivered. All in a free and open source way.
 
 ## Getting Started
+
+### What are push notifications?
+
+Your mobile device often needs to receive updates from many messaging, and sometimes other apps that provide real-time updates. Without push notifications, each app would need to contact its own server to get updates. This wastes a lot of battery power. So, push notifications were created; they allow you to receive updates from multiple apps using one network connection by routing everything through a single server.
 
 ### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
 

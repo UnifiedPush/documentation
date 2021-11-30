@@ -20,7 +20,7 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 ### Easy - Use UnifiedPush hosted server
 
 1. Install [the Gotify-UP app](../distributors/gotify)   
-    Note: `Gotify-UP` is different from `Gotify` as the latter doesn't support UnifiedPush.
+  * Note: `Gotify-UP` is different from `Gotify` as the latter doesn't support UnifiedPush.
 2. Visit <https://gotify1.unifiedpush.org> and click on `Register`. Sign up with a username and secure password.
 3. Open the Gotify-UP app on your device, and login with those credentials.
 4. Now, you should be able to open any [apps supporting UnifiedPush](../apps), and should be able to receive push notifications!

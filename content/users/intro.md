@@ -28,7 +28,7 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 
 ### Difficult - Self Host the server
 
-The lets you have control of the server through which you receive push notifications. You have several distributor/provider options for self-hosting:
+Self hosting lets you have control of the server through which you receive push notifications. You have several distributor/provider options for self-hosting:
 
 #### [NextPush](../distributors/nextpush)
 

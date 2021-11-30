@@ -3,6 +3,7 @@ title: NextPush
 ---
 
 NextPush is a push provider that runs within a Nextcloud instance for easy setup.
+NextPush is in beta right now.
 
 * License: AGPL-3.0
 * Sources: <https://github.com/UP-NextPush/android>

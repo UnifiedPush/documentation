@@ -1,17 +1,17 @@
 ---
 title: UnifiedPush
 ---
-UnifiedPush is specifications and tools that let the user choose how push notifications are delivered. All in a free and open source way.
+UnifiedPush is a set of specifications and tools that lets the user choose how push notifications are delivered. All in a free and open source way.
 
 ## Getting Started
 
-### I'm a user who wants push notifications for apps using UnifiedPush, what should I do?
+### What are push notifications?
 
-The application that gives notifications is called a Distributor. If you don't care about using Google's FCM, look at the download links of [fcm-distributor](/users/distributors/fcm).
+Your mobile device often needs to receive updates from many messaging, and sometimes other apps that provide real-time updates. Without push notifications, each app would need to contact its own server to get updates. This wastes a lot of battery power. So, push notifications were created; they allow you to receive updates from multiple apps using one network connection by routing everything through a single server.
 
-### But I don't want to rely on Google
+### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
 
-Currently, the simplest way is to connect to a [Gotify](/users/distributors/gotify) server and install the associated distributor.
+You should visit the [user introduction](./users/intro) page to learn what UnifiedPush is and get instructions to use it.
 
 ### Which apps does UnifiedPush work with?
 
@@ -24,10 +24,6 @@ Apps need to support the UnifiedPush protocol before they can use self-hosted pu
 ### I'm an app developer who wants my users to get push notifications without Google, what should I do?
 
 You should use the UnifiedPush [connector library](/developers/) for your framework. If it doesn't already exist for your framework/language, contributions are welcome.
-
-### What options do I have for distributors?
-
-The [distributors page](/users/distributors/) has a recap of all the options.
 
 ### Will UnifiedPush ever work on iOS?
 

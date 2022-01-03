@@ -19,7 +19,7 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 
 ### Without self-hosting the server (Easy)
 
-* [Ntfy](/users/distributors/ntfy): You just need to install it.
+* [ntfy](/users/distributors/ntfy): You just need to install it.
 * [UP-FCM Distributor](/user/distributors/fcm): Idem. Just be aware that it uses Google servers.
 * [Gotify](/users/distributors/gotify): You can use an opened to registration server.
 
@@ -27,9 +27,9 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 
 Self hosting lets you have control of the server through which you receive push notifications. You have several distributor/provider options for self-hosting:
 
-#### [Ntfy](/users/distributors/nextpush)
+#### [ntfy](/users/distributors/ntfy)
 
-Ntfy server can be easily be self-hosted. It can be installed with a package, available for most linux distributions, with docker, or using the standalone binary.
+The ntfy server can be easily be self-hosted. It can be installed with a package, available for most linux distributions, with docker, or using the standalone binary.
 
 #### [NextPush](/users/distributors/nextpush)
 

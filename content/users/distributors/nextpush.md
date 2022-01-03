@@ -1,5 +1,8 @@
 ---
-title: NextPush
+geekdocHidden: true
+geekdocHiddenTocTree: false
+title: NextPush - Android
+weight: 20
 ---
 
 NextPush is a push provider that runs within a Nextcloud instance for easy setup.
@@ -7,8 +10,10 @@ NextPush is a push provider that runs within a Nextcloud instance for easy setup
 * License: AGPL-3.0
 * Sources: <https://github.com/UP-NextPush/android>
 * Server: <https://github.com/UP-NextPush/server-app>
-* Download for Android: <span class=app-store-logos>{{< figure alt="Get it on F-Droid" src="/img/f-droid-badge.png" link="https://f-droid.org/en/packages/org.unifiedpush.distributor.nextpush/" >}}</span>
 * Technology: HTTP Server Sent Events
+* Download for Android:
+
+[<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100>](https://f-droid.org/en/packages/org.unifiedpush.distributor.nextpush/)
 
 ## Requirements
 

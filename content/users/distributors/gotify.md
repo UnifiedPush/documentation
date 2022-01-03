@@ -1,5 +1,8 @@
 ---
-title: Gotify-UP
+geekdocHidden: true
+geekdocHiddenTocTree: false
+title: Gotify-UP - Android
+weight: 70
 ---
 
 Gotify is "a simple server for sending and receiving messages".
@@ -7,8 +10,10 @@ Gotify is "a simple server for sending and receiving messages".
 * License: MIT
 * Sources: <https://github.com/UnifiedPush/gotify-android/>
 * Server: <https://github.com/gotify/server>
-* Download for Android: <span class="app-store-logos"> {{< figure alt="Get it on F-Droid" src="/img/f-droid-badge.png" link="https://f-droid.org/en/packages/com.github.gotify.up" >}}</span>
 * Technology: WebSocket
+* Download for Android:
+
+[<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100>](https://f-droid.org/en/packages/com.github.gotify.up)
 
 ## Requirements
 

@@ -1,5 +1,8 @@
 ---
-title: NoProvider2Push
+geekdocHidden: true
+geekdocHiddenTocTree: false
+title: NoProvider2Push - Android
+weight: 90
 ---
 
 In its own words
@@ -10,8 +13,10 @@ In its own words
 * License: Apache2
 * Sources: <https://github.com/NoProvider2Push/android>
 * Server: N/A
-* Download for Android: <span class="app-store-logos"> {{< figure alt="Get it on F-Droid" src="/img/f-droid-badge.png" link="https://f-droid.org/en/packages/org.unifiedpush.distributor.noprovider2push" >}}</span>
 * Technology: HTTP Listener
+* Download for Android:
+
+[<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100>](https://f-droid.org/en/packages/org.unifiedpush.distributor.noprovider2push)
 
 ## Requirements
 

@@ -3,37 +3,25 @@ title: UnifiedPush
 ---
 UnifiedPush is a set of specifications and tools that lets the user choose how push notifications are delivered. All in a free and open source way.
 
+## TL;DR
+
+* __I JUST WANT TO KNOW WHAT TO INSTALL__: [__Ntfy (Android)__](/users/distributors/ntfy/)
+* The same but I must use Google for some reason (hard battery optimization): [UP-FCM Distrib (Android)](/users/distributors/fcm/)
+* I have a nextcloud server: [NextPush (Android)](/users/distributors/nextpush/)
+* Else, check behind.
+
 ## Getting Started
 
-### What are push notifications?
+### Uers
 
-Your mobile device often needs to receive updates from many messaging, and sometimes other apps that provide real-time updates. Without push notifications, each app would need to contact its own server to get updates. This wastes a lot of battery power. So, push notifications were created; they allow you to receive updates from multiple apps using one network connection by routing everything through a single server.
+* [Introduction](/users/intro)
+* [FAQ](/users/faq)
+* [Choose a distributor](/users/distributors)
 
-### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
+### Developers
 
-You should visit the [user introduction](./users/intro) page to learn what UnifiedPush is and get instructions to use it.
-
-### Which apps does UnifiedPush work with?
-
-Apps need to support the UnifiedPush protocol before they can use self-hosted push notifications. See [the application list](users/apps). If an app isn't in there, feel free to ask in the UnifiedPush Matrix (bridged on Libera Chat IRC) or ask the application's dev team.
-
-### Basic description of how UnifiedPush works
-
-![Diagram of the structure used by UnifiedPush](/img/diagram.png)
-
-### I'm an app developer who wants my users to get push notifications without Google, what should I do?
-
-You should use the UnifiedPush [connector library](/developers/) for your framework. If it doesn't already exist for your framework/language, contributions are welcome.
-
-### Will UnifiedPush ever work on iOS?
-
-iOS doesn't support running services in the background, so running a UnifiedPush distributor won't be possible without jailbreaking or Apple's approval for the foreseeable future. If someone has a solution, share that in the chat.
-
-### Can we use transport X to deliver notifications to the device?
-
-Yes! UnifiedPush doesn't define a transport between the *provider* and the *distributor*. Just implement the UnifiedPush distributor API, and your service will be compatible with any existing app that uses UnifiedPush!
-
-### What is the difference between UnifiedPush and OpenPush?
-
-UnifiedPush was born in the OpenPush chat. There are some similar core ideas as well; but operationally, the projects are not related. The goals of the projects are the same, except UnifiedPush allows for various different distributors rather than one.
+* [Definitions](/spec/definitions)
+* [Use Unifiedpush for your app](/developers/intro)
+* [Create an Android Distributor](/spec/android) (and check other distrib code)
+* [Create a Linux Distributor](/spec/dbus) (and check other distrib code)
 

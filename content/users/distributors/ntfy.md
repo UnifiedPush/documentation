@@ -5,13 +5,13 @@ title: ntfy - Android
 weight: 10
 ---
 
-Ntfy is a push provider easy to set up that does not require an account.
+ntfy is an easy to set up push provider that does not require an account.
 
 * License: Apache2 | GPLv2
 * Sources: <https://github.com/binwiederhier/ntfy>
 * Server: <https://github.com/UP-NextPush/server-app>
 * website: <https://ntfy.sh/>
-* Technology: Json stream (Close to HTTP Server Sent Events)
+* Technology: HTTP JSON stream (Like HTTP Server Sent Events)
 * Download for Android:
 
 [<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100 >](https://f-droid.org/packages/io.heckel.ntfy)

@@ -3,7 +3,7 @@ title: Introduction
 weight: -10
 ---
 
-UnifiedPush is a standard for receiving these push notifications.
+UnifiedPush is a standard for receiving push notifications.
 UnifiedPush allows you to choose between multiple implementations and servers, based on your preferences. The core UnifiedPush tools are all free and open source software.
 
 ## Index
@@ -20,7 +20,7 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 ### Without self-hosting the server (Easy)
 
 * [ntfy](/users/distributors/ntfy): You just need to install it.
-* [UP-FCM Distributor](/user/distributors/fcm): Idem. Just be aware that it uses Google servers.
+* [UP-FCM Distributor](/user/distributors/fcm): The same as above. Just be aware that it uses Google servers.
 * [Gotify](/users/distributors/gotify): You can use an opened to registration server.
 
 ### Self-host the server (Difficult)

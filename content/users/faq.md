@@ -8,11 +8,11 @@ Your mobile device often needs to receive updates from many messaging, and somet
 
 ### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
 
-You should visit the [user introduction](./users/intro) page to learn what UnifiedPush is and get instructions to use it.
+You should visit the [user introduction](/users/intro) page to learn what UnifiedPush is and get instructions to use it.
 
 ### Which apps does UnifiedPush work with?
 
-Apps need to support the UnifiedPush protocol before they can use self-hosted push notifications. See [the application list](users/apps). If an app isn't in there, feel free to ask in the UnifiedPush Matrix (bridged on Libera Chat IRC) or ask the application's dev team.
+Apps need to support the UnifiedPush protocol before they can use self-hosted push notifications. See [the application list](/users/apps). If an app isn't in there, feel free to ask in the UnifiedPush Matrix (bridged on Libera Chat IRC) or ask the application's dev team.
 
 ### Basic description of how UnifiedPush works
 

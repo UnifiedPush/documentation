@@ -1,7 +1,7 @@
 ---
 title: UnifiedPush
 ---
-UnifiedPush is a set of specifications and tools that lets the user choose how push notifications are delivered. All in a free and open source way.
+UnifiedPush is a set of specifications and tools that lets the user choose how push notifications[*](/users/faq/#what-are-push-notifications) are delivered. All in a free and open source way.
 
 ## TL;DR
 

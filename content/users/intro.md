@@ -3,7 +3,7 @@ title: Introduction
 weight: -10
 ---
 
-UnifiedPush is a standard for receiving push notifications.
+UnifiedPush is a standard for receiving push notifications[*](/users/faq/#what-are-push-notifications).
 UnifiedPush allows you to choose between multiple implementations and servers, based on your preferences. The core UnifiedPush tools are all free and open source software.
 
 ## Index

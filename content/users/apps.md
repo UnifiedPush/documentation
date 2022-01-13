@@ -18,5 +18,8 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
-- Element Android
-- Nheko on Linux
+- [Element Android](https://github.com/vector-im/element-android)
+  - [issue #2743](https://github.com/vector-im/element-android/issues/2743) "Use UnifiedPush for push notifications"
+  - [pull #3448](https://github.com/vector-im/element-android/pull/3448) "Unifiedpush"
+- [Nheko](https://nheko.im/nheko-reborn/nheko) on Linux
+  - [@vurpo:hacklab.fi mentioned in #unifiedpush:matrix.org](https://matrix.to/#/!vwmBiTqilorqNCbGab:matrix.org/$bT-gCEw5VTM3icJca-xnK_Ji5J0RBVfc_lu3KNhVSmc?via=libera.chat&via=matrix.org&via=tchncs.de)

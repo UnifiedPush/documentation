@@ -40,43 +40,53 @@ To register for receiving push services you have two options:
 1. Have the library handle distributor selection
 
 ```kotlin
-val up = Registration()
 // Call the library function
-up.registerAppWithDialog(context)
+// Options:
+// "instance" to handle multiple registrations
+// "dialogMessage" displayed by the dialog
+// "features" empty array or [FEATURE_BYTES_MESSAGE]
+//    to be sure the distributor handles non-UTF-8 input
+// "messageForDistributor" that may be displayed by the distrib.
+registerAppWithDialog(context)
 ```
 
 2. Handle selection yourself
 
 ```kotlin
-val up = Registration()
 // Check if a distributor is already registered
-if (up.getDistributor(context).isNotEmpty()) {
+if (getDistributor(context).isNotEmpty()) {
     // Re-register in case something broke
-    up.registerApp(context)
+    // Options:
+    // "instance" to handle multiple registrations
+    // "features" empty array or [FEATURE_BYTES_MESSAGE]
+    //    to be sure the distributor handles non-UTF-8 input
+    // "messageForDistributor" that may be displayed by the distrib.
+    registerApp(context)
     return
 }
 // Get a list of distributors that are available
-val distributors = up.getDistributors(context)
+val distributors = getDistributors(context)
 // select one or show a dialog or whatever
 val userDistrib = yourFunc(distributors)
 // save the distributor
-up.saveDistributor(context, userDistrib)
+saveDistributor(context, userDistrib)
 // register your app to the distributor
-up.registerApp(context)
+// Options:
+// "instance" to handle multiple registrations
+// "features" empty array or [FEATURE_BYTES_MESSAGE]
+//    to be sure the distributor handles non-UTF-8 input
+// "messageForDistributor" that may be displayed by the distrib.
+registerApp(context)
 ```
 
 **unregister**
 
 ```kotlin
 // inform the library that you would like to unregister from receiving push messages
-up.unregisterApp(context)
+// Options:
+// "instance" to delete if used during registration
+unregisterApp(context)
 ```
-
-**Multi-connection app**
-You may need multiple connections for your app, you will need to use, as above, the following functions:
-- `up.registerAppWithDialog(context, instance)`
-- `up.registerApp(context, instance)`
-- `up.unregisterApp(context, instance)`
 
 {{< /tab >}}
 {{< tab "Java" >}}
@@ -85,40 +95,50 @@ To register for receiving push services you have two options:
 1. Have the library handle distributor selection
 ```java
 // Call the library function
-Registration up = new Registration();
-up.registerAppWithDialog(context);
+// Options:
+// "instance" to handle multiple registrations
+// "dialogMessage" displayed by the dialog
+// "features" empty array or [FEATURE_BYTES_MESSAGE]
+//    to be sure the distributor handles non-UTF-8 input
+// "messageForDistributor" that may be displayed by the distrib.
+registerAppWithDialog(context);
 ```
 
 2. Handle selection yourself
 ```java
-Registration up = new Registration();
 // Check if a distributor is already registered
-if (!up.getDistributor(context).isEmpty()) {
+if (!getDistributor(context).isEmpty()) {
     // Re-register in case something broke
-    up.registerApp(context);
+    // Options:
+    // "instance" to handle multiple registrations
+    // "features" empty array or [FEATURE_BYTES_MESSAGE]
+    //    to be sure the distributor handles non-UTF-8 input
+    // "messageForDistributor" that may be displayed by the distrib.
+    registerApp(context);
     return;
 }
 // Get a list of distributors that are available
-List<String> distributors = up.getDistributors(context);
+List<String> distributors = getDistributors(context);
 // select one or show a dialog or whatever
 String userDistrib = yourFunc(distributors);
 // the below line will crash the app if no distributors are available
-up.saveDistributor(context, userDistrib);
-up.registerApp(context);
+saveDistributor(context, userDistrib);
+// Options:
+// "instance" to handle multiple registrations
+// "features" empty array or [FEATURE_BYTES_MESSAGE]
+//    to be sure the distributor handles non-UTF-8 input
+// "messageForDistributor" that may be displayed by the distrib.
+registerApp(context);
 ```
 
 **unregister**
 ```java
 // inform the library that you would like to unregister from receiving push messages
-up.unregisterApp(context);
+// Options:
+// "instance" to delete if used during registration
+unregisterApp(context);
 ```
 
-**Multi-connection app**
-
-You may need multiple connections for your app, you will need to use, as above, the following functions:
-- `up.registerAppWithDialog(context, instance);`
-- `up.registerApp(context, instance);`
-- `up.unregisterApp(context, instance);`
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -130,9 +150,9 @@ To receive Push Messages you should extend the class _MessagingReceiver_ and imp
 {{< tab "Kotlin" >}}
 
 ```kotlin
-val handler = object: MessagingReceiverHandler{
-    override fun onMessage(context: Context?, message: String, instance: String) {
-        // Called when a new message is received. The String contains the full POST body of the push message
+class CustomReceiver: MessagingReceiver() {
+    override fun onMessage(context: Context?, message: ByteArray, instance: String) {
+        // Called when a new message is received. The message contains the full POST body of the push message
     }
 
     override fun onNewEndpoint(context: Context?, endpoint: String, instance: String) {
@@ -143,21 +163,18 @@ val handler = object: MessagingReceiverHandler{
         // called when the registration is not possible, eg. no network
     }
     
-    override fun onRegistrationRefused(context: Context?, instance: String) {
-        // called when the registration is refused, eg. an application with the same Id and another token is registered
-    }
-    
     override fun onUnregistered(context: Context?, instance: String){
         // called when this application is unregistered from receiving push messages
     }
 }
-
-class CustomReceiver: MessagingReceiver(handler)
 ```
 {{< /tab >}}
 {{< tab "Java" >}}
 ```java
-class handler implements MessagingReceiverHandler {
+class CustomReceiver extends MessagingReceiver {
+    public CustomReceiver() {
+        super();
+    }
     @Override
     public void onNewEndpoint(@Nullable Context context, @NotNull String endpoint, @NotNull String instance) {
         // Called when a new endpoint be used for sending push messages
@@ -169,26 +186,16 @@ class handler implements MessagingReceiverHandler {
     }
 
     @Override
-    public void onRegistrationRefused(@Nullable Context context, @NotNull String instance) {
-        // called when the registration is refused, eg. an application with the same Id and another token is registered
-    }
-
-    @Override
     public void onUnregistered(@Nullable Context context, @NotNull String instance) {
         // called when this application is unregistered from receiving push messages
     }
 
     @Override
-    public void onMessage(@Nullable Context context, @NotNull String message, @NotNull String instance) {
-        // Called when a new message is received. The String contains the full POST body of the push message
+    public void onMessage(@Nullable Context context, @NotNull byte[] message, @NotNull String instance) {
+        // Called when a new message is received. The message contains the full POST body of the push message
     }
 }
 
-class CustomReceiver extends MessagingReceiver {
-    public CustomReceiver() {
-        super(new handler());
-    }
-}
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -201,7 +208,6 @@ You will also need to declare the receiver in your manifest:
               <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
               <action android:name="org.unifiedpush.android.connector.UNREGISTERED"/>
               <action android:name="org.unifiedpush.android.connector.NEW_ENDPOINT"/>
-              <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED"/>
               <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED"/>
           </intent-filter>
       </receiver>

@@ -151,19 +151,19 @@ To receive Push Messages you should extend the class _MessagingReceiver_ and imp
 
 ```kotlin
 class CustomReceiver: MessagingReceiver() {
-    override fun onMessage(context: Context?, message: ByteArray, instance: String) {
+    override fun onMessage(context: Context, message: ByteArray, instance: String) {
         // Called when a new message is received. The message contains the full POST body of the push message
     }
 
-    override fun onNewEndpoint(context: Context?, endpoint: String, instance: String) {
+    override fun onNewEndpoint(context: Context, endpoint: String, instance: String) {
         // Called when a new endpoint be used for sending push messages
     }
     
-    override fun onRegistrationFailed(context: Context?, instance: String) {
+    override fun onRegistrationFailed(context: Context, instance: String) {
         // called when the registration is not possible, eg. no network
     }
     
-    override fun onUnregistered(context: Context?, instance: String){
+    override fun onUnregistered(context: Context, instance: String){
         // called when this application is unregistered from receiving push messages
     }
 }
@@ -176,22 +176,22 @@ class CustomReceiver extends MessagingReceiver {
         super();
     }
     @Override
-    public void onNewEndpoint(@Nullable Context context, @NotNull String endpoint, @NotNull String instance) {
+    public void onNewEndpoint(@NotNull Context context, @NotNull String endpoint, @NotNull String instance) {
         // Called when a new endpoint be used for sending push messages
     }
 
     @Override
-    public void onRegistrationFailed(@Nullable Context context, @NotNull String instance) {
+    public void onRegistrationFailed(@NotNull Context context, @NotNull String instance) {
         // called when the registration is not possible, eg. no network
     }
 
     @Override
-    public void onUnregistered(@Nullable Context context, @NotNull String instance) {
+    public void onUnregistered(@NotNull Context context, @NotNull String instance) {
         // called when this application is unregistered from receiving push messages
     }
 
     @Override
-    public void onMessage(@Nullable Context context, @NotNull byte[] message, @NotNull String instance) {
+    public void onMessage(@NotNull Context context, @NotNull byte[] message, @NotNull String instance) {
         // Called when a new message is received. The message contains the full POST body of the push message
     }
 }

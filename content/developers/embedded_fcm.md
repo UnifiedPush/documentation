@@ -49,7 +49,7 @@ As a developer, if you're using the FCM embedded distributor, you will need a re
 
 We recommend using the following as the gateway.
 
-[Golang Rewrite Proxy](https://github.com/karmanyaahm/golang-unified-push-rewrite-proxy) is a program can be installed to run as a rewrite proxy for FCM.
+[UnifiedPush Common-Proxies](https://github.com/UnifiedPush/common-proxies) is a program can be installed to run as a rewrite proxy for FCM.
 
 Traffic from /FCM on any reverse proxy (for TLS) can be proxied to it. The following is an example for Nginx.
 

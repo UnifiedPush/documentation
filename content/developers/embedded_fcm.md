@@ -26,7 +26,7 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 class EmbeddedDistributor: EmbeddedDistributorReceiver() {
     override fun getEndpoint(context: Context, fcmToken: String, instance: String): String {
         // This returns the endpoint of your FCM Rewrite-Proxy
-        return "https://<your.domain.tld>/?v2&instance=$instance&token=$token"
+        return "https://<your.domain.tld>/FCM?v2&instance=$instance&token=$token"
     }
 }
 ```
@@ -54,7 +54,7 @@ We recommend using the following as the gateway.
 Traffic from /FCM on any reverse proxy (for TLS) can be proxied to it. The following is an example for Nginx.
 
 ```nginx
-location  / {
+location  /FCM {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```

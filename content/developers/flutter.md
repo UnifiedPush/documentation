@@ -25,7 +25,7 @@ You can ignore instances if you don't need to handle multiple connections.
       onNewEndpoint: onNewEndpoint, // takes (String endpoint, String instance) in args
       onRegistrationFailed: onRegistrationFailed, // takes (String instance)
       onUnregistered: onUnregistered, // takes (String instance)
-      onMessage: onMessage, // takes (String message, String instance) in args
+      onMessage: onMessage, // takes (Uint8List message, String instance) in args
     );
 
     void onNewEndpoint(String endpoint, String instance) {}
@@ -34,7 +34,7 @@ You can ignore instances if you don't need to handle multiple connections.
 
     void onUnregistered(String instance) {}
 
-    void onMessage(String message, String instance) {}
+    void onMessage(Uint8List message, String instance) {}
 ```
 
 {{< expand "If you need, for any reason, to work with a single isolate" >}}

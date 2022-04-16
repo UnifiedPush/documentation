@@ -4,7 +4,7 @@ title: Embedded FCM Distributor
 
 You may want to make it so that UnifiedPush is invisible for users who aren't specifically trying to avoid FCM. Embedding an FCM Distributor is a solution: if the user doesn't have another distributor installed, this one will be used.
 
-There are now 2 apps doing it: one using the google library and another, entirely FOSS that doesn't.
+There are now 2 libraries doing it: one using the google library and another entirely FOSS that doesn't.
 
 ## Installation
 

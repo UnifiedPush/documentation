@@ -2,13 +2,22 @@
 title: Embedded FCM Distributor
 ---
 
-You may want to make it so that UnifiedPush is invisible for users who aren't specifically trying to avoid FCM. Embedding an FCM Distributor is a solution: if the user doesn't have another distributor installed, this one will be used.
+If you want your app to fallback to FCM on Android if: 
+  1. Your user doesn't have any UnifiedPush Distributors and
+  2. They have Google Services enabled
 
-There are now 2 libraries doing it: one using the google library and another entirely FOSS that doesn't.
+This is for you. You can embed an FCM Distributor, and if the user doesn't have another distributor, this one will be used. These libraries basically act like UnifiedPush Distributors, but are internal to the app and pass notifications through FCM.
 
-## Installation
+There are 2 libraries doing it: one using the Google Firebase library and another entirely FOSS[\*](https://en.wikipedia.org/wiki/FOSS "Free and open-source software") that doesn't.
 
-You will need to add some code on your android project and host a FCM Rewrite proxy.
+## About
+
+1. The [Android Embedded FCM Distributor](https://github.com/UnifiedPush/android-embedded_fcm_distributor) is the original embedded distributor. It uses the official Google library for FCM support. However, it is proprietary thus cannot be included on app-stores like F-Droid.
+1. The [Android FOSS Embedded FCM Distributor](https://github.com/UnifiedPush/android-foss_embedded_fcm_distributor) is a new library. It reimplements the same API that the Google library uses. Since it's open source, it can be used on FOSS app stores like F-Droid.
+
+## Usage
+
+You will need to add some code on your android project and host a FCM Rewrite proxy. For Flutter projects, do the following in the `android` directory.
 
 ### Android
 

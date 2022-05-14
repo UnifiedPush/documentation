@@ -31,11 +31,16 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 * Add the receiver to your code:
 
 ```kotlin
+package YOUR.PACKAGE.ID
+
+import android.content.Context
+import org.unifiedpush.android.foss_embedded_fcm_distributor.EmbeddedDistributorReceiver
+
 class EmbeddedDistributor: EmbeddedDistributorReceiver() {
 
     override val googleProjectNumber = "123456" // This value comes from the google-services.json
 
-    override fun getEndpoint(context: Context, fcmToken: String, instance: String): String {
+    override fun getEndpoint(context: Context, token: String, instance: String): String {
         // This returns the endpoint of your FCM Rewrite-Proxy
         return "https://<your.domain.tld>/FCM?v2&instance=$instance&token=$token"
     }

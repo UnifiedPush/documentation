@@ -32,6 +32,8 @@ As push URLs should be secret, this shouldn't be of concern for most people.
 Nevertheless, it could be abused in some way or another by actors using the resources of your server, maybe even for malicious purposes.
 The following steps will lock the server down to only allow manually-created users to read and send notifications, while still allowing external services to send unifiedpush notifications.
 
+**Note:** since passwords are sent to the server for authentication, you probably want to secure ntfy with https to prevent others from sniffing them.
+
 * To allow only users to read and write topics, you need to enable authentication:
   * Create a config.yml file if it doesn't exist (by default in `/etc/ntfy/config.yml` )
   * As the [ntfy docs say](https://ntfy.sh/docs/config/#example-private-instance), add the following to enable access control:

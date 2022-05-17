@@ -30,9 +30,9 @@ If you want to self host the server, you can find the steps here: <https://ntfy.
 By default, ntfy allows everyone to use a server.
 As push URLs should be secret, this shouldn't be of concern for most people.
 Nevertheless, it could be abused in some way or another by actors using the resources of your server, maybe even for malicious purposes.
-The following steps will lock the server down to only allow manually-created users to read and send notifications, while still allowing external services to send unifiedpush notifications.
+The following steps will lock the server down to only allow manually-created users to read and send notifications, while still allowing external services to send UnifiedPush notifications.
 
-**Note:** since passwords are sent to the server for authentication, you probably want to secure ntfy with https to prevent others from sniffing them.
+**Note:** since passwords are sent to the server for authentication, you probably want to secure ntfy with HTTPS to prevent others from sniffing them.
 
 * To allow only users to read and write topics, you need to enable authentication:
   * Create a config.yml file if it doesn't exist (by default in `/etc/ntfy/config.yml` )
@@ -53,7 +53,7 @@ The following steps will lock the server down to only allow manually-created use
   * Service URL: your ntfy instance. For instance, `https://ntfy.example.com/
   * Username and password: the ones you chose previously
 
-<details><summary>Notes for docker users</summary>
+<details><summary>Notes for Docker users</summary>
 
 * You might want to adjust the user DB path to something like `/etc/ntfy/user.db`, or mount `/var/lib/ntfy` as a volume to keep it somewhere safe.
 * You will probably want to use `docker exec -it ntfy-container-name ntfy` instead of `ntfy` (replace ntfy-container-name with the appropriate one).

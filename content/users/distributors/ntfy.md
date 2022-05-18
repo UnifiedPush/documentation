@@ -11,7 +11,7 @@ ntfy is an easy to set up push provider that does not require an account.
 * Server sources: <https://github.com/binwiederhier/ntfy>
 * Android sources: <https://github.com/binwiederhier/ntfy-android>
 * website: <https://ntfy.sh/>
-* Technology: HTTP JSON stream (Like HTTP Server Sent Events)
+* Technology: WebSockets ([default](https://ntfy.sh/docs/deprecations/#android-app-websockets-will-become-the-default-connection-protocol)) or HTTP JSON stream (Like HTTP Server Sent Events)
 * Download for Android:
 
 [<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100 >](https://f-droid.org/packages/io.heckel.ntfy)

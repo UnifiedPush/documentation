@@ -28,7 +28,7 @@ The one at https://matrix.gateway.unifiedpush.org is publically available, howev
 
 Here is a gateway, change the value of `accepted` to the endpoint URL you want to allow, do not forget the last `/` :
 
-```
+```nginx
 resolver 127.0.0.1;
 
 location /_matrix/push/v1/notify {

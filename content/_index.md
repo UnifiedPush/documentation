@@ -23,4 +23,9 @@ UnifiedPush is a set of specifications and tools that lets the user choose how p
 * [Use UnifiedPush for your app](/developers/intro)
 * [Create an Android Distributor](/spec/android) (and check other distrib code)
 * [Create a Linux Distributor](/spec/dbus) (and check other distrib code)
+* If you're adding UnifiedPush support to your app, we'd love to talk to you! We recommend joining the chat below.
 
+### Communication
+
+* Our main chat room is on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)
+  * It's also bridged to IRC, [#unifiedpush on libera.chat](https://web.libera.chat/#unifiedpush)

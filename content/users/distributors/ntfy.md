@@ -19,6 +19,7 @@ ntfy is an easy to set up push provider that does not require an account.
 ## Set Up
 
 * Install this app on your device.
+* Open it once.
 * You're ready!
 
 ## Self Hosting

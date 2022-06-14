@@ -14,9 +14,8 @@ UnifiedPush is a set of specifications and tools that lets the user choose how p
 
 ### Users
 
-* [Introduction](/users/intro)
+* [Introduction: Choose a distributor](/users/distributors)
 * [FAQ](/users/faq)
-* [Choose a distributor](/users/distributors)
 
 ### Developers
 

@@ -1,5 +1,6 @@
 ---
 title: FAQ
+weight: -9
 ---
 
 ### What are push notifications?
@@ -8,7 +9,7 @@ Your mobile device often needs to receive updates from many messaging, and somet
 
 ### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
 
-You should visit the [user introduction](/users/intro) page to learn what UnifiedPush is and get instructions to use it.
+You should visit the [user introduction](/users/distributors) page to learn what UnifiedPush is and get instructions to use it.
 
 ### Which apps does UnifiedPush work with?
 

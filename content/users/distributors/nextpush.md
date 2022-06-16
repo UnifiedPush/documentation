@@ -24,12 +24,8 @@ NextPush is a push provider that runs within a Nextcloud instance for easy setup
 
 ## Set Up Client (Android)
 
-* Install this app and the Nextcloud application on your device.
-* Connect to a server with the NextPush server-app installed.
-* You're ready!
+1. Install and sign into your Nextcloud account using the official Nextcloud Application.
+2. Install the NextPush client and sign into your Nextcloud account.
+3. Install one application supporting UnifiedPush, or UP-Example. Login into the application if you need to, for instance with your mastodon account or with your matrix account.
+4. The application will automatically detect NextPush and use it to send notifications.
 
-1. Install and sign into your Nextcloud account using the official Nextcloud app.
-2. Install the NextPush client and sign into you Nextcloud account.
-3. Install and run one of the apps supporting UnifiedPush.
-4. Everything should automatically work!
-4. If notifications do not work, check out [the troubleshooting page](/users/troubleshooting/).

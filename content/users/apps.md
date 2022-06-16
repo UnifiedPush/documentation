@@ -21,10 +21,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
-- [Element Android](https://github.com/vector-im/element-android)
-  - [issue #2743](https://github.com/vector-im/element-android/issues/2743) "Use UnifiedPush for push notifications"
-  - [pull #3448](https://github.com/vector-im/element-android/pull/3448) "Unifiedpush"
+- [Element Android](https://github.com/vector-im/element-android) - UnifiedPush in `develop` branch, coming to stable releases soon
+- [Tusky](https://github.com/tuskyapp/Tusky) (Android) - UnifiedPush support in `develop` branch, released to stable with v19.0
 - [Nheko](https://nheko.im/nheko-reborn/nheko) on Linux
   - [@vurpo:hacklab.fi mentioned in #unifiedpush:matrix.org](https://matrix.to/#/!vwmBiTqilorqNCbGab:matrix.org/$bT-gCEw5VTM3icJca-xnK_Ji5J0RBVfc_lu3KNhVSmc?via=libera.chat&via=matrix.org&via=tchncs.de)
-- [Tusky](https://github.com/tuskyapp/Tusky) (Android)
-  - [pull #2303](https://github.com/tuskyapp/Tusky/pull/2303) "[WIP] Push notifications support via UnifiedPush"

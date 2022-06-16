@@ -18,6 +18,13 @@ Discovery URL: `http(s)://endpoint.domain/_matrix/push/v1/notify` (replace whole
 
 Discovery GET response: `{"unifiedpush":{"gateway":"matrix"}}`
 
+### Built-in provider gateway
+
+Some providers come with a built-in matrix gateway :
+
+* [ntfy](/users/distributors/ntfy/)
+
+* [NextPush](/users/distributors/nextpush/) You need to setup a rule on your reverse proxy. More information at <https://github.com/UP-NextPush/server-app#gateways>
 
 ### Nginx
 

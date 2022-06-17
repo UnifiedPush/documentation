@@ -1,5 +1,7 @@
 ---
 title: Gateway
+
+aliases: ["/developers/gateway/"]
 ---
 
 Gateways are ways to convert the application server format of notifications to the UnifiedPush format of notifications. 

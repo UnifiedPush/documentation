@@ -43,10 +43,15 @@ To register for receiving push services you have two options:
 // Call the library function
 // Options:
 // "instance" to handle multiple registrations
-// "dialogMessage" displayed by the dialog
+// "RegistrationDialogContent" for the dialogs [1]
 // "features" empty array or [FEATURE_BYTES_MESSAGE]
-//    to be sure the distributor handles non-UTF-8 input
+//     to be sure the distributor handles non-UTF-8 input
 // "messageForDistributor" that may be displayed by the distrib.
+//
+// [1] To personnalize the dialogs:
+//     RegistrationDialogContent().apply {noDistributorDialog.message = "0 found"}
+// For other param, visit https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/DialogContent.kt
+
 registerAppWithDialog(context)
 ```
 
@@ -95,13 +100,20 @@ To register for receiving push services you have two options:
 1. Have the library handle distributor selection
 ```java
 // Call the library function
-// Options:
-// "instance" to handle multiple registrations
-// "dialogMessage" displayed by the dialog
-// "features" empty array or [FEATURE_BYTES_MESSAGE]
-//    to be sure the distributor handles non-UTF-8 input
-// "messageForDistributor" that may be displayed by the distrib.
-registerAppWithDialog(context);
+//
+// To personnalize the dialogs:
+//     RegistrationDialogContent dialog = new RegistrationDialogContent()
+//     dialog.getNoDistributorDialog().setMessage("0 found");
+// For other param, visit https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/DialogContent.kt
+//
+registerAppWithDialog(
+    context, // Context
+    "default", // instance
+    new RegistrationDialogContent(), // dialogContent
+    new ArrayList<String>(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
+                             //    to be sure the distributor handles non-UTF-8 input
+    context.getPackageName() // messageForDistributor
+);
 ```
 
 2. Handle selection yourself
@@ -109,12 +121,13 @@ registerAppWithDialog(context);
 // Check if a distributor is already registered
 if (!getDistributor(context).isEmpty()) {
     // Re-register in case something broke
-    // Options:
-    // "instance" to handle multiple registrations
-    // "features" empty array or [FEATURE_BYTES_MESSAGE]
-    //    to be sure the distributor handles non-UTF-8 input
-    // "messageForDistributor" that may be displayed by the distrib.
-    registerApp(context);
+    registerApp(
+        context, // Context
+        "default", // instance
+        new ArrayList<String>(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
+                                 //    to be sure the distributor handles non-UTF-8 input
+        context.getPackageName() // messageForDistributor
+    );
     return;
 }
 // Get a list of distributors that are available
@@ -123,20 +136,23 @@ List<String> distributors = getDistributors(context);
 String userDistrib = yourFunc(distributors);
 // the below line will crash the app if no distributors are available
 saveDistributor(context, userDistrib);
-// Options:
-// "instance" to handle multiple registrations
-// "features" empty array or [FEATURE_BYTES_MESSAGE]
-//    to be sure the distributor handles non-UTF-8 input
-// "messageForDistributor" that may be displayed by the distrib.
-registerApp(context);
+registerApp(
+    context, // Context
+    "default", // instance
+    new ArrayList<String>(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
+                             //    to be sure the distributor handles non-UTF-8 input
+    context.getPackageName() // messageForDistributor
+);
+
 ```
 
 **unregister**
 ```java
 // inform the library that you would like to unregister from receiving push messages
-// Options:
-// "instance" to delete if used during registration
-unregisterApp(context);
+unregisterApp(
+    context,
+    "default" // instance
+);
 ```
 
 {{< /tab >}}
@@ -158,11 +174,11 @@ class CustomReceiver: MessagingReceiver() {
     override fun onNewEndpoint(context: Context, endpoint: String, instance: String) {
         // Called when a new endpoint be used for sending push messages
     }
-    
+
     override fun onRegistrationFailed(context: Context, instance: String) {
         // called when the registration is not possible, eg. no network
     }
-    
+
     override fun onUnregistered(context: Context, instance: String){
         // called when this application is unregistered from receiving push messages
     }

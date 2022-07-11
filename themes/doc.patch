@@ -1,13 +1,12 @@
-diff --git a/themes/hugo-geekdoc/layouts/partials/site-footer.html b/themes/hugo-geekdoc/layouts/partials/site-footer.html
-index af2fd89d..34c5df09 100644
---- a/themes/hugo-geekdoc/layouts/partials/site-footer.html
-+++ b/themes/hugo-geekdoc/layouts/partials/site-footer.html
-@@ -14,5 +14,8 @@
-             <a href="{{ . | relURL }}" class="gdoc-footer__link">Privacy Policy</a>
-         </span>
-         {{ end }}
-+        <span class="gdoc-footer__item" style="margin-left: auto;">
-+	{{if not (eq .GitInfo  nil)  }} Version: {{.GitInfo.AbbreviatedHash}} {{end}}
-+        </span>
+--- themes/hugo-geekdoc/layouts/partials/site-footer.html       2022-06-27 03:06:43.000000000 -0500
++++ themes/hugo-geekdoc/layouts/partials/site-footer.html    2022-07-11 15:58:15.339925590 -0500
+@@ -29,6 +29,9 @@
+         </section>
+       {{ end }}
      </div>
- </footer>
++    <span class="gdoc-footer__item" style="margin-left: auto;">
++       {{if not (eq .GitInfo  nil)  }} Version: {{.GitInfo.AbbreviatedHash}} {{end}}
++    </span>
+     {{ if (default true .Site.Params.GeekdocBackToTop) }}
+       <div class="flex flex-25 justify-end">
+         <span class="gdoc-footer__item text-right">

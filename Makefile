@@ -1,4 +1,4 @@
-THEME_VERSION := v0.13.4
+THEME_VERSION := v0.32.4
 THEME := hugo-geekdoc
 THEMEDIR := themes
 
@@ -12,7 +12,7 @@ install:
 	rm -rf $(THEMEDIR)/$(THEME)
 	mkdir -p $(THEMEDIR)/$(THEME)/ ; \
 	curl -sSL "https://github.com/thegeeklab/$(THEME)/releases/download/${THEME_VERSION}/$(THEME).tar.gz" | tar -xz -C $(THEMEDIR)/$(THEME)/ --strip-components=1
-	patch -p1 < themes/doc.patch
+	patch -p0 < themes/doc.patch
 	#spec
 	git submodule update --init
 

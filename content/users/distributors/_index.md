@@ -21,7 +21,6 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 
 * [ntfy](/users/distributors/ntfy): You just need to install it.
 * [UP-FCM Distributor](/user/distributors/fcm): The same as above. Just be aware that it uses Google servers.
-* [Gotify](/users/distributors/gotify): You can use an open to registration server.
 
 ### Self-host the server (Difficult)
 
@@ -34,10 +33,6 @@ The ntfy server can be easily be self-hosted. It can be installed with a package
 #### [NextPush](/users/distributors/nextpush)
 
 NextPush is a push server that can be hosted as a Nextcloud app. This is an easy way to self-host a push provider if you already have a Nextcloud server.
-
-#### [Gotify](/users/distributors/gotify)
-
-Gotify is a server that you can install to send and receive messages, including those of UnifiedPush. It requires additionnal steps to work with unifiedpush.
 
 ### Other options
 

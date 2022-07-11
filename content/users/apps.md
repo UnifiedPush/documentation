@@ -14,7 +14,9 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [SchildiChat](https://github.com/SchildiChat/SchildiChat-android/) | September 2021 | Android  | v1.2.0.sc42   | [generic](../distributors/) |
 | [Fedilab Lite](https://fedilab.app/)                               | October 2021   | Android  | [v2.39.0](https://framagit.org/tom79/fedilab/-/releases/2.39.0)  | [Fedilab push notifications](https://fedilab.app/wiki/features/push-notifications/)² |
 | [FindMyDevice](https://gitlab.com/Nulide/findmydevice/)            | November 2021  | Android  | [v0.2.2](https://gitlab.com/Nulide/findmydevice/-/releases/v0.2.2) | [generic](../distributors/) |
-| [Element](https://github.com/vector-im/element-android/)           | Jun 2022       | Android  | [v1.4.26](https://github.com/vector-im/element-android/releases/tag/v1.4.26) | [generic](../distributors/) |
+| [Element](https://github.com/vector-im/element-android/)           | June 2022       | Android  | [v1.4.26](https://github.com/vector-im/element-android/releases/tag/v1.4.26) | [generic](../distributors/) |
+| [Tusky](https://tusky.app/)           | July 2022       | Android  | [v19.0](https://github.com/tuskyapp/Tusky/releases/tag/v19.0) | [generic](../distributors/) |
+
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 
@@ -22,6 +24,5 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
-- [Tusky](https://github.com/tuskyapp/Tusky) (Android) - UnifiedPush support in `develop` branch, will release to stable with v19.0
 - [Nheko](https://nheko.im/nheko-reborn/nheko) on Linux
   - [@vurpo:hacklab.fi mentioned in #unifiedpush:matrix.org](https://matrix.to/#/!vwmBiTqilorqNCbGab:matrix.org/$bT-gCEw5VTM3icJca-xnK_Ji5J0RBVfc_lu3KNhVSmc?via=libera.chat&via=matrix.org&via=tchncs.de)

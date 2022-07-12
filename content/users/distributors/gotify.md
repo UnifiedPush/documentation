@@ -5,6 +5,11 @@ title: Gotify-UP - Android
 weight: 70
 ---
 
+{{< hint type=caution >}}
+**UnifiedPush using Gotify-UP is no longer supported**. It does not support new versions of the UnifiedPush protocol. It will continue working with existing apps, but there are no guarantees.
+Check out one of the many other UnifiedPush [distributors](/users/distributors).
+{{< /hint >}}
+
 Gotify is "a simple server for sending and receiving messages".
 
 * License: MIT

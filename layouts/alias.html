@@ -1,9 +1,11 @@
 <!DOCTYPE html><html>
     <head>
+	{{ with .Page }}
         {{if .Page.Params.vanity -}}
           <meta name="go-import" content="{{.Params.root}}{{substr .RelPermalink 0 -1}} git {{.Params.vanity}}">
   <meta name="go-source" content="{{.Params.root}}{{substr .RelPermalink 0 -1}} https://{{.Params.vanity}} https://{{.Params.vanity}}/tree/main{/dir} https://{{.Params.vanity}}/blob/main{/dir}/{file}#L{line}">
         {{- end}}
+	{{- end}}
         <title>{{ .Permalink }}</title>
         <link rel="canonical" href="{{ .Permalink }}"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />

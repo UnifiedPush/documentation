@@ -3,6 +3,10 @@ title: UnifiedPush
 ---
 UnifiedPush is a set of specifications and tools that lets the user choose how push notifications[*](/users/faq/#what-are-push-notifications) are delivered. All in a free and open source way.
 
+<br />
+
+<object style="max-height: 30em;" id="animation" type="image/svg+xml" data="/img/animation.svg" onload="this.parentNode.replaceChild(this.contentDocument.documentElement, this);">
+
 ## TL;DR
 
 * __I JUST WANT TO KNOW WHAT TO INSTALL__: [__ntfy (Android)__](/users/distributors/ntfy/)

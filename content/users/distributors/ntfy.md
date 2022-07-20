@@ -46,7 +46,10 @@ The following steps will lock the server down to only allow manually-created use
   * Add a user:
     * `ntfy user add --role=admin someuser` (`--role=admin` is optional here)
     * Type a password
-    * Repeat as many times as desired. See [ntfy docs on user management](https://ntfy.sh/docs/config/#users-and-roles).
+    * If the user isn't admin, give it read and/or write access to some topics, at least the UnifiedPush ones:
+      * `ntfy access someuser 'up*' read-only` To make that user only able to subscribe to UnifiedPush topics (necessary to use UnifiedPush)
+      * `ntfy access someuser '*' read-write` To give that user the ability to subscribe and publish to any topics, including UnifiedPush ones (this is the default for everyone if authentication is disabled)
+    * Repeat as many times as desired. See [ntfy docs on user management](https://ntfy.sh/docs/config/#users-and-roles) for more details.
 * Pushers still need to be able to write to UnifiedPush topics to send push notifications. Add a rule to make UnifiedPush topics (they all start with "up") world-writeable:
     * `ntfy access '*' 'up*' write-only`
 * Log in with the distributor app. On ntfy Android:

@@ -6,6 +6,7 @@ UnifiedPush is a set of specifications and tools that lets the user choose how p
 <br />
 
 <object style="max-height: 30em;" id="animation" type="image/svg+xml" data="/img/animation.svg" onload="this.parentNode.replaceChild(this.contentDocument.documentElement, this);">
+</object>
 
 ## TL;DR
 

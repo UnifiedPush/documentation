@@ -1,0 +1,1 @@
+static/big_img/** filter=lfs diff=lfs merge=lfs -text

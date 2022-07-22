@@ -38,7 +38,7 @@ import org.unifiedpush.android.foss_embedded_fcm_distributor.EmbeddedDistributor
 
 class EmbeddedDistributor: EmbeddedDistributorReceiver() {
 
-    override val googleProjectNumber = "123456" // This value comes from the google-services.json
+    override val googleProjectNumber = "123456789012" // This value comes from the google-services.json
 
     override fun getEndpoint(context: Context, token: String, instance: String): String {
         // This returns the endpoint of your FCM Rewrite-Proxy
@@ -103,7 +103,7 @@ As a developer, if you're using the FCM embedded distributor, you will need a re
 
 We recommend using the following as the gateway.
 
-[UnifiedPush Common-Proxies](https://github.com/UnifiedPush/common-proxies) is a program can be installed to run as a rewrite proxy for FCM.
+[UnifiedPush Common-Proxies](https://github.com/UnifiedPush/common-proxies) is a program can be installed to run as a rewrite proxy for FCM. If you don't have a server to host this on, ask in the UnifiedPush chat, we can help out.
 
 Traffic from /FCM on any reverse proxy (for TLS) can be proxied to it. The following is an example for Nginx.
 
@@ -112,3 +112,44 @@ location  /FCM {
         proxy_pass            http://127.0.0.1:5000;
 }
 ```
+
+## Firebase setup
+
+- Go to https://console.firebase.google.com/
+
+### Create a new project
+
+If you already have a Firebase project, skip this section and just open your project settings.
+
+- Click on 'plus' *Add project* ![See adjacent text](/big_img/fcm_setup/create_proj_1.png)
+- Set a name for your project, continue and configure the rest of the project. ![See adjacent text](/big_img/fcm_setup/create_proj_2.png)
+- Click on the gear icon and open project settings ![See adjacent text](/big_img/fcm_setup/open_settings_1.png)
+
+### Configure Cloud Messaging
+
+1. Click on the *Cloud Messaging* tab ![See adjacent text](/big_img/fcm_setup/gen_settings_no_app.png)
+1. If you already see a server key under *Cloud Messaging API (Legacy)*, then go to step 6.
+1. Else, open the menu of this section, and click on *Manage API in Google Cloud Console* ![See adjacent text](/big_img/fcm_setup/cloud_messaging_1.png)
+1. In the Cloud Console page that opened, click on *Enable* ![See adjacent text](/big_img/fcm_setup/cloud_messaging_2.png)
+1. Go back to the Firebase Cloud Messaging page, and reload it. You should now see a server key. ![See adjacent text](/big_img/fcm_setup/cloud_messaging_3.png)
+6. This server key will be used to configure Common Proxies.
+
+### Configure Android app
+
+If you have already added an Android application to your project, skip this section.
+
+1. Click on the Android logo under *Your apps* ![See adjacent text](/big_img/fcm_setup/gen_settings_no_app.png)
+1. Enter your Android application's package name. ![See adjacent text](/big_img/fcm_setup/create_app_1.png)
+1. Press 'Next', 'Next', 'Continue' and go back to your settings console.
+
+### Setting up your app on Android (FOSS FCM lib)
+
+- Under the menu *Your project*, copy the *Project number*. It is a 12 digit number, for instance `123456789012`.
+- Use this value for the [EmbeddedDistributor.googleProjectNumber](#android)
+
+### Setting up your app on Android (Google FCM lib)
+
+- Under the menu *Your apps*, download *google-services.json*.
+- Place it at app/google-services.json in your Android project
+- If you're using Flutter, place it at android/app/google-services.json 
+

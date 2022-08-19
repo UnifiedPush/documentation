@@ -50,7 +50,7 @@ To register for receiving push services you have two options:
 //
 // [1] To personnalize the dialogs:
 //     RegistrationDialogContent().apply {noDistributorDialog.message = "0 found"}
-// For other param, visit https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/DialogContent.kt
+// For other param, visit <https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/RegistrationDialogContent.kt>
 
 registerAppWithDialog(context)
 ```
@@ -104,7 +104,7 @@ To register for receiving push services you have two options:
 // To personnalize the dialogs:
 //     RegistrationDialogContent dialog = new RegistrationDialogContent()
 //     dialog.getNoDistributorDialog().setMessage("0 found");
-// For other param, visit https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/DialogContent.kt
+// For other param, visit <https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/RegistrationDialogContent.kt>
 //
 registerAppWithDialog(
     context, // Context

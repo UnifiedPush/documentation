@@ -45,7 +45,7 @@ jobs:
           chmod 600 ../privkey
           ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey rm -rf /tmp/action-sftp-upload
           ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey mkdir -p /tmp/action-sftp-upload
-          scp -r -i ../privkey ./public/ ubuntu@unifiedpush.org:/tmp/action-sftp-upload
+          scp -r -i ../privkey ./public/* ubuntu@unifiedpush.org:/tmp/action-sftp-upload
           HASH=$(ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey sudo -u ipfs ipfs add --recursive --pin=false --quieter /tmp/action-sftp-upload)
           echo "::set-output name=HASH::$HASH"
         id: deploy

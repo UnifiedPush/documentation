@@ -38,15 +38,21 @@ jobs:
         run: make install
       - name: Build
         run: hugo --minify
-      - name: Deploy
-        uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4 
+      - name: deploy-upload
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4 
         with:
-          pin-name: 'updocs'
-          path: './public'
-          pinata-api-key: ${{ secrets.PINATAAPIKEY }}
-          pinata-secret-api-key: ${{ secrets.PINATASECRETAPIKEY }}
-          verbose: true
-          remove-old: true
+          username: 'ubuntu'
+          server: 'unifiedpush.org'
+          ssh_private_key: ${{ secrets.SSHKEY }}
+          local_path: './public/*'
+          remote_path: '/tmp/action-sftp-upload'
+          delete_remote_files: true
+          sftpArgs: '-o ConnectTimeout=5'
+      - name: Deploy
+         # private key left over by sftp action
+        run: |
+          HASH=$(ssh -o StrictHostKeyChecking=no -i ../private_key.pem ubuntu@unifiedpush.org sudo -u ipfs ipfs add --recursive --pin=false --quieter /tmp/action-sftp-upload)
+          echo "::set-output name=HASH::$HASH"
         id: deploy
       - name: DNSLINK
         run: 'curl -D- -X PUT -H "Content-Type: application/json" -H "Authorization: Apikey ${{ secrets.GandiAPI }}" -d "{\"rrset_ttl\": 300,\"rrset_values\": [\"dnslink=/ipfs/${{ steps.deploy.outputs.HASH }}\"]}" https://api.gandi.net/v5/livedns/domains/unifiedpush.org/records/_dnslink/TXT'

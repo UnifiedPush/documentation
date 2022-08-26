@@ -38,10 +38,6 @@ jobs:
         run: make install
       - name: Build
         run: hugo --minify
-      - name: Build
-        run: echo "${{ secrets.SSHKEY }}" > ../privkey
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: deploy-upload
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4 
         with:
@@ -52,6 +48,10 @@ jobs:
           remote_path: '/tmp/action-sftp-upload'
           delete_remote_files: true
           sftpArgs: '-o ConnectTimeout=5'
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: failure()
+        timeout-minutes: 3
       - name: Deploy
          # private key left over by sftp action
         run: |

@@ -38,9 +38,10 @@ jobs:
         run: make install
       - name: Build
         run: hugo --minify
+      # thx https://github.com/wlixcc/SFTP-Deploy-Action/blob/master/entrypoint.sh for details on this
       - name: deploy-upload
         run: | 
-          echo "${{ secrets.SSHKEY }} > ../privkey
+          echo "${{ secrets.SSHKEY }}" > ../privkey
           chmod 600 ../privkey
           ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey rm -rf /tmp/action-sftp-upload
           ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey mkdir -p /tmp/action-sftp-upload

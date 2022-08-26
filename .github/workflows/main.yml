@@ -51,7 +51,7 @@ jobs:
         id: deploy
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
-        if: failure()
+        if: ${{ failure() && github.event_name == 'workflow_dispatch' }}
         timeout-minutes: 3
       - name: DNSLINK
         run: 'curl -D- -X PUT -H "Content-Type: application/json" -H "Authorization: Apikey ${{ secrets.GandiAPI }}" -d "{\"rrset_ttl\": 300,\"rrset_values\": [\"dnslink=/ipfs/${{ steps.deploy.outputs.HASH }}\"]}" https://api.gandi.net/v5/livedns/domains/unifiedpush.org/records/_dnslink/TXT'

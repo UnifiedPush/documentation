@@ -39,24 +39,18 @@ jobs:
       - name: Build
         run: hugo --minify
       - name: deploy-upload
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4 
-        with:
-          username: 'ubuntu'
-          server: 'unifiedpush.org'
-          ssh_private_key: "${{ secrets.SSHKEY }}"
-          local_path: './public/*'
-          remote_path: '/tmp/action-sftp-upload'
-          delete_remote_files: true
-          sftpArgs: '-o ConnectTimeout=5'
+        run: | 
+          echo "${{ secrets.SSHKEY }} > ../privkey
+          chmod 600 ../privkey
+          ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey rm -rf /tmp/action-sftp-upload
+          ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey mkdir -p /tmp/action-sftp-upload
+          scp -r -i ../privkey ./public/ ubuntu@unifiedpush.org:/tmp/action-sftp-upload
+          HASH=$(ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey sudo -u ipfs ipfs add --recursive --pin=false --quieter /tmp/action-sftp-upload)
+          echo "::set-output name=HASH::$HASH"
+        id: deploy
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         if: failure()
         timeout-minutes: 3
-      - name: Deploy
-         # private key left over by sftp action
-        run: |
-          HASH=$(ssh -o StrictHostKeyChecking=no -i ../private_key.pem ubuntu@unifiedpush.org sudo -u ipfs ipfs add --recursive --pin=false --quieter /tmp/action-sftp-upload)
-          echo "::set-output name=HASH::$HASH"
-        id: deploy
       - name: DNSLINK
         run: 'curl -D- -X PUT -H "Content-Type: application/json" -H "Authorization: Apikey ${{ secrets.GandiAPI }}" -d "{\"rrset_ttl\": 300,\"rrset_values\": [\"dnslink=/ipfs/${{ steps.deploy.outputs.HASH }}\"]}" https://api.gandi.net/v5/livedns/domains/unifiedpush.org/records/_dnslink/TXT'

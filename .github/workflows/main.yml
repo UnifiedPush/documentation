@@ -43,7 +43,7 @@ jobs:
         with:
           username: 'ubuntu'
           server: 'unifiedpush.org'
-          ssh_private_key: ${{ secrets.SSHKEY }}
+          ssh_private_key: "${{ secrets.SSHKEY }}"
           local_path: './public/*'
           remote_path: '/tmp/action-sftp-upload'
           delete_remote_files: true

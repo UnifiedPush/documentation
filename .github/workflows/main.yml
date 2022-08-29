@@ -44,7 +44,7 @@ jobs:
         run: | 
           echo "${{ secrets.SSHKEY }}" > ../privkey
           chmod 600 ../privkey
-          ssh -o StrictHostKeyChecking=no nobody@unifiedpush.org -i ../privkey -L 12345:localhost:5001 -fT
+          ssh -o StrictHostKeyChecking=no nobody@unifiedpush.org -i ../privkey -L 5001:localhost:5001 -fTN
       - name: ipfs upload
         uses: aquiladev/ipfs-action@v0.3.1-alpha.1
         id: deploy

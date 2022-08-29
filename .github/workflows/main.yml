@@ -39,17 +39,23 @@ jobs:
       - name: Build
         run: hugo --minify
       # thx https://github.com/wlixcc/SFTP-Deploy-Action/blob/master/entrypoint.sh for details on this
-      - name: deploy-upload
+      - name: Connect to ssh in BG
+        timeout-minutes: 2
         run: | 
           echo "${{ secrets.SSHKEY }}" > ../privkey
           chmod 600 ../privkey
-          ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey rm -rf /tmp/action-sftp-upload
-          ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey mkdir -p /tmp/action-sftp-upload
-          scp -r -i ../privkey ./public/* ubuntu@unifiedpush.org:/tmp/action-sftp-upload
-          HASH=$(ssh -o StrictHostKeyChecking=no ubuntu@unifiedpush.org -i ../privkey sudo -u ipfs ipfs add --recursive --pin=false --quieter /tmp/action-sftp-upload)
-          echo "::set-output name=HASH::$HASH"
+          ssh -o StrictHostKeyChecking=no nobody@unifiedpush.org -i ../privkey -L 12345:localhost:5001 -fT
+      - name: ipfs upload
+        uses: aquiladev/ipfs-action@v0.3.1-alpha.1
         id: deploy
         timeout-minutes: 2
+        with:
+          path: ./public
+          service: ipfs
+          verbose: true
+          host: localhost
+          port: 5001
+          protocol: http
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         if: ${{ failure() && github.event_name == 'workflow_dispatch' }}

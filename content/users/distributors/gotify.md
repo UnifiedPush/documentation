@@ -1,7 +1,7 @@
 ---
 geekdocHidden: true
 geekdocHiddenTocTree: true
-title: \[Deprecated] Gotify-UP - Android
+title: "[Deprecated] Gotify-UP - Android"
 weight: 70
 ---
 

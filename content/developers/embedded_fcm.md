@@ -8,7 +8,7 @@ If you want your app to fallback to FCM on Android if:
 
 This is for you. You can embed an FCM Distributor, and if the user doesn't have another distributor, this one will be used. These libraries basically act like UnifiedPush Distributors, but are internal to the app and pass notifications through FCM.
 
-There are 2 libraries doing it: one using the Google Firebase library and another entirely FOSS[\*](https://en.wikipedia.org/wiki/FOSS "Free and open-source software") that doesn't.
+There are 2 libraries doing it: one using the Google Firebase library and another (beta) entirely FOSS[\*](https://en.wikipedia.org/wiki/FOSS "Free and open-source software") that doesn't.
 
 ## About
 
@@ -22,25 +22,23 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 ### Android
 
 {{< tabs "Android" >}}
-{{< tab "FOSS lib." >}}
+{{< tab "With google lib." >}}
 
-* Add the following implementation to your app level build.gradle.
+* Add `classpath 'com.google.gms:google-services:4.3.8'` to your project level build.gradle.
+* Add `id 'com.google.gms.google-services'` and the following implementation to your app level build.gradle.
 ```
-    implementation('com.github.UnifiedPush:android-foss_embedded_fcm_distributor:1.0.0-beta1')
+    implementation('com.github.UnifiedPush:android-embedded_fcm_distributor:2.0.0') {
+        exclude group: 'com.google.firebase', module: 'firebase-core'
+        exclude group: 'com.google.firebase', module: 'firebase-analytics'
+        exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
+    }
 ```
+* Add the google-services.json file from firebase to your app directory.
 * Add the receiver to your code:
 
 ```kotlin
-package YOUR.PACKAGE.ID
-
-import android.content.Context
-import org.unifiedpush.android.foss_embedded_fcm_distributor.EmbeddedDistributorReceiver
-
 class EmbeddedDistributor: EmbeddedDistributorReceiver() {
-
-    override val googleProjectNumber = "123456789012" // This value comes from the google-services.json
-
-    override fun getEndpoint(context: Context, token: String, instance: String): String {
+    override fun getEndpoint(context: Context, fcmToken: String, instance: String): String {
         // This returns the endpoint of your FCM Rewrite-Proxy
         return "https://<your.domain.tld>/FCM?v2&instance=$instance&token=$token"
     }
@@ -60,23 +58,25 @@ class EmbeddedDistributor: EmbeddedDistributorReceiver() {
 ```
 
 {{< /tab >}}
-{{< tab "With google lib." >}}
+{{< tab "(beta) FOSS lib." >}}
 
-* Add `classpath 'com.google.gms:google-services:4.3.8'` to your project level build.gradle.
-* Add `id 'com.google.gms.google-services'` and the following implementation to your app level build.gradle.
+* Add the following implementation to your app level build.gradle.
 ```
-    implementation('com.github.UnifiedPush:android-embedded_fcm_distributor:2.0.0') {
-        exclude group: 'com.google.firebase', module: 'firebase-core'
-        exclude group: 'com.google.firebase', module: 'firebase-analytics'
-        exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
-    }
+    implementation('com.github.UnifiedPush:android-foss_embedded_fcm_distributor:1.0.0-beta1')
 ```
-* Add the google-services.json file from firebase to your app directory.
 * Add the receiver to your code:
 
 ```kotlin
+package YOUR.PACKAGE.ID
+
+import android.content.Context
+import org.unifiedpush.android.foss_embedded_fcm_distributor.EmbeddedDistributorReceiver
+
 class EmbeddedDistributor: EmbeddedDistributorReceiver() {
-    override fun getEndpoint(context: Context, fcmToken: String, instance: String): String {
+
+    override val googleProjectNumber = "123456789012" // This value comes from the google-services.json
+
+    override fun getEndpoint(context: Context, token: String, instance: String): String {
         // This returns the endpoint of your FCM Rewrite-Proxy
         return "https://<your.domain.tld>/FCM?v2&instance=$instance&token=$token"
     }

@@ -16,6 +16,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [FindMyDevice](https://gitlab.com/Nulide/findmydevice/)            | November 2021  | Android  | [v0.2.2](https://gitlab.com/Nulide/findmydevice/-/releases/v0.2.2) | [generic](../distributors/) |
 | [Element](https://github.com/vector-im/element-android/)           | June 2022       | Android  | [v1.4.26](https://github.com/vector-im/element-android/releases/tag/v1.4.26) | [generic](../distributors/) |
 | [Tusky](https://tusky.app/)           | July 2022       | Android  | [v19.0](https://github.com/tuskyapp/Tusky/releases/tag/v19.0) | [generic](../distributors/) |
+| [SmallTalk](https://github.com/ouchadam/small-talk)     | September 2022 | Android | [v0.0.1-alpha04](https://github.com/ouchadam/small-talk/releases/tag/0.0.1-alpha04) | [generic](../distributors) |
 
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).

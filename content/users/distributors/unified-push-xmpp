@@ -1,0 +1,22 @@
+---
+geekdocHidden: true
+geekdocHiddenTocTree: false
+title: Unified-Push-XMPP - Various
+weight: 70
+---
+
+Unified-Push-XMPP is a push provider acts as a gateway to any XMPP client.
+
+* License: ?
+* Sources: <https://dev.sum7.eu/genofire/unified-push-xmpp>
+* Server: <https://up.chat.sum7.eu/>
+* Technology: XMPP
+
+## Requirements
+
+* A XMPP server
+  * For selfhosting it can be used as a component for any XMPP server
+
+## Self Hosting
+
+You can find more information on how to host this in the readme.

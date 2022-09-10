@@ -33,6 +33,46 @@ You will need to add some code on your android project and host a FCM Rewrite pr
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
     }
 ```
+* Apply google-services plugin for your fcm flavor in your app level build.gradle. (You may need to edit the pattern)
+```
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+    String flavor
+
+    Pattern pattern
+
+    if( tskReqStr.contains( "assemble" ) )
+        pattern = Pattern.compile("assemble(\\w+)")
+    else
+        pattern = Pattern.compile("generate(\\w+)")
+
+    Matcher matcher = pattern.matcher( tskReqStr )
+
+    if( matcher.find() ) {
+        flavor = matcher.group(1).toLowerCase()
+    }
+    else
+    {
+        println "NO MATCH FOUND"
+        return ""
+    }
+
+    pattern = Pattern.compile("^fcm.*");
+    matcher = pattern.matcher(flavor);
+
+    if( matcher.matches() ) {
+        return "fcm"
+    } else {
+        return "main"
+    }
+}
+
+println("Flavor: ${getCurrentFlavor()}")
+if ( getCurrentFlavor() == "fcm" ){
+    apply plugin: 'com.google.gms.google-services'
+}
+```
 * Add the google-services.json file from firebase to your app directory.
 * Add the receiver to your code:
 

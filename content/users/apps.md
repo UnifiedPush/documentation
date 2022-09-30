@@ -21,7 +21,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 
-² UnifiedPush is designed to work with any distributor. Some apps' documentation suggest particular ones but you might prefer to follow the generic advice on [installing UnifiedPush](../distributors/).
+² UnifiedPush is designed to work with any distributor. Some apps' documentation suggest particular ones but you might prefer to follow the generic advice on [installing a UnifiedPush distributor](../distributors/).
 
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 

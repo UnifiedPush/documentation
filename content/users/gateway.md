@@ -16,11 +16,15 @@ App developers should host default gateways (otherwise it'll be impossible to us
 
 Matrix homeservers don't directly support UnifiedPush (yet). This means that a gateway is needed.
 
+**All Matrix applications have defined a default gateway that will forward notifications to your push provider's server. You can use your own matrix gateway instead if you host your push service provider's server yourself and also want to host the gateway yourself.**
+
 Discovery URL: `http(s)://endpoint.domain/_matrix/push/v1/notify` (replace whole path and query with `/_matrix/push/v1/notify`)
 
 Discovery GET response: `{"unifiedpush":{"gateway":"matrix"}}`
 
 ### Built-in provider gateway
+
+**Recommended**
 
 Some providers come with a built-in matrix gateway :
 
@@ -28,14 +32,21 @@ Some providers come with a built-in matrix gateway :
 
 * [NextPush](/users/distributors/nextpush/) You need to setup a rule on your reverse proxy. More information at <https://github.com/UP-NextPush/server-app#gateways>
 
+### Common-Proxies
+
+**Recommended, if your provider does not have a built-in gateway or you want to host a public gateway**
+
+Common-Proxies is a set of rewrite proxies and push gateways for UnifiedPush. It can be used as a matrix gateway. If needed, it supports forwarding to any public remote URL with defense against requests to internal networks.
+
+Information on setup is in the documentation for the [Common-Proxies](https://github.com/UnifiedPush/common-proxies)
+
 ### Nginx
 
-Until [MSC2970](https://github.com/matrix-org/matrix-doc/pull/2970) is figured out we unfortunately
-need another re-write proxy. 
+**Not recommended**
 
-The one at https://matrix.gateway.unifiedpush.org is publically available, however you can easily self-host it.
+It is possible to do a personnal matrix gateway with nginx compiled with lua support.
 
-Here is a gateway, change the value of `accepted` to the endpoint URL you want to allow, do not forget the last `/` :
+Change the value of `accepted` to the endpoint URL you want to allow, do not forget the last `/` :
 
 ```nginx
 resolver 127.0.0.1;
@@ -73,10 +84,3 @@ location /mx-mirror {
 }
 
 ```
-
-### Common-Proxies
-
-This gateway supports forwarding to any public remote URL with defense against requests to internal networks.
-
-Information on setup is in the documentation for the [Common-Proxies](https://github.com/UnifiedPush/common-proxies)
-

@@ -20,7 +20,7 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 ### Without self-hosting the server (Easy)
 
 * [ntfy](/users/distributors/ntfy): You just need to install it.
-* [UP-FCM Distributor](/user/distributors/fcm): The same as above. Just be aware that it uses Google servers.
+* [UP-FCM Distributor](/users/distributors/fcm): The same as above. Just be aware that it uses Google servers.
 
 ### Self-host the server (Difficult)
 

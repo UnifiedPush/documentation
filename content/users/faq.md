@@ -35,3 +35,6 @@ Yes! UnifiedPush doesn't define a transport between the *provider* and the *dist
 
 UnifiedPush was born in the OpenPush chat. There are some similar core ideas as well; but operationally, the projects are not related. The goals of the projects are the same, except UnifiedPush allows for various different distributors rather than one.
 
+### Is it Unified Push or Unifiedpush or unified push? What is the Aerogear UnifiedPush server or the Unified Push Alliance (UPA)?
+
+No. It is UnifiedPush. If there is any possibility of confusion, it is UnifiedPush.org. UnifiedPush.org is not related to Aerogear or the UnifiedPush Alliance in any way.

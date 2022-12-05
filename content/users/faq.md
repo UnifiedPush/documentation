@@ -5,7 +5,7 @@ weight: -9
 
 ### What are push notifications?
 
-Your mobile device often needs to receive updates from many messaging, and sometimes other apps that provide real-time updates. Without push notifications, each app would need to contact its own server to get updates. This wastes a lot of battery power. So, push notifications were created; they allow you to receive updates from multiple apps using one network connection by routing everything through a single server.
+Your mobile device often needs to receive updates from many messaging, and sometimes other apps that provide real-time updates. Without push notifications, each app would need to contact its own server to get updates. These background services waste battery power and memory. So, push notifications were created; they allow you to receive updates from multiple apps using one optimized network connection by routing everything through a single server.
 
 ### I'm just a user who wants push notifications for apps using UnifiedPush, what should I do?
 

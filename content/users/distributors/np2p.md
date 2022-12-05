@@ -1,6 +1,6 @@
 ---
 geekdocHidden: true
-geekdocHiddenTocTree: false
+geekdocHiddenTocTree: true
 title: NoProvider2Push - Android
 weight: 90
 ---

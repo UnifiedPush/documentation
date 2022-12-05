@@ -42,10 +42,6 @@ If you have Google services (play store, etc.) on your Android phone, the easies
 
 FCM-Distributor might also be a good option for people whose phone manufacturer has set up [extremely strict battery saving](https://dontkillmyapp.com/).
 
-#### [NoProvider2Push](/users/distributors/np2p)
-
-NoProvider2Push needs a static IP to work, which is reachable with a VPN or public meshing network. It is mostly useful for development purposes and advanced users at this moment.
-
 ### Special Case: the embedded FCM distributor
 
 Some applications using UnifiedPush automatically use Google's Firebase Cloud Messaging if no UnifiedPush Distributor is detected.

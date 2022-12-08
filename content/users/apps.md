@@ -27,3 +27,4 @@ The following is a list of applications that have some work in progress regardin
 
 - [Nheko](https://nheko.im/nheko-reborn/nheko) on Linux
   - [@vurpo:hacklab.fi mentioned in #unifiedpush:matrix.org](https://matrix.to/#/!vwmBiTqilorqNCbGab:matrix.org/$bT-gCEw5VTM3icJca-xnK_Ji5J0RBVfc_lu3KNhVSmc?via=libera.chat&via=matrix.org&via=tchncs.de)
+- [Molly](https://github.com/mollyim/mollyim-android) (A [Signal](https://signal.org/) fork) on Android.

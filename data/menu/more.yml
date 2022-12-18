@@ -13,4 +13,7 @@ more:
   - name: Liberapay
     ref: "https://liberapay.com/S1m/"
     external: true
+  - name: Mastodon @unifiedpush@fosstodon.org
+    ref: "https://fosstodon.org/@unifiedpush"
+    external: true
 

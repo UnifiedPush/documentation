@@ -9,6 +9,10 @@ These two libraries are grouped together since they're based on the same code.
 
 An example app can be found in the [\_examples folder](//github.com/UnifiedPush/go_dbus_connector/tree/main/_examples) of this module's repository.
 
+{{< hint type=note >}}
+Linux support is still experimental, also check out [KUnifiedPush](https://invent.kde.org/libraries/kunifiedpush/) for an application-framework (KDE) based implementation.
+{{< /hint >}}
+
 {{<toc>}}
 
 ## Installation

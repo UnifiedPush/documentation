@@ -25,4 +25,5 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
+- [NeoChat](https://invent.kde.org/network/neochat/-/merge_requests/458) A Matrix client on Linux, along with [KUnifiedPush](https://invent.kde.org/libraries/kunifiedpush/), its library.
 - [Molly](https://github.com/mollyim/mollyim-android) (A [Signal](https://signal.org/) fork) on Android.

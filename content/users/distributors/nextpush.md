@@ -5,7 +5,7 @@ title: NextPush - Android
 weight: 20
 ---
 
-NextPush is a push provider that runs within a Nextcloud instance for easy setup.
+NextPush is a push server that runs within a Nextcloud instance for easy setup.
 
 * License: AGPL-3.0
 * Sources: <https://github.com/UP-NextPush/android>
@@ -22,7 +22,7 @@ NextPush is a push provider that runs within a Nextcloud instance for easy setup
   * The server's reverse-proxy should be configurable (to handle timeouts)
   * The server needs to have the [NextPush server app](https://github.com/UP-NextPush/server-app) installed. Follow the instructions in the link to learn how to set it up.
 
-## Set Up Client (Android)
+## Set Up Distributor (Android Client)
 
 1. Install and sign into your Nextcloud account using the official Nextcloud Application.
 2. Install the NextPush client and sign into your Nextcloud account.

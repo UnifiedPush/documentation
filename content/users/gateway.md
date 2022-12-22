@@ -10,23 +10,23 @@ Right now, the only gateway that exists is for the Matrix protocol.
 
 ## Discovery & Hosting
 
-App developers should host default gateways (otherwise it'll be impossible to use your app with a public push provider), however for some gateways, the user can host their own. This is called **Gateway Discovery**.
+App developers should host default gateways (otherwise it'll be impossible to use your app with a public push server), however for some gateways, the user can host their own. This is called **Gateway Discovery**.
 
 ## Matrix
 
 Matrix homeservers don't directly support UnifiedPush (yet). This means that a gateway is needed.
 
-**All Matrix applications have defined a default gateway that will forward notifications to your push provider's server. You can use your own matrix gateway instead if you host your push service provider's server yourself and also want to host the gateway yourself.**
+**All Matrix applications have defined a default gateway that will forward notifications to your push server. You can use your own Matrix gateway instead if you host your push server yourself and also want to host the gateway yourself.**
 
 Discovery URL: `http(s)://endpoint.domain/_matrix/push/v1/notify` (replace whole path and query with `/_matrix/push/v1/notify`)
 
 Discovery GET response: `{"unifiedpush":{"gateway":"matrix"}}`
 
-### Built-in provider gateway
+### Gateway built-in to push servers
 
 **Recommended**
 
-Some providers come with a built-in matrix gateway :
+Some push servers come with a built-in matrix gateway :
 
 * [ntfy](/users/distributors/ntfy/)
 
@@ -34,7 +34,7 @@ Some providers come with a built-in matrix gateway :
 
 ### Common-Proxies
 
-**Recommended, if your provider does not have a built-in gateway or you want to host a public gateway**
+**Recommended, if your push servers does not have a built-in gateway or you want to host a public gateway**
 
 Common-Proxies is a set of rewrite proxies and push gateways for UnifiedPush. It can be used as a matrix gateway. If needed, it supports forwarding to any public remote URL with defense against requests to internal networks.
 

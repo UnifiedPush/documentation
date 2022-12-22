@@ -26,7 +26,11 @@ ntfy is an easy to set up push server that does not require an account.
 
 If you want to self host the server, you can find the steps here: <https://ntfy.sh/docs/install/>
 
-### Limit access to some users
+### Matrix Gateway
+
+ntfy has a Matrix gateway built-in. It can convert the Matrix Push Format -> the UnifiedPush format. You MUST configure the **base-url** for the Matrix gateway to work! See ntfy docs for the specifics of setting that up.
+
+### Limit access to some users (ACL)
 
 By default, ntfy allows everyone to use a server.
 As push URLs should be secret, this shouldn't be of concern for most people.

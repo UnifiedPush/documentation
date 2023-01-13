@@ -37,9 +37,9 @@ NextPush is a push server that can be hosted as a Nextcloud app. This is an easy
 
 #### [Conversations](/users/distributors/conversations)
 
-Conversations is an XMPP instant messaging client for Android. It requires an XMPP server and a UnifiedPush rewrite proxy. The rewrite proxy is `up.conversations.im` by default, but this can be self hosted.
+Conversations is an XMPP instant messaging client for Android, with the ability to deliver UnifiedPush notifications using an existing XMPP account, on any server. This requires converting push notifications to XMPP messages first, which is done by a service hosted at `up.conversations.im`.
 
-The *rewrite proxy* converts UnifiedPush messages to XMPP messages.
+The service at `up.conversations.im` can also be self-hosted. It is called a *rewrite proxy* in UnifiedPush parlance.
 
 ### Other options
 

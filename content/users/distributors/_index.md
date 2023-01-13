@@ -7,7 +7,7 @@ aliases : ["intro"]
 
 {{< toc-tree >}}
 
-UnifiedPush is a standard for receiving push notifications[*](/users/faq/#what-are-push-notifications).
+UnifiedPush is a standard for receiving push notifications[\*](/users/faq/#what-are-push-notifications).
 UnifiedPush allows you to choose between multiple implementations and servers, based on your preferences. The core UnifiedPush tools are all free and open source software.
 
 ## Definitions
@@ -21,7 +21,7 @@ UnifiedPush allows you to choose between multiple implementations and servers, b
 
 * [ntfy](/users/distributors/ntfy): You just need to install it.
 * [UP-FCM Distributor](/users/distributors/fcm): The same as above. Just be aware that it uses Google servers.
-* [Conversations](/users/distributors/conversations): Conversations is an instant messaging client for Android which can also act as a UnifiedPush distributor.
+* [Conversations](/users/distributors/conversations): Conversations is an XMPP messenger which can also act as a distributor.
 
 ### Self-host the server (Difficult)
 
@@ -37,8 +37,9 @@ NextPush is a push server that can be hosted as a Nextcloud app. This is an easy
 
 #### [Conversations](/users/distributors/conversations)
 
-Conversations uses the push server `up.conversations.im` per default, but this can be changed in the settings.
-There is [a component](https://codeberg.org/iNPUTmice/up) which allows any XMPP server to act as push server for Conversations.
+Conversations is an XMPP instant messaging client for Android. It requires an XMPP server and a UnifiedPush rewrite proxy. The rewrite proxy is `up.conversations.im` by default, but this can be self hosted.
+
+The *rewrite proxy* converts UnifiedPush messages to XMPP messages.
 
 ### Other options
 

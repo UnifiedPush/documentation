@@ -58,6 +58,7 @@ to the total animation time, and adjust animation percentages
   /* t=3 (display duration) */
   display: block !important;
   opacity: 0;
+  fill: var(--body-font-color, black) !important;
   animation: display-packet 15s infinite; /* n*t */
   animation-delay: 1.5s; /* t/2 to delay start */
 }

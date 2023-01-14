@@ -26,8 +26,8 @@ Conversations is a Jabber/XMPP instant messaging client for Android which can al
 
 [YouTube video](https://www.youtube.com/watch?v=wKTk6XGMp3I) demonstrating this.
 
-**Note**: Conversations requires converting UnifiedPush-style notifications to XMPP messages first, which is done by a service hosted at `up.conversations.im`. This service, called a *rewrite proxy* can also be self-hosted.
-**Note 2**: Conversations is NOT an *end user application*. Conversations keeps its background connection open and lets other apps receive notifications through it.
+**Note**: Conversations requires converting UnifiedPush-style notifications to XMPP messages first, which is done by a service hosted at `up.conversations.im`. This service, called a *rewrite proxy*, can also be self-hosted.
+**Note 2**: Conversations is NOT an *end user application*. Conversations is a *distributor* that keeps a background connection open and lets other apps receive notifications through it.
 
 
 ## Self-Host

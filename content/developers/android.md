@@ -18,7 +18,12 @@ Add the jitpack repo to the **project level** build.gradle:
 allprojects {
     repositories {
         // ...
-        maven { url 'https://jitpack.io' }
+        maven {
+            url "https://www.jitpack.io"
+            content {
+                includeModule 'com.github.UnifiedPush', 'android-connector'
+            }
+        }
     }
 }
 ```

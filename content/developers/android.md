@@ -177,7 +177,7 @@ class CustomReceiver: MessagingReceiver() {
     }
 
     override fun onNewEndpoint(context: Context, endpoint: String, instance: String) {
-        // Called when a new endpoint be used for sending push messages
+        // Called when a new endpoint is to be used for sending push messages
     }
 
     override fun onRegistrationFailed(context: Context, instance: String) {

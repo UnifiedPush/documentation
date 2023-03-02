@@ -159,6 +159,7 @@ if (await UnifiedPush.getDistributor() != "") {
 UnifiedPush.unregister(
         instance                         // Optionnal String, to get multiple endpoints (one per instance)
 );
+// You won't receive onUnregistered for this instance
 ```
 
 ## Sending Push Messages

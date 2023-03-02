@@ -156,7 +156,7 @@ if (await UnifiedPush.getDistributor() != "") {
 
 ```dart
 // inform the library that you would like to unregister from receiving push messages
-UnifiedPush.unregisterApp(
+UnifiedPush.unregister(
         instance                         // Optionnal String, to get multiple endpoints (one per instance)
 );
 ```

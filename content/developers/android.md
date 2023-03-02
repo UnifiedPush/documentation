@@ -96,6 +96,8 @@ registerApp(context)
 // Options:
 // "instance" to delete if used during registration
 unregisterApp(context)
+
+// You won't receive onUnregistered for this instance
 ```
 
 {{< /tab >}}
@@ -158,6 +160,8 @@ unregisterApp(
     context,
     "default" // instance
 );
+
+// You won't receive onUnregistered for this instance
 ```
 
 {{< /tab >}}

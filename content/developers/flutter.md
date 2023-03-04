@@ -28,7 +28,10 @@ You can ignore instances if you don't need to handle multiple connections.
       onMessage: onMessage, // takes (Uint8List message, String instance) in args
     );
 
-    void onNewEndpoint(String endpoint, String instance) {}
+    void onNewEndpoint(String endpoint, String instance) {
+        // You should send the endpoint to your application server
+        // and sync for missing notifications.
+    }
 
     void onRegistrationFailed(String instance) {}
 

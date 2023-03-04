@@ -29,8 +29,9 @@ You can ignore instances if you don't need to handle multiple connections.
     );
 
     void onNewEndpoint(String endpoint, String instance) {
-            // You should sync for missing notifications.
-        }
+        // You should send the endpoint to your application server
+        // and sync for missing notifications.
+    }
 
     void onRegistrationFailed(String instance) {}
 

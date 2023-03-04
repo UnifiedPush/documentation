@@ -178,7 +178,8 @@ class CustomReceiver: MessagingReceiver() {
 
     override fun onNewEndpoint(context: Context, endpoint: String, instance: String) {
         // Called when a new endpoint be used for sending push messages
-        // You should sync for missing notifications.
+        // You should send the endpoint to your application server
+        // and sync for missing notifications.
     }
 
     override fun onRegistrationFailed(context: Context, instance: String) {

@@ -18,6 +18,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [Tusky](https://tusky.app/)                                        | Mastodon/Fediverse | July 2022      | Android  | [v19.0](https://github.com/tuskyapp/Tusky/releases/tag/v19.0)                       | [generic](../distributors/)                                                                                                |
 | [SmallTalk](https://github.com/ouchadam/small-talk)                | Matrix chat           | August 2022    | Android  | [v0.0.1-alpha04](https://github.com/ouchadam/small-talk/releases/tag/0.0.1-alpha04) | [generic](../distributors)                                                                                                 |
 | [Jami](https://jami.net)                                           | Jami                      | March 2023 | Android  | v361 | [generic](../distributors)                                                                                                 |
+| [Goguma](https://sr.ht/~emersion/goguma)                           | IRC client            | March 2023 | Android  | [v0.5.0](https://git.sr.ht/~emersion/goguma/refs/v0.5.0) | [generic](../distributors) |
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 

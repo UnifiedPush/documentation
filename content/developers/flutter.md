@@ -22,10 +22,10 @@ You can ignore instances if you don't need to handle multiple connections.
 
 ```dart
     UnifiedPush.initialize(
-      onNewEndpoint: onNewEndpoint, // takes (String endpoint, String instance) in args
-      onRegistrationFailed: onRegistrationFailed, // takes (String instance)
-      onUnregistered: onUnregistered, // takes (String instance)
-      onMessage: onMessage, // takes (Uint8List message, String instance) in args
+      onNewEndpoint: onNewEndpoint,
+      onRegistrationFailed: onRegistrationFailed,
+      onUnregistered: onUnregistered,
+      onMessage: onMessage,
     );
 
     void onNewEndpoint(String endpoint, String instance) {
@@ -159,9 +159,10 @@ if (await UnifiedPush.getDistributor() != "") {
 
 ```dart
 // inform the library that you would like to unregister from receiving push messages
-UnifiedPush.unregisterApp(
+UnifiedPush.unregister(
         instance                         // Optionnal String, to get multiple endpoints (one per instance)
 );
+// You won't receive onUnregistered for this instance
 ```
 
 ## Sending Push Messages

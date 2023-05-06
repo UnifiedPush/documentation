@@ -5,7 +5,7 @@ title: ntfy - Android
 weight: 10
 ---
 
-ntfy is an easy to set up push server that does not require an account.
+ntfy is an easy way to set up push server that does not require an account.
 
 * License: Apache2 | GPLv2
 * Server sources: <https://github.com/binwiederhier/ntfy>

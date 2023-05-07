@@ -13,7 +13,7 @@ An [example application](https://github.com/UnifiedPush/flutter-connector/tree/m
 Add the following code to your pubspec.yaml.
 
 ```yaml
-  unifiedpush: ^4.0.0
+  unifiedpush: ^5.0.0
 ```
 
 ## Initialize the receiver

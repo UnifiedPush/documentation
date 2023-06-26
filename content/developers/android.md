@@ -235,7 +235,7 @@ You will also need to declare the receiver in your manifest:
               <action android:name="org.unifiedpush.android.connector.MESSAGE"/>
               <action android:name="org.unifiedpush.android.connector.UNREGISTERED"/>
               <action android:name="org.unifiedpush.android.connector.NEW_ENDPOINT"/>
-              <action android:name="org.unifiedpush.android.connector.REGISTRATION_REFUSED"/>
+              <action android:name="org.unifiedpush.android.connector.REGISTRATION_FAILED"/>
           </intent-filter>
       </receiver>
 ```

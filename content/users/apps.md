@@ -19,7 +19,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [SmallTalk](https://github.com/ouchadam/small-talk)                | Matrix chat           | August 2022    | Android  | [v0.0.1-alpha04](https://github.com/ouchadam/small-talk/releases/tag/0.0.1-alpha04) | [generic](../distributors)                                                                                                 |
 | [Jami](https://jami.net)                                           | Jami                      | March 2023 | Android  | v361 | [generic](../distributors)                                                                                                 |
 | [Goguma](https://sr.ht/~emersion/goguma)                           | IRC client            | March 2023 | Android  | [v0.5.0](https://git.sr.ht/~emersion/goguma/refs/v0.5.0) | [generic](../distributors) |
-| [Databag](https://github.com/balzack/databag)                      | Messaging Service     | June 2023  | Android  | ? | [generic](../distributors) |
+| [Databag](https://github.com/balzack/databag)                      | Messaging Service     | July 2023  | Android  | v1.5.0 | [generic](../distributors) |
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 

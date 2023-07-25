@@ -20,6 +20,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [Jami](https://jami.net)                                           | Jami                      | March 2023 | Android  | v361 | [generic](../distributors)                                                                                                 |
 | [Goguma](https://sr.ht/~emersion/goguma)                           | IRC client            | March 2023 | Android  | [v0.5.0](https://git.sr.ht/~emersion/goguma/refs/v0.5.0) | [generic](../distributors) |
 | [Databag](https://github.com/balzack/databag)                      | Messaging Service     | July 2023  | Android  | v1.5.0 | [generic](../distributors) |
+| [Podverse](https://github.com/podverse/podverse-rn) (beta)         | Podcast Manager       | July 2023  | Android  | v4.13.1 | [generic](../distributors) |
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 

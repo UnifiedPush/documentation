@@ -21,6 +21,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [Goguma](https://sr.ht/~emersion/goguma)                           | IRC client            | March 2023 | Android  | [v0.5.0](https://git.sr.ht/~emersion/goguma/refs/v0.5.0) | [generic](../distributors) |
 | [Databag](https://github.com/balzack/databag)                      | Messaging Service     | July 2023  | Android  | v1.5.0 | [generic](../distributors) |
 | [Podverse](https://github.com/podverse/podverse-rn) (beta)         | Podcast Manager       | July 2023  | Android  | v4.13.1 | [generic](../distributors) |
+| [Megalodon](https://github.com/sk22/megalodon)/[Moshidon](https://github.com/LucasGGamerM/moshidon) | Mastodon  | August 2023 | Android | [v2.0.3+fork.98](https://github.com/sk22/megalodon/releases/tag/v2.0.3%2Bfork.98) | [generic](../distributors) |
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 

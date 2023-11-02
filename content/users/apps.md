@@ -24,6 +24,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [Podverse](https://github.com/podverse/podverse-rn) (beta)                                          | Podcast Manager    | July 2023      | Android  | v4.13.1                                                                             | [generic](../distributors)                                                                                                 |
 | [Megalodon](https://github.com/sk22/megalodon)/[Moshidon](https://github.com/LucasGGamerM/moshidon) | Mastodon           | August 2023    | Android  | [v2.0.3+fork.98](https://github.com/sk22/megalodon/releases/tag/v2.0.3%2Bfork.98)   | [generic](../distributors)                                                                                                 |
 | [Träwelldroid](https://github.com/Traewelldroid/traewelldroid)                                      | Traewelling client | September 2023 | Android  | [v2.0.0](https://github.com/Traewelldroid/traewelldroid/releases/tag/v2.0.0)        | [generic](../distributors)                                                                                                 |
+| [Molly](https://github.com/mollyim/mollyim-android-unifiedpush)                                     | Signal client      | October 2023   | Android  | [v6.35.3-1.up1](https://github.com/mollyim/mollyim-android-unifiedpush/releases/tag/v6.35.3-1.up1)        | [mollysocket](https://github.com/mollyim/mollysocket)                                                                                                 |
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 
@@ -32,4 +33,3 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 The following is a list of applications that have some work in progress regarding UnifiedPush support.
 
 - [NeoChat](https://invent.kde.org/network/neochat/-/merge_requests/458) A Matrix client on Linux, along with [KUnifiedPush](https://invent.kde.org/libraries/kunifiedpush/), its library.
-- [Molly](https://github.com/mollyim/mollyim-android) (A [Signal](https://signal.org/) fork) on Android.

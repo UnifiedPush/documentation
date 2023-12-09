@@ -8,8 +8,8 @@ weight: 20
 NextPush is a push server that runs within a Nextcloud instance for easy setup.
 
 * License: AGPL-3.0
-* Sources: <https://github.com/UP-NextPush/android>
-* Server: <https://github.com/UP-NextPush/server-app>
+* Sources: <https://codeberg.org/NextPush/nextpush-android>
+* Server: <https://codeberg.org/NextPush/uppush>
 * Technology: HTTP Server Sent Events
 * Download for Android:
 
@@ -20,7 +20,7 @@ NextPush is a push server that runs within a Nextcloud instance for easy setup.
 * A Nextcloud server
   * The server needs to have a Redis instance connected to it
   * The server's reverse-proxy should be configurable (to handle timeouts)
-  * The server needs to have the [NextPush server app](https://github.com/UP-NextPush/server-app) installed. Follow the instructions in the link to learn how to set it up.
+  * The server needs to have the [NextPush server app](https://codeberg.org/NextPush/uppush) installed. Follow the instructions in the link to learn how to set it up.
 
 ## Set Up Distributor (Android Client)
 

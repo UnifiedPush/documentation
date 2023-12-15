@@ -6,7 +6,7 @@ UnifiedPush is a set of specifications and tools that lets the user choose how p
 ## TL;DR
 
 * __I JUST WANT TO KNOW WHAT TO INSTALL__: [__ntfy (Android)__](/users/distributors/ntfy/)
-* The same but I must use Google for some reason (hard battery optimization): [UP-FCM Distrib (Android)](/users/distributors/fcm/)
+* The same but I want to use Google for some reason: [gCompat-UP Distrib (Android)](/users/distributors/fcm/)
 * I have a Nextcloud server: [NextPush (Android)](/users/distributors/nextpush/)
 * For other options, see below.
 

@@ -64,7 +64,7 @@ registerAppWithDialog(context)
 
 ```kotlin
 // Check if a distributor is already registered
-if (getDistributor(context).isNotEmpty()) {
+getAckDistributor(context)?.let {
     // Re-register in case something broke
     // Options:
     // "instance" to handle multiple registrations
@@ -117,7 +117,7 @@ registerAppWithDialog(
     context, // Context
     "default", // instance
     new RegistrationDialogContent(), // dialogContent
-    new ArrayList<String>(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
+    getDEFAULT_FEATURES(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
                              //    to be sure the distributor handles non-UTF-8 input
     context.getPackageName() // messageForDistributor
 );
@@ -126,12 +126,12 @@ registerAppWithDialog(
 2. Handle selection yourself
 ```java
 // Check if a distributor is already registered
-if (!getDistributor(context).isEmpty()) {
+if (getAckDistributor(context) != null) {
     // Re-register in case something broke
     registerApp(
         context, // Context
         "default", // instance
-        new ArrayList<String>(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
+        getDEFAULT_FEATURES(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
                                  //    to be sure the distributor handles non-UTF-8 input
         context.getPackageName() // messageForDistributor
     );
@@ -146,7 +146,7 @@ saveDistributor(context, userDistrib);
 registerApp(
     context, // Context
     "default", // instance
-    new ArrayList<String>(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
+    getDEFAULT_FEATURES(), // features, or ArrayList<String>(Collections.singleton(UnifiedPush.FEATURE_BYTES_MESSAGE)),
                              //    to be sure the distributor handles non-UTF-8 input
     context.getPackageName() // messageForDistributor
 );

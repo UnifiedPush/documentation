@@ -39,5 +39,4 @@ This is how UnifiedPush notifications flow:
 
 ### Communication
 
-* Our main chat room is on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)
-  * It's also bridged to IRC, [#unifiedpush on libera.chat](https://web.libera.chat/#unifiedpush)
+* You can reach us on our main chat room on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)

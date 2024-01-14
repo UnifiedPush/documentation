@@ -1,3 +1,6 @@
 ---
-title: Specification
+title: Specifications
 ---
+
+{{< toc-tree >}}
+

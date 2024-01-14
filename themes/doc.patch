@@ -7,6 +7,6 @@
 +    <span class="gdoc-footer__item" style="margin-left: auto;">
 +       {{if not (eq .GitInfo  nil)  }} Version: {{.GitInfo.AbbreviatedHash}} {{end}}
 +    </span>
-     {{ if (default true .Site.Params.GeekdocBackToTop) }}
+     {{ if (default true .Site.Params.geekdocBackToTop) }}
        <div class="flex flex-25 justify-end">
          <span class="gdoc-footer__item text-right">

@@ -1,4 +1,4 @@
-THEME_VERSION := v0.32.4
+THEME_VERSION := v0.44.0
 THEME := hugo-geekdoc
 THEMEDIR := themes
 

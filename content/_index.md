@@ -11,6 +11,8 @@ UnifiedPush is a set of specifications and tools that lets the user choose how p
 * I use Conversations, the XMPP client: [Conversations (Android)](/users/distributors/conversations/)
 * For other options, see below.
 
+---
+
 ## Getting Started
 
 Any app can be used with any distributor:

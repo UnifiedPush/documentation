@@ -7,8 +7,7 @@ aliases : ["intro"]
 
 {{< toc-tree >}}
 
-UnifiedPush is a standard for receiving push notifications[\*](/users/faq/#what-are-push-notifications).
-UnifiedPush allows you to choose between multiple implementations and servers, based on your preferences. The core UnifiedPush tools are all free and open source software.
+---
 
 ## Definitions
 * The **Distributor** is the application you install on your device to get notifications. It receives notifications and distributes them to the other applications.

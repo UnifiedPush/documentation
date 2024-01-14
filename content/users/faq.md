@@ -38,3 +38,7 @@ UnifiedPush was born in the OpenPush chat. There are some similar core ideas as 
 ### Should I use UnifiedPush, Unified Push, Unifiedpush or unified push? Is it related to the Aerogear UnifiedPush server or the Unified Push Alliance (UPA)?
 
 This is UnifiedPush. If there is any possibility of confusion, use UnifiedPush.org. UnifiedPush.org is not related to Aerogear or the UnifiedPush Alliance in any way.
+
+### Any other question ?
+
+Please reach us on matrix : <https://matrix.to/#/#unifiedpush:matrix.org>

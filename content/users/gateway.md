@@ -4,6 +4,13 @@ title: Gateway
 aliases: ["/developers/gateway/"]
 ---
 
+{{< hint type=important >}}
+**For self-hosters only**
+
+If you use a public push server, this page doesn't apply to you.
+This page contains information to setup a component that can be used by people self-hosting their push server.
+{{< /hint >}}
+
 Gateways are ways to convert the application server format of notifications to the UnifiedPush format of notifications. 
 
 Right now, the only gateway that exists is for the Matrix protocol.

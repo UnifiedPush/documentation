@@ -31,10 +31,10 @@ This is how UnifiedPush notifications flow:
 
 ### Developers
 
-* [Definitions](/spec/definitions)
+* [Definitions](/developers/spec/definitions)
 * [Use UnifiedPush for your app](/developers/intro)
-* [Create an Android Distributor](/spec/android) (and check other distrib code)
-* [Create a Linux Distributor](/spec/dbus) (and check other distrib code)
+* [Create an Android Distributor](/developers/spec/android) (and check other distrib code)
+* [Create a Linux Distributor](/developers/spec/dbus) (and check other distrib code)
 * If you're adding UnifiedPush support to your app, we'd love to talk to you! We recommend joining the chat below.
 
 ### Communication

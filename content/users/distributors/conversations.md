@@ -4,10 +4,7 @@ geekdocHiddenTocTree: false
 title: Conversations (XMPP) - Android
 weight: 20
 ---
-{{< hint type=important title=News! >}}
-Conversations [recently started supporting UnifiedPush](https://gultsch.social/@daniel/109630522775489629) in [v2.12.0](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md)!
-The founder of Prosody also [made a module to support UnifiedPush](https://floss.social/@mattj/109666686416465083), compatible with Conversations.
-{{< /hint >}}
+
 Conversations is a Jabber/XMPP instant messaging client for Android which can also act as a UnifiedPush distributor.
 
 * License: GPLv3

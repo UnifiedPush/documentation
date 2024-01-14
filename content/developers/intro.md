@@ -5,7 +5,7 @@ weight: -10
 
 This documentation is for application developers who want to use the UnifiedPush library.
 
-If you want to write a new distributor, please refer to the [definitions](/developers/spec/definitions/) and the [specifications](/developers/spec/android/). You may also want to look at the code of [NoProvider2Push](/users/distributors/np2p/), which is mostly only UnifiedPush related code.
+If you want to write a new distributor, please refer to the [definitions](/developers/spec/definitions/) and the [specifications](/developers/spec/android/). You may also want to look at the code of [NexPush](/users/distributors/nextpush/).
 
 Reading [the definitions](/developers/spec/definitions/) may help you to understand this part.
 

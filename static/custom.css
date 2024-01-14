@@ -1,3 +1,9 @@
+:root,
+:root[color-theme="dark"],
+:root[color-theme="light"]{
+  --header-background: #8344da;
+}
+
 .app-store-logos figure {
 	display: inline-block;
 	margin: 0;

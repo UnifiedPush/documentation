@@ -7,10 +7,13 @@ more:
   - name: Matrix Chat
     ref: "https://matrix.to/#/#unifiedpush:matrix.org"
     external: true
-  - name: Liberapay
-    ref: "https://liberapay.com/S1m/"
-    external: true
-  - name: Mastodon @unifiedpush@fosstodon.org
+    icon: "gdoc_matrix"
+  - name: Mastodon
     ref: "https://fosstodon.org/@unifiedpush"
     external: true
+    icon: "gdoc_mastodon"
+  - name: Donate
+    ref: "https://liberapay.com/S1m/"
+    external: true
+    icon: "gdoc_heart"
 

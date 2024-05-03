@@ -33,6 +33,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [Mercurygram](https://github.com/drizzt/Telegram-FOSS/tree/Mercurygram)                             | Telegram client    | December 2023  | [v10.3.2.1](https://github.com/drizzt/Telegram-FOSS/releases/tag/v10.3.2.1)         | [generic](../distributors)                                                                                                 |
 | [Element-X](https://github.com/element-hq/element-x-android)                                        | Matrix chat        | January 2024   | v0.4.2                                                                              | [generic](../distributors/)                                                                                                |
 | [SchildiChat Next](https://github.com/SchildiChat/schildichat-android-next)                         | Matrix chat        | January 2024   | v0.4.2.sc1                                                                          | [generic](../distributors/)                                                                                                |
+| [Nagram](https://github.com/NextAlone/Nagram)                                                       | Telegram client    | April 2024     | [10.9.1.1165](https://github.com/NextAlone/Nagram/releases/tag/1165)        | [generic](../distributors/)
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 

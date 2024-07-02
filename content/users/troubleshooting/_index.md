@@ -1,12 +1,13 @@
 ---
 title: Troubleshooting your setup
+geekdocCollapseSection: true
 ---
 
 This page helps you resolve problems if an app is not working with UnifiedPush. It is aimed at general users who might be trying to use UnifiedPush for the first time.
 
 *Using Matrix client Element with matrix.org and ntfy.sh? Try [mpeter50's Matrix-Ntfy debugging advices for 2024 Q2](https://gist.github.com/mpeter50/9220dac1056c9a66c313d049838c1ab2).*
 
-*Running your own UnifiedPush server? Of course you should check its logs too. That is out of scope of this article.*
+*Running your own UnifiedPush server? See [Troubleshooting Self-Hosted UnifiedPush and Matrix Servers](/users/troubleshooting/self-hosted-with-matrix/).*
 
 ## Understand UnifiedPush
 

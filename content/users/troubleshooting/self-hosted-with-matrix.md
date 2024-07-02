@@ -8,8 +8,6 @@ This page helps you resolve problems with self-hosting and integrating your Unif
 
 *See also: [mpeter50's Matrix-Ntfy debugging advices for 2024 Q2](https://gist.github.com/mpeter50/9220dac1056c9a66c313d049838c1ab2).*
 
-*Initially written [by p1gp1g](https://github.com/element-hq/element-android/issues/7069#issuecomment-2109439991); lightly edited.*
-
 ---
 
 First, **if you self-host your matrix homeserver and your push server: there is a high probability you have not set the [`ip_range_whitelist`](https://matrix-org.github.io/synapse/latest/usage/configuration/config_documentation.html#ip_range_whitelist)**.

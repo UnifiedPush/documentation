@@ -5,10 +5,6 @@ geekdocCollapseSection: true
 
 This page helps you resolve problems if an app is not working with UnifiedPush. It is aimed at general users who might be trying to use UnifiedPush for the first time.
 
-*Using Matrix client Element with matrix.org and ntfy.sh? Try [mpeter50's Matrix-Ntfy debugging advices for 2024 Q2](https://gist.github.com/mpeter50/9220dac1056c9a66c313d049838c1ab2).*
-
-*Running your own UnifiedPush server? See [Troubleshooting Self-Hosted UnifiedPush and Matrix Servers](/users/troubleshooting/self-hosted-with-matrix/).*
-
 ## Understand UnifiedPush
 
 First check these requirements and expectations.
@@ -20,11 +16,27 @@ You need several components to use UnifiedPush. Learn more about these in the [U
 - ... listening to a UnifiedPush **Push Server** (somewhere else)
 - ... listening to Your App's **App Server** (such as a messaging server).
 
-You need to choose a Distributor and Push Server that work together. On the other hand, Your Apps don't affect this choice, because any UnifiedPush-compatible App should work with any Distributor and Push Server.
+For everything to work:
 
-Once the Distributor and Push Server are working, Your App should (quietly) detect and use it. Don't expect Your App to need any UnifiedPush configuration, except perhaps if it detects more than one push provider (or none).
+- ***Your App* must be able to communicate with the *Distributor***.
+
+Any UnifiedPush-compatible application works with any Distributor. You have to be sure the application supports UnifiedPush. Some applications quietly detect and use your Distrbutor, so don't expect *Your App*to need any UnifiedPush configuration.
 
 In general, all UnifiedPush configuration (such as details of its Server) is done in the distributor, not in Your App.
+
+For further details, see [*Check Your App Supports UnifiedPush*](#check-your-app-supports-unifiedpush).
+
+- ***Your distributor* must be able to communicate with the *Push Server***.
+
+There should not be any problem, except if you self-host your server. There is an Example application to test this setup.
+
+For further details, see [*The Distributor*](#the-distributor).
+
+- ***The Push Server* must be able to communicate with the *App Server***. 
+
+There might be network or configuration issues if you self-host the Push Server or the App Server. If you use public servers, your App Server may be rate-limited.
+
+For further details, see [*The Push Server and Rate Limits*](#the-push-server-and-rate-limits).
 
 ## Check Your App Supports UnifiedPush
 
@@ -36,20 +48,28 @@ Check that your specific app version and variant claims to support UnifiedPush.
 
 ## The Distributor
 
-In *most cases* you need to choose, install and configure a [UnifiedPush distributor](/users/distributors/), which is available as an app. Follow its instructions carefully. It will need special permissions as it has to stay running in the background.
-
-An exception is if *Your App* has a UnifiedPush distributor built in. (The XMPP client [Conversations](/users/distributors/conversations/) is one.) In that case you do not need a separate distributor (you only need one on each device). You  can still check this one is working, in the same way as if it were separate.
+You need to choose, install and configure a [UnifiedPush distributor](/users/distributors/), which is available as an app. Follow its instructions carefully. It will need special permissions as it has to stay running in the background.
 
 To check if you already have a UnifiedPush distributor installed, you can:
 
-- use the UP-Example app (see below): if the `REGISTER` function succeeds, then a distributor is installed;
+- use the UP-Example app (see [*Troubleshooting with the UP-Example App (Android)*](#troubleshooting-with-the-up-example-app-android)): if the `REGISTER` function succeeds, then a distributor is installed;
 - search your installed apps for ones named in the [UnifiedPush distributor](/users/distributors/) documentation.
 
 ## The Push Server and Rate Limits
 
+* **Rate limits**
+
 Consider who provides the Push Server for you. It may have limitations, such as rate limits, especially if it's provided to you free-of-charge. This is one case where a simple test may not show a problem, but real push notifications may not arrive.
 
-- see: [ntfy.sh limitations](https://docs.ntfy.sh/publish/#limitations)
+For instance, see [ntfy.sh limitations](https://docs.ntfy.sh/publish/#limitations).
+
+* **App server to Push Server**
+
+If you self-host your Push Server, the App Server may not be able to reach your Push Server. You can check if you have a problem with the App Server not able to reach your Push Server by testing with another Distriutor, see [*Troubleshooting with a Distributor App*](#troubleshooting-with-a-distributor-app)
+
+If you self-host your App Server, there might be network errors, or specific configuration to add. You can check if another App Server can reach your push server, see [*Troubleshooting with Other Apps*](#troubleshooting-with-other-apps).
+
+For matrix users, there is a specific troubleshooting page : [*Troubleshooting Self-Hosted UnifiedPush and Matrix Servers*](/users/troubleshooting/self-hosted-with-matrix/).
 
 ## Troubleshooting with the UP-Example App (Android)
 
@@ -57,8 +77,10 @@ You can test the Distributor and Push Server using the simple [UP-Example](https
 
 Click the `REGISTER` button and then the `TEST` button. You should immediately receive an example notification.
 
-- If it won't register, or you don't receive a notification, then there is something wrong with your Distributor or Push Server.
-- If you do receive this test notification, then the problem may be in Your App. See "Use Notification Troubleshooting Tools" below.
+- If it won't register, then your distributor is not correctly configured with your push server.
+- If you have an error while testing the push notifications, then your push server is not correctly configured.
+- If you don't have an error and you don't receive a notification, then your distributor is not correctly configured with your push server.
+- If you do receive this test notification, then the problem may be in Your App. See [*The Push Server and Rate Limits*](#the-push-server-and-rate-limits).
 
 ## Troubleshooting with a Distributor App
 

@@ -1,0 +1,18 @@
+steps:
+  publish:
+    image: fedora
+    when:
+      branch: main
+      event: [push, manual]
+    commands:
+      - dnf install -y git hugo make patch
+      - mkdir -p ~/.ssh
+      - echo $ssh_privkey | base64 -d > ~/.ssh/id_ed25519
+      - chmod 700 ~/.ssh
+      - chmod 400 ~/.ssh/id_ed25519
+      - ssh-keyscan codeberg.org >> ~/.ssh/known_hosts
+      - git config --global user.email "ci@localhost"
+      - git config --global user.name "CI"
+      - make install
+      - make publish
+    secrets: [ ssh_privkey ]

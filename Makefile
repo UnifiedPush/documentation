@@ -8,6 +8,16 @@ serve:
 build:
 	hugo --minify
 
+publish:
+	ls -la ~/ ~/.ssh
+	git clone git@codeberg.org:UnifiedPush/pages.git
+	sed -i '/relativeURLs/ s/true/false/' config.toml
+	hugo --minify
+	rm -rf public/includes/spec/
+	cp -r pages/.git public/
+	# 1 line, to stay in public dir
+	cd public && git commit -a -m "Update doc" && git push
+
 install:
 	rm -rf $(THEMEDIR)/$(THEME)
 	mkdir -p $(THEMEDIR)/$(THEME)/ ; \

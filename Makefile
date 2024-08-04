@@ -16,7 +16,7 @@ publish:
 	rm -rf public/includes/spec/
 	cp -r pages/.git public/
 	# 1 line, to stay in public dir
-	cd public && git commit -a -m "Update doc" && git push
+	cd public && git add . && git commit -m "Update doc" && git push
 
 install:
 	rm -rf $(THEMEDIR)/$(THEME)

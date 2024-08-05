@@ -5,6 +5,10 @@ geekdocCollapseSection: true
 
 This page helps you resolve problems if an app is not working with UnifiedPush. It is aimed at general users who might be trying to use UnifiedPush for the first time.
 
+## Index
+
+{{<toc>}}
+
 ## Understand UnifiedPush
 
 First check these requirements and expectations.

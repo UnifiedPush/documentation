@@ -73,7 +73,9 @@ If you self-host your Push Server, the App Server may not be able to reach your 
 
 If you self-host your App Server, there might be network errors, or specific configuration to add. You can check if another App Server can reach your push server, see [*Troubleshooting with Other Apps*](#troubleshooting-with-other-apps).
 
-For matrix users, there is a specific troubleshooting page : [*Troubleshooting Self-Hosted UnifiedPush and Matrix Servers*](/users/troubleshooting/self-hosted-with-matrix/).
+For ntfy self-hosters, there is a specific troubleshooting page : [*Troubleshooting Self-Hosted Ntfy Servers*](/users/troubleshooting/self-hosted-ntfy/).
+
+For matrix self-hosters, there is a specific troubleshooting page : [*Troubleshooting Self-Hosted UnifiedPush and Matrix Servers*](/users/troubleshooting/self-hosted-with-matrix/).
 
 ## Troubleshooting with the UP-Example App (Android)
 

@@ -18,7 +18,7 @@ If you don't receive the notification, the problem comes from your push provider
 
   * If you use ntfy, double check you have correctly set the authorizations: UnifiedPush topics (they all start with “up”) world-writeable (https://unifiedpush.org/users/distributors/ntfy/#limit-access-to-some-users-acl) *
 
-  * Test with [UP-Example](https://f-droid.org/en/packages/org.unifiedpush.example/) ([see how](http://localhost:8001/users/troubleshooting/troubleshooting/#troubleshooting-with-the-up-example-app-android))
+  * Test with [UP-Example](https://f-droid.org/en/packages/org.unifiedpush.example/) ([see how](/users/troubleshooting/#troubleshooting-with-the-up-example-app-android))
 
 If you receive the test notification:
 

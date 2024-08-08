@@ -4,10 +4,6 @@ title: Troubleshooting Self-Hosted UnifiedPush and Matrix Servers
 
 This page helps you resolve problems with self-hosting and integrating your UnifiedPush and Matrix (Synapse) servers. This is aimed at people managing their own servers.
 
-*See also: [Troubleshooting your setup](/users/troubleshooting/), aimed at end-users but also helpful for people managing their own servers.*
-
-*See also: [mpeter50's Matrix-Ntfy debugging advices for 2024 Q2](https://gist.github.com/mpeter50/9220dac1056c9a66c313d049838c1ab2).*
-
 ---
 
 First, **if you self-host your matrix homeserver and your push server: there is a high probability you have not set the [`ip_range_whitelist`](https://matrix-org.github.io/synapse/latest/usage/configuration/config_documentation.html#ip_range_whitelist)**.
@@ -39,3 +35,9 @@ If you receive the test notification:
 ---
 
 \* *indicates the most common issues.*
+
+---
+
+*See also: [Troubleshooting your setup](/users/troubleshooting/), aimed at end-users but also helpful for people managing their own servers.*
+
+*See also: [mpeter50's Matrix-Ntfy debugging advices for 2024 Q2](https://gist.github.com/mpeter50/9220dac1056c9a66c313d049838c1ab2).*

@@ -169,7 +169,7 @@ unregisterApp(
 
 ## Receiving Push Messages
 
-To receive Push Messages you should extend the class _MessagingReceiver_ and implement the 5 following methods:
+To receive Push Messages you should extend the class _MessagingReceiver_ and implement the following four methods:
 
 {{< tabs "Receiver" >}}
 {{< tab "Kotlin" >}}

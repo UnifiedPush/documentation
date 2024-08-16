@@ -45,5 +45,5 @@ Some push servers come with a built-in matrix gateway :
 
 Common-Proxies is a set of rewrite proxies and push gateways for UnifiedPush. It can be used as a matrix gateway. If needed, it supports forwarding to any public remote URL with defense against requests to internal networks.
 
-Information on setup is in the documentation for the [Common-Proxies](https://github.com/UnifiedPush/common-proxies)
+Information on setup is in the documentation for the [Common-Proxies](https://codeberg.org/UnifiedPush/common-proxies)
 

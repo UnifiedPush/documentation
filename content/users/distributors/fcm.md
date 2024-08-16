@@ -8,7 +8,7 @@ weight: 60
 This Distributor doesn't need to do anything but use Google's services.
 
 * License: Apache2
-* Sources: <https://github.com/UnifiedPush/fcm-distributor>
+* Sources: <https://codeberg.org/UnifiedPush/fcm-distributor>
 * Server: N/A (Google)
 * Download for Android:
 

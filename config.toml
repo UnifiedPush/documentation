@@ -43,7 +43,7 @@ enableRobotsTXT = true
 
   # (Optional, default none) Set source repository location. Used for 'Edit this page' links.
   # You can also specify this parameter per page in front matter.
-  geekdocRepo = "https://github.com/UnifiedPush/documentation"
+  geekdocRepo = "https://codeberg.org/UnifiedPush/documentation"
 
   # (Optional, default none) Enable 'Edit this page' links. Requires 'GeekdocRepo' param
   # and path must point to 'content' directory of repo.

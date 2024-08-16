@@ -2,7 +2,7 @@
 title: Flutter
 ---
 
-An [example application](https://github.com/UnifiedPush/flutter-connector/tree/main/example) is available to show basic usage of the library.
+An [example application](https://codeberg.org/UnifiedPush/flutter-connector/tree/main/example) is available to show basic usage of the library.
 
 ## Index
 

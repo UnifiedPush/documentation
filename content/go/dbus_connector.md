@@ -1,5 +1,5 @@
 +++
-vanity = "github.com/UnifiedPush/go_dbus_connector"
+vanity = "codeberg.org/UnifiedPush/go_dbus_connector"
 root = "unifiedpush.org"
 
 # aliases for user convinience, not mandatory for things to work

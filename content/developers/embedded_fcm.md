@@ -12,8 +12,8 @@ There are 2 libraries doing it: one using the Google Firebase library and anothe
 
 ## About
 
-1. The [Android Embedded FCM Distributor](https://github.com/UnifiedPush/android-embedded_fcm_distributor) is the original embedded distributor. It uses the official Google library for FCM support. However, it is proprietary thus cannot be included on app-stores like F-Droid.
-1. The [Android FOSS Embedded FCM Distributor](https://github.com/UnifiedPush/android-foss_embedded_fcm_distributor) is a new library. It reimplements the same API that the Google library uses. Since it's open source, it can be used on FOSS app stores like F-Droid.
+1. The [Android Embedded FCM Distributor](https://codeberg.org/UnifiedPush/android-embedded_fcm_distributor) is the original embedded distributor. It uses the official Google library for FCM support. However, it is proprietary thus cannot be included on app-stores like F-Droid.
+1. The [Android FOSS Embedded FCM Distributor](https://codeberg.org/UnifiedPush/android-foss_embedded_fcm_distributor) is a new library. It reimplements the same API that the Google library uses. Since it's open source, it can be used on FOSS app stores like F-Droid.
 
 ## Usage
 
@@ -143,7 +143,7 @@ As a developer, if you're using the FCM embedded distributor, you will need a re
 
 We recommend using the following as the gateway.
 
-[UnifiedPush Common-Proxies](https://github.com/UnifiedPush/common-proxies) is a program can be installed to run as a rewrite proxy for FCM. If you don't have a server to host this on, ask in the UnifiedPush chat, we can help out.
+[UnifiedPush Common-Proxies](https://codeberg.org/UnifiedPush/common-proxies) is a program can be installed to run as a rewrite proxy for FCM. If you don't have a server to host this on, ask in the UnifiedPush chat, we can help out.
 
 Traffic from /FCM on any reverse proxy (for TLS) can be proxied to it. The following is an example for Nginx.
 

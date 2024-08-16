@@ -2,7 +2,7 @@
 title: Android
 ---
 
-An [example application](https://github.com/UnifiedPush/android-example) is available to show basic usage of the library.
+An [example application](https://codeberg.org/UnifiedPush/android-example) is available to show basic usage of the library.
 
 ## Index
 
@@ -55,7 +55,7 @@ To register for receiving push services you have two options:
 //
 // [1] To personnalize the dialogs:
 //     RegistrationDialogContent().apply {noDistributorDialog.message = "0 found"}
-// For other param, visit <https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/RegistrationDialogContent.kt>
+// For other param, visit <https://codeberg.org/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/RegistrationDialogContent.kt>
 
 registerAppWithDialog(context)
 ```
@@ -111,7 +111,7 @@ To register for receiving push services you have two options:
 // To personnalize the dialogs:
 //     RegistrationDialogContent dialog = new RegistrationDialogContent()
 //     dialog.getNoDistributorDialog().setMessage("0 found");
-// For other param, visit <https://github.com/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/RegistrationDialogContent.kt>
+// For other param, visit <https://codeberg.org/UnifiedPush/android-connector/blob/main/connector/src/main/java/org/unifiedpush/android/connector/RegistrationDialogContent.kt>
 //
 registerAppWithDialog(
     context, // Context

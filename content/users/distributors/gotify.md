@@ -13,7 +13,7 @@ Check out one of the many other UnifiedPush [distributors](/users/distributors).
 Gotify is "a simple server for sending and receiving messages".
 
 * License: MIT
-* Sources: <https://github.com/UnifiedPush/gotify-android/>
+* Sources: <https://codeberg.org/UnifiedPush/gotify-android/>
 * Server: <https://github.com/gotify/server>
 * Technology: WebSocket
 * Download for Android:
@@ -66,4 +66,4 @@ location /UP {
 
 ### Common-Proxies
 
-It can be achieved with [UnifiedPush Common Proxies](https://github.com/UnifiedPush/common-proxies), which is a standalone program that can be installed to run as a rewrite proxy for Gotify. It can also run with docker.
+It can be achieved with [UnifiedPush Common Proxies](https://codeberg.org/UnifiedPush/common-proxies), which is a standalone program that can be installed to run as a rewrite proxy for Gotify. It can also run with docker.

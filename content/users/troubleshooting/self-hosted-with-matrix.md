@@ -28,7 +28,7 @@ If you receive the test notification:
 
   * Make sure your synapse server can reach your push server: open a shell on your synapse server, or container if you use it, and try to send a request with curl `curl https://mypushdomain.tld/foo` *
 
-  * Make sure you have disable battery optimization for your distributor and Element.
+  * Make sure you have disable battery optimization for your distributor and Element. On recent Android systems, you have to enable "Allow background usage", __and the click on this label__ to open a new menu, then thick "Unrestricted".
 
   * Check https://dontkillmyapp.com/ and follow the suggested steps if needed
 

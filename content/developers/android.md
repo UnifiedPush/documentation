@@ -2,7 +2,7 @@
 title: Android
 ---
 
-An [example application](https://github.com/UnifiedPush/android-example) is available to show basic usage of the library.
+An [example application](https://codeberg.org/UnifiedPush/android-example) is available to show basic usage of the library.
 
 ## Index
 
@@ -46,7 +46,6 @@ import org.unifiedpush.android.connector.UnifiedPush
 import org.unifiedpush.android.connector.ui.SelectDistributorDialogBuilder
 import org.unifiedpush.android.connector.ui.UnifiedPushFunctions
 /* ... */
-
 
 // Options:
 // "instances" can be used to handle multiple registrations

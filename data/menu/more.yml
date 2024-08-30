@@ -1,9 +1,9 @@
 ---
 more:
-  - name: GitHub
-    ref: "https://github.com/UnifiedPush"
+  - name: Codeberg
+    ref: "https://codeberg.org/UnifiedPush"
     external: true
-    icon: "gdoc_github"
+    icon: "gdoc_git"
   - name: Matrix Chat
     ref: "https://matrix.to/#/#unifiedpush:matrix.org"
     external: true

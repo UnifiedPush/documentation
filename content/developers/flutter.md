@@ -115,20 +115,49 @@ class UnifiedPushReceiver : UnifiedPushReceiver() {
 
 ## Register for Push
 
-To register for receiving push services you have two **options**, after initializing:
+To register for receiving push services you have **two options**, after initializing:
 
-1. Have the library handle distributor selection
+{{< expand "Use unifiedpush_ui's dialog" >}}
 
 ```dart
+import 'package:unifiedpush/unifiedpush.dart';
+import 'package:unifiedpush_ui/unifiedpush_ui.dart';
+/* ... */
+
+class UPFunctions extends UnifiedPushFunctions {
+  final List<String> features = [/*list of features*/];
+  @override
+  Future<String?> getDistributor() async {
+    return await UnifiedPush.getDistributor();
+  }
+
+  @override
+  Future<List<String>> getDistributors() async {
+    return await UnifiedPush.getDistributors(features);
+  }
+
+  @override
+  Future<void> registerApp(String instance) async {
+    await UnifiedPush.registerApp(instance, features);
+  }
+
+  @override
+  Future<void> saveDistributor(String distributor) async {
+    await UnifiedPush.saveDistributor(distributor);
+  }
+}
+
 // Call the library function
-UnifiedPush.registerAppWithDialog(
+UnifiedPushUi(
     context,
-    instance,                        // Optionnal String, to get multiple endpoints (one per instance)
-    [featureAndroidBytesMessage]     // Optionnal String Array with required features
-);
+    [instance],             // Optionnal String, to get multiple endpoints (one per instance)
+    UPFunctions()
+).registerAppWithDialog();
 ```
 
-2. Handle selection yourself
+{{< /expand >}}
+
+{{< expand "Handle the selection yourself" >}}
 
 ```dart
 // Check if a distributor is already registered
@@ -155,6 +184,7 @@ if (await UnifiedPush.getDistributor() != "") {
 }
 ```
 
+{{< /expand >}}
 ## Unregister
 
 ```dart

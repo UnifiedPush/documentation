@@ -119,6 +119,14 @@ To register for receiving push services you have **two options**, after initiali
 
 {{< expand "Use unifiedpush_ui's dialog" >}}
 
+If there is no distributor, it will inform the user they need one.
+
+If there is a single distributor, it will register to it.
+
+If there are many distributors, it will open a dialog to ask the user which one to use.
+
+Once a distributor is saved, calling this method will register again to the saved distributor.
+
 ```dart
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:unifiedpush_ui/unifiedpush_ui.dart';

@@ -77,7 +77,8 @@ SelectDistributorDialogBuilder(
     listOf<String>(INSTANCE_DEFAULT),
     object : UnifiedPushFunctions {/*...*/}
 ){
-    override var registrationDialogContent = MyDialogContent // See https://codeberg.org/UnifiedPush/android-connector-ui/src/branch/main/connector_ui/src/main/java/org/unifiedpush/android/connector/ui/RegistrationDialogContent.kt
+    // See https://codeberg.org/UnifiedPush/android-connector-ui/src/branch/main/connector_ui/src/main/java/org/unifiedpush/android/connector/ui/RegistrationDialogContent.kt
+    override var registrationDialogContent = MyDialogContent
 
     override fun onNoDistributorFound() {
         // TODO
@@ -213,6 +214,7 @@ private class MyDialogBuilder extends SelectDistributorDialogBuilder {
         public MyDialogBuilder(@NonNull Context context, @NonNull List<String> instances, @NonNull UnifiedPushFunctions unifiedPushFunctions) {
             super(context, instances, unifiedPushFunctions);
         }
+        // See https://codeberg.org/UnifiedPush/android-connector-ui/src/branch/main/connector_ui/src/main/java/org/unifiedpush/android/connector/ui/RegistrationDialogContent.kt
         RegistrationDialogContent registrationDialogContent = MyContent;
         @Override
         public void onNoDistributorFound() {

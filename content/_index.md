@@ -42,3 +42,10 @@ This is how UnifiedPush notifications flow:
 ### Communication
 
 * You can reach us on our main chat room on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)
+
+## Funding
+
+This project is funded through [NGI Zero Core](https://nlnet.nl/core), a fund established by [NLnet](https://nlnet.nl) with financial support from the European Commission's [Next Generation Internet](https://ngi.eu) program. Learn more at the [NLnet project page](https://nlnet.nl/project/UnifiedPush).
+
+[<img src="./img/nlnet_banner.png" alt="NLnet foundation logo" width="20%" />](https://nlnet.nl)
+[<img src="./img/NGI0_tag.svg" alt="NGI Zero Logo" width="20%" />](https://nlnet.nl/core)

@@ -34,6 +34,7 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [Element-X](https://github.com/element-hq/element-x-android)                                        | Matrix chat        | January 2024   | v0.4.2                                                                              | [generic](../distributors/)                                                                                                |
 | [SchildiChat Next](https://github.com/SchildiChat/schildichat-android-next)                         | Matrix chat        | January 2024   | v0.4.2.sc1                                                                          | [generic](../distributors/)                                                                                                |
 | [Nagram](https://github.com/NextAlone/Nagram)                                                       | Telegram client    | April 2024     | [10.9.1.1165](https://github.com/NextAlone/Nagram/releases/tag/1165)        | [generic](../distributors/)
+| [DAVx⁵](https://www.davx5.com/)                                                                  | CalDAV/CardDAV/WebDAV | September 2024 | [v4.4.2-ose](https://github.com/bitfireAT/davx5-ose/releases/tag/v4.4.2-ose)        | [Nextcloud extension for WebDAV-Push](https://github.com/bitfireAT/nc_ext_dav_push)
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 

@@ -13,6 +13,7 @@ publish:
 	sed -i '/relativeURLs/ s/true/false/' config.toml
 	hugo --minify
 	rm -rf public/includes/spec/
+	rm -rf public/kdoc/.git
 	cp -r pages/.git public/
 	# 1 line, to stay in public dir
 	cd public && git add . && git commit -m "Update doc" && git push

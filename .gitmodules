@@ -1,3 +1,6 @@
 [submodule "static/includes/spec"]
 	path = static/includes/spec
 	url = https://codeberg.org/UnifiedPush/specifications.git
+[submodule "static/kdoc"]
+	path = static/kdoc
+	url = https://codeberg.org/UnifiedPush/kdoc

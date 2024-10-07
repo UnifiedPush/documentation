@@ -9,7 +9,6 @@ build:
 	hugo --minify
 
 publish:
-	ls -la ~/ ~/.ssh
 	git clone git@codeberg.org:UnifiedPush/pages.git
 	sed -i '/relativeURLs/ s/true/false/' config.toml
 	hugo --minify

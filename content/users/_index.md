@@ -1,4 +1,4 @@
 ---
-title: Users
+title: Getting started
 weight: -10
 ---

@@ -11,6 +11,8 @@ build:
 publish:
 	git clone git@codeberg.org:UnifiedPush/pages.git
 	sed -i '/relativeURLs/ s/true/false/' config.toml
+	# fix link for hugo
+	sed -i -e 's/messageack/message_ack/' -e 's/newendpoint/new_endpoint/' -e 's/registrationfailed/registration_failed/' static/includes/spec/specifications/*.md
 	hugo --minify
 	rm -rf public/includes/spec/
 	cp -r pages/.git public/

@@ -7,7 +7,7 @@ These two libraries are grouped together since they're based on the same code.
 - [Repository](https://codeberg.org/UnifiedPush/go_dbus_connector)
 - [Go Documentation](https://pkg.go.dev/unifiedpush.org/go/dbus_connector)
 
-An example app can be found in the [\_examples folder](https://codeberg.org/UnifiedPush/go_dbus_connector/tree/main/_examples) of this module's repository.
+An example app can be found in the [\_examples folder](https://codeberg.org/UnifiedPush/go_dbus_connector/src/branch/main/_examples) of this module's repository.
 
 {{< hint type=note >}}
 Linux support is still experimental, also check out [KUnifiedPush](https://invent.kde.org/libraries/kunifiedpush/) for an application-framework (KDE) based implementation.

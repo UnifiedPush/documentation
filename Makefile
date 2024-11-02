@@ -29,5 +29,6 @@ install:
 
 update-spec-version:
 	# update spec
-	git submodule foreach git pull origin main
+	cd ./static/includes/spec/
+	git pull origin main
 

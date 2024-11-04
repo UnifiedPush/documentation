@@ -28,7 +28,7 @@ You will need to add some code on your android project and host a FCM Rewrite pr
 * Add `id 'com.google.gms.google-services'` and the following implementation to your app level build.gradle.
 
 ```groovy
-    implementation('org.unifiedpush.android:embedded_fcm_distributor:2.5.0') {
+    implementation('org.unifiedpush.android:embedded-fcm-distributor:2.5.0') {
         exclude group: 'com.google.firebase', module: 'firebase-core'
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'

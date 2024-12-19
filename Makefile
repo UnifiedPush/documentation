@@ -15,6 +15,7 @@ publish:
 	sed -i -e 's/messageack/message_ack/' -e 's/newendpoint/new_endpoint/' -e 's/registrationfailed/registration_failed/' static/includes/spec/specifications/*.md
 	hugo --minify
 	rm -rf public/includes/spec/
+	rm -rf public/kdoc/.git
 	cp -r pages/.git public/
 	# 1 line, to stay in public dir
 	cd public && git add . && git commit -m "Update doc" && git push

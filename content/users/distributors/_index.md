@@ -16,10 +16,11 @@ aliases : ["intro"]
 
 ## Install a Distributor
 
-### Without self-hosting the server (Easy)
+### With the default server (Easy)
 
-* [ntfy](/users/distributors/ntfy): You just need to install it.
-* [gCompat UP-Distributor](/users/distributors/fcm): The same as above. Just be aware that it uses Google servers.
+* [Sunup](/users/distributors/sunup): Nothing to do. May not work with some non-up to date applications.
+* [ntfy](/users/distributors/ntfy): Nothing to do. The default server has rate limiting restrictions, if your application is blocked, you should change the server.
+* [gCompat UP-Distributor](/users/distributors/fcm): Nothing to do. Just be aware that it uses Google servers and requires Google Services.
 * [Conversations](/users/distributors/conversations): Conversations is an XMPP messenger which can also act as a distributor.
 
 ### Self-host the server (Difficult)
@@ -39,6 +40,10 @@ NextPush is a push server that can be hosted as a Nextcloud app. This is an easy
 Conversations is an XMPP instant messaging client for Android, with the ability to deliver UnifiedPush notifications using an existing XMPP account, on any server. This requires converting push notifications to XMPP messages first, which is done by a service hosted at `up.conversations.im`.
 
 The service at `up.conversations.im` can also be self-hosted. It is called a *rewrite proxy* in UnifiedPush parlance.
+
+#### [Sunup](/users/distributors/sunup)
+
+Sunup uses Mozilla's autopush-rs server. It can be self-hosted with or without docker. Steps are summarized on Sunup Readme. The project doesn't contain built-in gateway (eg. for matrix).
 
 ### Other options
 

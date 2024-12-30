@@ -5,7 +5,7 @@ UnifiedPush is a set of specifications and tools that lets the user choose how p
 
 ## Quick start
 
-* __I JUST WANT TO KNOW WHAT TO INSTALL__: [__ntfy (Android)__](/users/distributors/ntfy/)
+* __I JUST WANT TO KNOW WHAT TO INSTALL__: [Sunup (Android)](/users/distributors/sunup) or [ntfy (Android)](/users/distributors/ntfy/)
 * The same but I want to use Google for some reason: [gCompat-UP Distrib (Android)](/users/distributors/fcm/)
 * I have a Nextcloud server: [NextPush (Android)](/users/distributors/nextpush/)
 * I use Conversations, the XMPP client: [Conversations (Android)](/users/distributors/conversations/)

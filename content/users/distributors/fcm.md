@@ -1,7 +1,7 @@
 ---
 geekdocHidden: true
 geekdocHiddenTocTree: false
-title: UP-FCM Distributor (Google) - Android
+title: gCompat UP-Distributor (Google) - Android
 weight: 60
 ---
 

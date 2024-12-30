@@ -19,7 +19,7 @@ aliases : ["intro"]
 ### Without self-hosting the server (Easy)
 
 * [ntfy](/users/distributors/ntfy): You just need to install it.
-* [UP-FCM Distributor](/users/distributors/fcm): The same as above. Just be aware that it uses Google servers.
+* [gCompat UP-Distributor](/users/distributors/fcm): The same as above. Just be aware that it uses Google servers.
 * [Conversations](/users/distributors/conversations): Conversations is an XMPP messenger which can also act as a distributor.
 
 ### Self-host the server (Difficult)

@@ -13,6 +13,7 @@ Sunup is an easy way to use UnifiedPush that does not require an account.
 * Technology: WebSockets
 * Download for Android:
 
+[<img alt="Get it on IzzyOnDroid" src="/img/IzzyOnDroid.png" height=100 >](https://apt.izzysoft.de/fdroid/index/apk/org.unifiedpush.distributor.sunup)
 [Direct download](https://codeberg.org/Sunup/android/releases)
 
 ## Set Up

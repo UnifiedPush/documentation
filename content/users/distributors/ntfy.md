@@ -15,6 +15,8 @@ ntfy is an easy way to set up push server that does not require an account.
 * Download for Android:
 
 [<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100 >](https://f-droid.org/packages/io.heckel.ntfy)
+[<img alt="Get it on Google Play" src="/img/google-play-badge.png" height=100>](https://play.google.com/store/apps/details?id=io.heckel.ntfy)
+[Direct download](https://github.com/binwiederhier/ntfy-android/releases)
 
 ## Set Up
 

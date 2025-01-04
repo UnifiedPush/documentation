@@ -14,6 +14,7 @@ This Distributor doesn't need to do anything but use Google's services.
 
 [<img alt="Get it on IzzyOnDroid" src="/img/IzzyOnDroid.png" height=100 >](https://apt.izzysoft.de/fdroid/index/apk/org.unifiedpush.distributor.fcm)
 [<img alt="Get it on Google Play" src="/img/google-play-badge.png" height=100>](https://play.google.com/store/apps/details?id=org.unifiedpush.distributor.fcm)
+[Direct download](https://codeberg.org/UnifiedPush/fcm-distributor/releases)
 
 ## Requirements
 

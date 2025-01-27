@@ -27,3 +27,8 @@ Sunup is an easy way to use UnifiedPush that does not require an account.
 
 If you want to self host the server, you can find the steps here: <https://codeberg.org/Sunup/android#self-host>
 
+## Funding
+
+This project has been funded by [COVESA](https://covesa.global).
+
+[<img src="../../../img/COVESA_tag.jpg" alt="COVESA Logo" width="20%" />](https://covesa.global)

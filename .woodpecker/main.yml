@@ -5,8 +5,10 @@ steps:
       branch: main
       event: [push, manual]
     commands:
-      - echo $ssh_privkey | base64 -d > ~/.ssh/id_ed25519
+      - echo $$SSH_PRIVKEY | base64 -d > ~/.ssh/id_ed25519
       - chmod 400 ~/.ssh/id_ed25519
       - make install
       - make publish
-    secrets: [ ssh_privkey ]
+    environment:
+      SSH_PRIVKEY:
+        from_secret: ssh_privkey

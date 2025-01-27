@@ -49,3 +49,7 @@ This project is funded through [NGI Zero Core](https://nlnet.nl/core), a fund es
 
 [<img src="./img/nlnet_banner.png" alt="NLnet foundation logo" width="20%" />](https://nlnet.nl)
 [<img src="./img/NGI0_tag.svg" alt="NGI Zero Logo" width="20%" />](https://nlnet.nl/core)
+
+This project has been funded by [COVESA](https://covesa.global).
+
+[<img src="./img/COVESA_tag.jpg" alt="COVESA Logo" width="20%" />](https://covesa.global)

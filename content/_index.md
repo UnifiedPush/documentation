@@ -1,45 +1,36 @@
 ---
 title: UnifiedPush
 ---
-UnifiedPush is a set of specifications and tools that lets the user choose how push notifications[*](/users/faq/#what-are-push-notifications) are delivered. All in a free and open source way.
+UnifiedPush is a decentralized push notification system that lets you choose the service you want to use. It’s designed to be privacy-friendly, flexible, and open — making it perfect if you want control over your push notifications.
 
-## Quick start
+## Quickstart guides:
+* [Sunup](https://unifiedpush.org/users/distributors/sunup/): A quick and easy way to use UnifiedPush without signing up for an account.
+* [ntfy](https://unifiedpush.org/users/distributors/ntfy/): A lightweight, open-source push notification service that can be used as a UnifiedPush distributor.
+* [Conversations \(XMPP\)](https://unifiedpush.org/users/distributors/conversations/): A popular XMPP client that can both distribute and receive UnifiedPush notifications.
+* [NextPush](https://unifiedpush.org/users/distributors/nextpush/): A push notification service designed for Nextcloud.
+* [gCombat UP-Distributor](https://unifiedpush.org/users/distributors/fcm/): A simple and efficient UnifiedPush distributor designed for Android devices.
 
-* __I JUST WANT TO KNOW WHAT TO INSTALL__: [Sunup (Android)](/users/distributors/sunup) or [ntfy (Android)](/users/distributors/ntfy/)
-* The same but I want to use Google for some reason: [gCompat-UP Distrib (Android)](/users/distributors/fcm/)
-* I have a Nextcloud server: [NextPush (Android)](/users/distributors/nextpush/)
-* I use Conversations, the XMPP client: [Conversations (Android)](/users/distributors/conversations/)
-* For other options, see below.
+## Key benefits of UnifiedPush:
+* **Open standard:** Interoperable and resilient.
+* **Decentralized:** Not tied to any single company or service, reducing reliance on gatekeepers.
+* **Privacy first:** Push notifications are encrypted.
+* **Self-hostable:** Run your own notification server for as much control as you need.
+* **User Control:** The user chooses the service they use, not the developers.
 
----
+## Key features:
+* **No privileged services needed:** Use lightweight services and follow least privilege policy. Works on de-Googled Android devices and custom ROMs.
+* **Multiple distributors:** Choose from a [list of distributors](https://unifiedpush.org/users/distributors/).
+* **Easy integration:** Developers can add UnifiedPush support to their apps with minimal effort.
 
-## Getting Started
+## How it works
+### **Step 1: App Sends Notification:** 
+An app (e.g., a messaging app) sends a notification to a UnifiedPush distributor.
+### **Step 2. Distributor Delivers Notification:**
+The distributor (e.g., ntfy, NextPush, or a self-hosted server) receives the notification and forwards it to your device.
+### **Step 3. Device Receives Notification:**
+Your device gets the notification directly from the distributor, without involving Google Play Services.
 
-Any app can be used with any distributor:
-<br><br>
-<object style="max-height: 30em;" id="animation" type="image/svg+xml" data="./img/animation.svg" onload="this.parentNode.replaceChild(this.contentDocument.documentElement, this);">
-</object>
-<br><br><br>
-This is how UnifiedPush notifications flow:
-<br><br> 
-<object style="max-height: 30em;" id="animation" type="image/svg+xml" data="./img/animation-flow.svg" onload="this.parentNode.replaceChild(this.contentDocument.documentElement, this);">
-</object>
-
-### Users
-
-* [Introduction: Choose a distributor](/users/distributors)
-* [What apps support UnifiedPush?](/users/apps)
-* [FAQ](/users/faq)
-
-### Developers
-
-* [Definitions](/developers/spec/definitions)
-* [Use UnifiedPush for your app](/developers/intro)
-* [Create an Android Distributor](/developers/spec/android) (and check other distrib code)
-* [Create a Linux Distributor](/developers/spec/dbus) (and check other distrib code)
-* If you're adding UnifiedPush support to your app, we'd love to talk to you! We recommend joining the chat below.
-
-### Communication
+## Communication
 
 * You can reach us on our main chat room on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)
 

@@ -4,38 +4,48 @@ geekdocHiddenTocTree: false
 title: Conversations (XMPP) - Android
 weight: 20
 ---
+[<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100 >](https://f-droid.org/en/packages/eu.siacs.conversations/)
+[<img alt="Get it on Google Play" src="/img/google-play-badge.png" height=100>](https://play.google.com/store/apps/details?id=eu.siacs.conversations&pcampaignid=web_share)
 
-Conversations is a Jabber/XMPP instant messaging client for Android which can also act as a UnifiedPush distributor.
+Conversations is a popular XMPP client that can serve as a UnifiedPush distributor. This quickstart guide will walk you through the steps to get Conversations working with UnifiedPush.
 
+# Details
 * License: GPLv3
-* Sources: <https://codeberg.org/iNPUTmice/Conversations>
+* Sources: [https://codeberg.org/iNPUTmice/Conversations](https://codeberg.org/iNPUTmice/Conversations)
 * Server: Your XMPP Server with a Rewrite Proxy
 * Technology: XMPP
-* Download for Android:
 
-[<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100>](https://f-droid.org/en/packages/eu.siacs.conversations/)
+## Conversations quickstart guide
+### Step 1: Install Conversations
+Download Conversations from one of the following sources:
+* [Google Play Store](https://play.google.com/store/apps/details?id=eu.siacs.conversations&pcampaignid=web_share)
+* [F-Droid](https://f-droid.org/en/packages/eu.siacs.conversations/)
+### Step 2: Set up your XMPP account
+1. Open the Conversations app.
+2. If you already have an XMPP account, enter your credentials (username, password, and server address).
+3. If you don’t have an XMPP account, you can create one directly in the app or use a provider like:
+* [jabber.de](https://www.jabber.de/)
+* [xmpp.jp](https://xmpp.jp/)
+* [prosody.net](https://prosody.net/)
+4. Complete the setup and log in.
 
-## Set Up Android Client
-* Open Conversations Settings
-* Scroll down to *UnifiedPush Distributor*
-* Select the *XMPP Account* you want to receive notifications through
-* You're ready to use UnifiedPush!
+### Step 3: Enable UnifiedPush for your XMPP account
+1. Open **Conversations** and go to **Settings**.
+2. Navigate to **UnifiedPush Distributor**.
+3. Select **XMPP Account**
+4. Select your XMPP account
+5. Now push notifications for this account will use UnifiedPush
 
-[YouTube video](https://www.youtube.com/watch?v=wKTk6XGMp3I) demonstrating this.
+### Step 5: Set Up Conversations as a UnifiedPush distributor
+1. Open the app you want to use with UnifiedPush ([check this list for compatible apps](https://unifiedpush.org/users/apps/)).
+2. Look for the **Push Notification Settings** or **UnifiedPush Settings** in the app.
+3. Select **Conversations** as the UnifiedPush distributer
+4. Save the settings, and the app will now use NextPush to deliver push notifications.
 
-**Note**: Conversations requires converting UnifiedPush-style notifications to XMPP messages first, which is done by a service hosted at `up.conversations.im`. This service, called a *rewrite proxy*, can also be self-hosted.  
-**Note 2**: Conversations is NOT an *end user application*. Conversations is a *distributor* that keeps a background connection open and lets other apps receive notifications through it.
+### Step 6: Test notifications
+1. Trigger a test notification from the app you chose.
+2. Ensure that the notification is delivered to your device successfully.
+3. If notifications are not working, check Conversations settings and ensure it has a valid **Push Server** configured.
 
-
-## Self-Host
-
-In addition to a regular XMPP server, you need a **UnifiedPush->XMPP Rewrite Proxy** to turn UnifiedPush messages into XMPP messages.
-There are multiple options for rewrite proxies.
-
-### iNPUTmice's Official Rewrite Proxy
-
-[up](https://codeberg.org/iNPUTmice/up) is a proxy written in Java by the developer of Conversations. It's server independent and works with an external XMPP server.
-
-### Prosody mod_unified_push
-
-[mod_unified_push](https://modules.prosody.im/mod_unified_push) is a Prosody module that turns Prosody into a complete push server.
+## Self-host (optional)
+In addition to a regular XMPP server, you need a UnifiedPush->XMPP Rewrite Proxy to turn UnifiedPush messages into XMPP messages. There are multiple options for rewrite proxies.

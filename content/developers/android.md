@@ -23,11 +23,7 @@ One of the main purpose of UnifiedPush is to let the users chose the way they re
 
 If the users don't have any UnifiedPush Distributor installed and they have Google Services enabled, you may want to fallback to Google's FCM.
 
-You can embed an FCM Distributor, and if the user doesn’t have another distributor, this one will be used. These libraries basically act like UnifiedPush Distributors, but are internal to the app and pass notifications through FCM.
-
-There are 2 libraries doing it: one using the Google Firebase library and another entirely FOSS that doesn’t:
-* The [Embedded FCM Distributor](/kdoc/embedded_fcm_distributor "Module documentation") is the original embedded distributor. It uses the official Google library for FCM support. However, it is proprietary thus cannot be included on app-stores like F-Droid.
-* The [FOSS Embedded FCM Distributor](/kdoc/foss_embedded_fcm_distributor "Module documentation") is a new library. It reimplements the same API that the Google library uses. Since it’s open source, it can be used on FOSS app stores like F-Droid.
+You can embed an FCM Distributor, and if the user doesn’t have another distributor, this one will be used. [embedded_fcm_distributor](/kdoc/embedded_fcm_distributor "Module documentation") library basically act like an UnifiedPush Distributor, but is internal to the app and passes notifications through FCM. It doesn't contain proprietary code.
 
 ## Example implementation
 

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Webpush</title>
+    <script>
+// ece.js from https://phabricator.services.mozilla.com/D222665#change-GCzxUM80jDsK
+
+async function HKDF({ salt, ikm, info, length }) {
+  return await crypto.subtle.deriveBits(
+    { name: "HKDF", hash: "SHA-256", salt, info },
+    await crypto.subtle.importKey("raw", ikm, { name: "HKDF" }, false, [
+      "deriveBits",
+    ]),
+    length * 8
+  );
+}
+
+// https://datatracker.ietf.org/doc/html/rfc8188#section-2.2
+// https://datatracker.ietf.org/doc/html/rfc8188#section-2.3
+async function deriveKeyAndNonce(header) {
+  const { salt } = header;
+  const ikm = await getInputKeyingMaterial(header);
+
+  // cek_info = "Content-Encoding: aes128gcm" || 0x00
+  const cekInfo = new TextEncoder().encode("Content-Encoding: aes128gcm\0");
+  // nonce_info = "Content-Encoding: nonce" || 0x00
+  const nonceInfo = new TextEncoder().encode("Content-Encoding: nonce\0");
+
+  // (The XOR SEQ is skipped as we only create single record here, thus becoming noop)
+  return {
+    // the length (L) parameter to HKDF is 16
+    key: await HKDF({ salt, ikm, info: cekInfo, length: 16 }),
+    // The length (L) parameter is 12 octets
+    nonce: await HKDF({ salt, ikm, info: nonceInfo, length: 12 }),
+  };
+}
+
+// https://datatracker.ietf.org/doc/html/rfc8291#section-3.3
+// https://datatracker.ietf.org/doc/html/rfc8291#section-3.4
+async function getInputKeyingMaterial(header) {
+  // IKM:  the shared secret derived using ECDH
+  // ecdh_secret = ECDH(as_private, ua_public)
+  const ikm = await crypto.subtle.deriveBits(
+    {
+      name: "ECDH",
+      public: await crypto.subtle.importKey(
+        "raw",
+        header.userAgentPublicKey,
+        { name: "ECDH", namedCurve: "P-256" },
+        true,
+        []
+      ),
+    },
+    header.appServer.privateKey,
+    256
+  );
+  // key_info = "WebPush: info" || 0x00 || ua_public || as_public
+  const keyInfo = new Uint8Array([
+    ...new TextEncoder().encode("WebPush: info\0"),
+    ...header.userAgentPublicKey,
+    ...header.appServer.publicKey,
+  ])
+  return await HKDF({ salt: header.authSecret, ikm, info: keyInfo, length: 32 });
+}
+
+// https://datatracker.ietf.org/doc/html/rfc8188#section-2
+async function encryptRecord(key, nonce, data) {
+  // add a delimiter octet (0x01 or 0x02)
+  // The last record uses a padding delimiter octet set to the value 2
+  //
+  // (This implementation only creates a single record, thus always 2,
+  // per https://datatracker.ietf.org/doc/html/rfc8291/#section-4:
+  // An application server MUST encrypt a push message with a single
+  // record.)
+  const padded = new Uint8Array([...data, 2]);
+
+  // encrypt with AEAD_AES_128_GCM
+  return await crypto.subtle.encrypt(
+    { name: "AES-GCM", iv: nonce, tagLength: 128 },
+    await crypto.subtle.importKey("raw", key, { name: "AES-GCM" }, false, [
+      "encrypt",
+    ]),
+    padded
+  );
+}
+
+// https://datatracker.ietf.org/doc/html/rfc8188#section-2.1
+function writeHeader(header) {
+  var dataView = new DataView(new ArrayBuffer(5));
+  // https://codeberg.org/UnifiedPush/android-connector/issues/3
+  // dataView.setUint32(0, header.recordSize);
+  dataView.setUint32(0, 0x1000);
+  dataView.setUint8(4, header.keyid.length);
+  return new Uint8Array([
+    ...header.salt,
+    ...new Uint8Array(dataView.buffer),
+    ...header.keyid,
+  ]);
+}
+
+function validateParams(params) {
+  const header = { ...params };
+  if (!header.salt) {
+    throw new Error("Must include a salt parameter");
+  }
+  if (header.salt.length !== 16) {
+    // https://datatracker.ietf.org/doc/html/rfc8188#section-2.1
+    // The "salt" parameter comprises the first 16 octets of the
+    // "aes128gcm" content-coding header.
+    throw new Error("The salt parameter must be 16 bytes");
+  }
+  if (header.appServer.publicKey.byteLength !== 65) {
+    // https://datatracker.ietf.org/doc/html/rfc8291#section-4
+    // A push message MUST include the application server ECDH public key in
+    // the "keyid" parameter of the encrypted content coding header.  The
+    // uncompressed point form defined in [X9.62] (that is, a 65-octet
+    // sequence that starts with a 0x04 octet) forms the entirety of the
+    // "keyid".
+    throw new Error("The appServer.publicKey parameter must be 65 bytes");
+  }
+  if (!header.authSecret) {
+    throw new Error("No authentication secret for webpush");
+  }
+  return header;
+}
+
+async function encrypt(data, params) {
+  const header = validateParams(params);
+
+  // https://datatracker.ietf.org/doc/html/rfc8291#section-2
+  // The ECDH public key is encoded into the "keyid" parameter of the encrypted content coding header
+  header.keyid = header.appServer.publicKey;
+  header.recordSize = data.byteLength + 18 + 1;
+
+  // https://datatracker.ietf.org/doc/html/rfc8188#section-2
+  // The final encoding consists of a header (see Section 2.1) and zero or more
+  // fixed-size encrypted records; the final record can be smaller than the record size.
+  const saltedHeader = writeHeader(header);
+  const { key, nonce } = await deriveKeyAndNonce(header);
+  const encrypt = await encryptRecord(key, nonce, data);
+  return new Uint8Array([...saltedHeader, ...new Uint8Array(encrypt)]);
+}
+
+async function wp_encrypt(data, p256dhKey, authKey) {
+  if (!(data instanceof Uint8Array)) {
+    throw new Error("Expecting Uint8Array for `data` parameter");
+  }
+
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+
+  const keyPair = await crypto.subtle.generateKey({ name: 'ECDH', namedCurve: 'P-256' }, true, ["deriveBits"]);
+  const publicKey = new Uint8Array(await crypto.subtle.exportKey("raw", keyPair.publicKey));
+
+  const body = await encrypt(data, {
+    userAgentPublicKey: new Uint8Array(p256dhKey),
+    appServer: {
+      privateKey: keyPair.privateKey,
+      publicKey,
+    },
+    salt,
+    authSecret: authKey,
+  });
+
+  const headers = {
+    // https://datatracker.ietf.org/doc/html/rfc8291#section-4
+    // The Content-Encoding header field therefore has exactly one value, which is "aes128gcm".
+    'Content-Encoding': "aes128gcm",
+    // https://datatracker.ietf.org/doc/html/rfc8030#section-5.2
+    // An application server MUST include the TTL (Time-To-Live) header
+    // field in its request for push message delivery.  The TTL header field
+    // contains a value in seconds that suggests how long a push message is
+    // retained by the push service.
+    TTL: 15,
+  };
+
+  return {
+    body,
+    headers,
+  }
+}
+
+// TO CLEAN
+
+var base64url = {
+  _strmap: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefg' +
+           'hijklmnopqrstuvwxyz0123456789-_',
+  encode: function(data) {
+    data = new Uint8Array(data);
+    var len = Math.ceil(data.length * 4 / 3);
+    return chunkArray(data, 3).map(chunk => [
+      chunk[0] >>> 2,
+      ((chunk[0] & 0x3) << 4) | (chunk[1] >>> 4),
+      ((chunk[1] & 0xf) << 2) | (chunk[2] >>> 6),
+      chunk[2] & 0x3f
+    ].map(v => base64url._strmap[v]).join('')).join('').slice(0, len);
+  },
+  _lookup: function(s, i) {
+    return base64url._strmap.indexOf(s.charAt(i));
+  },
+  decode: function(str) {
+    var v = new Uint8Array(Math.floor(str.length * 3 / 4));
+    var vi = 0;
+    for (var si = 0; si < str.length;) {
+      var w = base64url._lookup(str, si++);
+      var x = base64url._lookup(str, si++);
+      var y = base64url._lookup(str, si++);
+      var z = base64url._lookup(str, si++);
+      v[vi++] = w << 2 | x >>> 4;
+      v[vi++] = x << 4 | y >>> 2;
+      v[vi++] = y << 6 | z;
+    }
+    return v;
+  }
+};
+    function getEndpointFromFragment() {
+        const fragment = new URLSearchParams(window.location.hash.substring(1));
+        return fragment.get("endpoint");
+    }
+    function getAuthFromFragment() {
+        const fragment = new URLSearchParams(window.location.hash.substring(1));
+        return fragment.get("auth");
+    }
+    function getP256dhBytesFromFragment() {
+        return base64url.decode(getP256dhFromFragment());
+    }
+    function getP256dhFromFragment() {
+        const fragment = new URLSearchParams(window.location.hash.substring(1));
+        return fragment.get("p256dh");
+    }
+    function getAuthBytesFromFragment() {
+        return base64url.decode(getAuthFromFragment());
+    }
+    function getVapidFromFragment() {
+        const fragment = new URLSearchParams(window.location.hash.substring(1));
+        return fragment.get("vapid");
+    }
+    function updateUI() {
+        const endpoint = getEndpointFromFragment();
+        const auth = getAuthFromFragment();
+        const p256dh = getP256dhFromFragment();
+        const vapid = getVapidFromFragment();
+        document.getElementById("urlDisplay").textContent = endpoint || "No Endpoint found";
+        document.getElementById("authDisplay").textContent = auth || "No Auth found";
+        document.getElementById("p256dhDisplay").textContent = p256dh || "No P256dh found";
+        document.getElementById("vapidDisplay").textContent = vapid || "No VAPID header found";
+    }
+    async function sendPostRequest() {
+        const endpoint = getEndpointFromFragment();
+        const auth = getAuthBytesFromFragment();
+        const p256dh = getP256dhBytesFromFragment();
+        const vapid = getVapidFromFragment();
+        const data = document.getElementById("postData").value || "Test";
+        if (endpoint) {
+            const { body, headers } = await wp_encrypt(
+                new TextEncoder().encode(data),
+                p256dh,
+                auth
+            );
+
+            if (vapid) {
+                headers["Authorization"] = vapid
+            }
+
+            await fetch(endpoint, {
+                method: "post",
+                body,
+                headers,
+            });
+        } else {
+            console.warn("No endpoint provided in the fragment.");
+        }
+    }
+
+    window.onload = updateUI;
+    window.onhashchange = updateUI;
+    </script>
+</head>
+<body>
+    <h1>Test Webpush</h1>
+    <p><strong>Endpoint:</strong> <span id="urlDisplay">No URL provided</span></p>
+    <p><strong>P256DH:</strong> <span id="p256dhDisplay">No P356dh provided</span></p>
+    <p><strong>Auth:</strong> <span id="authDisplay">No auth provided</span></p>
+    <p><strong>VAPID:</strong> <span id="vapidDisplay">No VAPID header provided</span></p>
+    <textarea id="postData" placeholder="Enter data to send"></textarea><br>
+    <button onclick="sendPostRequest()">Send Request</button>
+</body>
+</html>

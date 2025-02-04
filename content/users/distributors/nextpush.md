@@ -14,8 +14,8 @@ NextPush is a push server that runs within a Nextcloud instance for easy setup.
 * Download for Android:
 
 [<img alt="Get it on F-Droid" src="/img/f-droid-badge.png" height=100>](https://f-droid.org/en/packages/org.unifiedpush.distributor.nextpush/)
-[<img alt="Get it on IzzyOnDroid" src="/img/IzzyOnDroid.png" height=100 >](https://apt.izzysoft.de/fdroid/index/apk/org.unifiedpush.distributor.nextpush)
-[Direct download](https://codeberg.org/NextPush/nextpush-android/releases)
+[<img alt="Get it on IzzyOnDroid" src="/img/IzzyOnDroid-badge.png" height=100 >](https://apt.izzysoft.de/fdroid/index/apk/org.unifiedpush.distributor.nextpush)
+[<img alt="Get it on Codeberg" src="/img/codeberg-badge.png" height=100>](https://codeberg.org/NextPush/nextpush-android/releases)
 
 ## Server Requirements
 

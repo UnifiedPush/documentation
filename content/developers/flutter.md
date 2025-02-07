@@ -13,109 +13,157 @@ An [example application](https://codeberg.org/UnifiedPush/flutter-connector/src/
 Add the following code to your pubspec.yaml.
 
 ```yaml
-  unifiedpush: ^5.0.0
+  unifiedpush: ^6.0.0-rc2
 ```
 
 ## Initialize the receiver
 
-You can ignore instances if you don't need to handle multiple connections.
+When you initialize your application, register the different functions that will handle the incoming events with [UnifiedPush.initialize]:
 
 ```dart
-    UnifiedPush.initialize(
-      onNewEndpoint: onNewEndpoint,
-      onRegistrationFailed: onRegistrationFailed,
-      onUnregistered: onUnregistered,
-      onMessage: onMessage,
+UnifiedPush.initialize(
+  onNewEndpoint: onNewEndpoint,
+  onRegistrationFailed: onRegistrationFailed,
+  onUnregistered: onUnregistered,
+  onMessage: onMessage,
+).then((registered) => { if (registered) UnifiedPush.register(instance) });
+
+void onNewEndpoint(PushEndpoint endpoint, String instance) {
+  // You should send the endpoint to your application server
+  // and sync for missing notifications.
+}
+
+void onRegistrationFailed(FailedReason reason, String instance) {}
+
+void onUnregistered(String instance) {}
+
+void onMessage(PushMessage message, String instance) {}
+```
+
+
+## Register for push messages
+
+When you try to register for the first time, you will probably want to use the user default distributor:
+
+```dart
+UnifiedPush.tryUseCurrentOrDefaultDistributor().then((success) {
+  debugPrint("Current or Default found=$success");
+  if (success) {
+    UnifiedPush.registerApp(
+        instance,                        // Optionnal String, to get multiple endpoints (one per instance)
+        features = []                    // Optionnal String Array with required features, if a platform needs it
+        vapid = vapid                    // Optionnal String with the server public VAPID key
     );
-
-    void onNewEndpoint(String endpoint, String instance) {
-        // You should send the endpoint to your application server
-        // and sync for missing notifications.
-    }
-
-    void onRegistrationFailed(String instance) {}
-
-    void onUnregistered(String instance) {}
-
-    void onMessage(Uint8List message, String instance) {}
+  } else {
+    getUserChoice();                     // You UI function to has the distributor to use
+  }
+});
 ```
 
-{{< expand "If you need, for any reason, to work with a single isolate" >}}
+If using the current distrbutor doesn't succeed, or when you want to let the user chose a non-default distrbutor, you can implement your own logic:
 
-1. Set the engine on the android side of your app (typically in `android/app/src/main/kotlin/your/app/id/MainActivity.kt`):
-
-```kotlin
-import android.content.Context
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.engine.FlutterEngine
-
-class MainActivity : FlutterActivity() {
-    override fun provideFlutterEngine(context: Context): FlutterEngine? {
-        return provideEngine(this)
-    }
-
-    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
-    // do nothing, because the engine was been configured in provideEngine
-    }
-
-    companion object {
-        var engine: FlutterEngine? = null
-        fun provideEngine(context: Context): FlutterEngine {
-            val eng = engine ?: FlutterEngine(context, emptyArray(), true, false)
-            engine = eng
-            return eng
-        }
-    }
+```dart
+void getUserChoice() {
+  // Get a list of distributors that are available
+  final distributors = await UnifiedPush.getDistributors(
+      []                               // Optionnal String Array with required features
+  );
+  // select one or show a dialog or whatever
+  final distributor = myPickerFunc(distributors);
+  // save the distributor
+  UnifiedPush.saveDistributor(distributor);
+  // register your app to the distributor
+  UnifiedPush.registerApp(
+      instance,                        // Optionnal String, to get multiple endpoints (one per instance)
+      features = []                    // Optionnal String Array with required features, if a platform needs it
+      vapid = vapid                    // Optionnal String with the server public VAPID key
+  );
 }
 ```
 
-2. Declare the Receiver for UnifiedPush events (android side):
+If you want, [unifiedpush_ui](https://pub.dev/packages/unifiedpush_ui) provides a dialog to pick the user choice.
 
-```kotlin
-import android.content.Context
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.embedding.engine.dart.DartExecutor
-import org.unifiedpush.flutter.connector.UnifiedPushReceiver
+## Unregister
 
-class UnifiedPushReceiver : UnifiedPushReceiver() {
-    override fun getEngine(context: Context): FlutterEngine {
-        var engine = MainActivity.engine
-        if (engine == null) {
-            engine = MainActivity.provideEngine(context)
-            engine.localizationPlugin.sendLocalesToFlutter(
-                context.resources.configuration
-            )
-            engine.dartExecutor.executeDartEntrypoint(
-                DartExecutor.DartEntrypoint.createDefault()
-            )
-        }
-        return engine
-    }
+A registration can be canceled with `UnifiedPush.unregister`.
+
+## Embed a distributor
+
+On Android, this is possible to embed a distributor that will register to the Google play services directly. For more information refer to <https://unifiedpush.org/kdoc/embedded_fcm_distributor/>.
+
+## Send push messages
+
+You can then send web push messages to your applications. The messages need to be encrypted. The required information them are retrieved onNewEndpoint: [PushEndpoint.pubKeySet]
+
+## Example
+
+An example app can be found on the [repository](https://codeberg.org/UnifiedPush/flutter-connector/src/branch/main/example).
+## Initialize the receiver
+
+When you initialize your application, register the different functions that will handle the incoming events with [UnifiedPush.initialize]:
+
+```dart
+UnifiedPush.initialize(
+  onNewEndpoint: onNewEndpoint,
+  onRegistrationFailed: onRegistrationFailed,
+  onUnregistered: onUnregistered,
+  onMessage: onMessage,
+).then((registered) => { if (registered) UnifiedPush.register(instance) });
+
+void onNewEndpoint(PushEndpoint endpoint, String instance) {
+  // You should send the endpoint to your application server
+  // and sync for missing notifications.
+}
+
+void onRegistrationFailed(FailedReason reason, String instance) {}
+
+void onUnregistered(String instance) {}
+
+void onMessage(PushMessage message, String instance) {}
+```
+
+
+## Register for push messages
+
+When you try to register for the first time, you will probably want to use the user default distributor:
+
+```dart
+UnifiedPush.tryUseCurrentOrDefaultDistributor().then((success) {
+  debugPrint("Current or Default found=$success");
+  if (success) {
+    UnifiedPush.registerApp(
+        instance,                        // Optionnal String, to get multiple endpoints (one per instance)
+        features = []                    // Optionnal String Array with required features, if a platform needs it
+        vapid = vapid                    // Optionnal String with the server public VAPID key
+    );
+  } else {
+    getUserChoice();                     // You UI function to has the distributor to use
+  }
+});
+```
+
+If using the current distrbutor doesn't succeed, or when you want to let the user chose a non-default distrbutor, you can implement your own logic:
+
+```dart
+void getUserChoice() {
+  // Get a list of distributors that are available
+  final distributors = await UnifiedPush.getDistributors(
+      []                               // Optionnal String Array with required features
+  );
+  // select one or show a dialog or whatever
+  final distributor = myPickerFunc(distributors);
+  // save the distributor
+  UnifiedPush.saveDistributor(distributor);
+  // register your app to the distributor
+  UnifiedPush.registerApp(
+      instance,                        // Optionnal String, to get multiple endpoints (one per instance)
+      features = []                    // Optionnal String Array with required features, if a platform needs it
+      vapid = vapid                    // Optionnal String with the server public VAPID key
+  );
 }
 ```
 
-3. Add the UnifiedPush related actions to the (android side) manifest, and disabled built-in receiver:
-
-```xml
-        <receiver android:name="org.unifiedpush.flutter.connector.UnifiedPushReceiver"
-            tools:replace="android:enabled"
-            android:enabled="false">
-        </receiver>
-        <receiver android:exported="false"  android:enabled="true"  android:name=".UnifiedPushReceiver">
-            <intent-filter>
-                <action android:name="org.unifiedpush.flutter.connector.MESSAGE"/>
-                <action android:name="org.unifiedpush.flutter.connector.UNREGISTERED"/>
-                <action android:name="org.unifiedpush.flutter.connector.NEW_ENDPOINT"/>
-                <action android:name="org.unifiedpush.flutter.connector.REGISTRATION_FAILED" />
-            </intent-filter>
-        </receiver>
-```
-
-{{< /expand >}}
-
-## Register for Push
-
-To register for receiving push services you have **two options**, after initializing:
+If you want, [unifiedpush_ui](https://pub.dev/packages/unifiedpush_ui) provides a dialog to pick the user choice.
 
 {{< expand "Use unifiedpush_ui's dialog" >}}
 
@@ -133,7 +181,7 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 /* ... */
 
 class UPFunctions extends UnifiedPushFunctions {
-  final List<String> features = [/*list of features*/];
+  final List<String> features = [];                // Optional, if one platform need one
   @override
   Future<String?> getDistributor() async {
     return await UnifiedPush.getDistributor();
@@ -164,55 +212,15 @@ UnifiedPushUi(
 ```
 
 {{< /expand >}}
-
-{{< expand "Handle the selection yourself" >}}
-
-```dart
-// Check if a distributor is already registered
-if (await UnifiedPush.getDistributor() != "") {
-  // Re-register in case something broke
-  UnifiedPush.registerApp(
-        instance,                        // Optionnal String, to get multiple endpoints (one per instance)
-        [featureAndroidBytesMessage]     // Optionnal String Array with required features
-  );
-} else {
-  // Get a list of distributors that are available
-  final distributors = await UnifiedPush.getDistributors(
-        [featureAndroidBytesMessage]     // Optionnal String Array with required features
-  );
-  // select one or show a dialog or whatever
-  final distributor = myPickerFunc(distributors);
-  // save the distributor
-  UnifiedPush.saveDistributor(distributor);
-  // register your app to the distributor
-  UnifiedPush.registerApp(
-        instance,                        // Optionnal String, to get multiple endpoints (one per instance)
-        [featureAndroidBytesMessage]     // Optionnal String Array with required features
-  );
-}
-```
-
-{{< /expand >}}
 ## Unregister
 
-```dart
-// inform the library that you would like to unregister from receiving push messages
-UnifiedPush.unregister(
-        instance                         // Optionnal String, to get multiple endpoints (one per instance)
-);
-// You won't receive onUnregistered for this instance
-```
+A registration can be canceled with `UnifiedPush.unregister`.
 
-## Sending Push Messages
+## Embed a distributor
 
-(From the application server)
+On Android, this is possible to embed a distributor that will register to the Google play services directly. For more information refer to <https://unifiedpush.org/kdoc/embedded_fcm_distributor/>.
 
-To send a message to an application you need the "endpoint". You get it in the onNewEndpoint method once it is available. You can then use it to send a message using for example curl. The POST body is the message received by the function onMessage.
+## Send push messages
 
-```bash
-curl -X POST "$endpoint" --data "Any message body that is desired."
-```
+You can then send web push messages to your applications. The messages need to be encrypted. The required information them are retrieved onNewEndpoint: [PushEndpoint.pubKeySet]
 
-## Application With Embedded Distributor
-
-On the Android side, you will need to import and declare the embedded distributor. Please refer to [Embedded FCM Distributor](/developers/embedded_fcm/) for more information.

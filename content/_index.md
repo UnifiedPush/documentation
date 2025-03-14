@@ -1,47 +1,50 @@
 ---
 title: UnifiedPush
 ---
-UnifiedPush is a set of specifications and tools that lets the user choose how push notifications[*](/users/faq/#what-are-push-notifications) are delivered. All in a free and open source way.
 
-## Quick start
+UnifiedPush is a decentralized push notification system that lets you choose the service you want to use. It’s designed to be privacy-friendly, flexible, and open — making it perfect if you want control over your push notifications.
 
-* __I JUST WANT TO KNOW WHAT TO INSTALL__: [Sunup (Android)](/users/distributors/sunup) or [ntfy (Android)](/users/distributors/ntfy/)
-* The same but I want to use Google for some reason: [gCompat-UP Distrib (Android)](/users/distributors/fcm/)
-* I have a Nextcloud server: [NextPush (Android)](/users/distributors/nextpush/)
-* I use Conversations, the XMPP client: [Conversations (Android)](/users/distributors/conversations/)
-* For other options, see below.
+## Quickstart guides:
 
----
+* [Sunup](/users/distributors/sunup/): A quick and easy way to use UnifiedPush without signing up for an account.
+* [ntfy](/users/distributors/ntfy/): A lightweight, open-source push notification service that can be used as a UnifiedPush distributor.
+* [Conversations \(XMPP\)](/users/distributors/conversations/): A popular XMPP client that can both distribute and receive UnifiedPush notifications.
+* [NextPush](/users/distributors/nextpush/): A push notification service designed for Nextcloud.
+* [gCombat-UP](/users/distributors/fcm/): A UnifiedPush distributor that uses Google Services, mainly used for development.
 
-## Getting Started
+## Key benefits of UnifiedPush:
 
-Any app can be used with any distributor:
-<br><br>
-<object style="max-height: 30em;" id="animation" type="image/svg+xml" data="./img/animation.svg" onload="this.parentNode.replaceChild(this.contentDocument.documentElement, this);">
-</object>
-<br><br><br>
-This is how UnifiedPush notifications flow:
-<br><br> 
-<object style="max-height: 30em;" id="animation" type="image/svg+xml" data="./img/animation-flow.svg" onload="this.parentNode.replaceChild(this.contentDocument.documentElement, this);">
-</object>
+* **Open standard:** Interoperable and resilient.
+* **Decentralized:** Not tied to any single company or service, reducing reliance on gatekeepers.
+* **Privacy first:** Push notifications are encrypted.
+* **Self-hostable:** Run your own notification server for as much control as you need.
+* **User Control:** The user chooses the service they use, not the developers.
 
-### Users
+## Key features:
 
-* [Introduction: Choose a distributor](/users/distributors)
-* [What apps support UnifiedPush?](/users/apps)
-* [FAQ](/users/faq)
+* **No privileged services needed:** Use lightweight services and follow least privilege policy. Works on de-Googled Android devices and custom ROMs.
+* **Multiple distributors:** Choose from a [list of distributors](/users/distributors/).
+* **Easy integration:** Developers can add UnifiedPush support to their apps with minimal effort.
 
-### Developers
+## How it works
 
-* [Definitions](/developers/spec/definitions)
-* [Use UnifiedPush for your app](/developers/intro)
-* [Create an Android Distributor](/developers/spec/android) (and check other distrib code)
-* [Create a Linux Distributor](/developers/spec/dbus) (and check other distrib code)
-* If you're adding UnifiedPush support to your app, we'd love to talk to you! We recommend joining the chat below.
+### **Step 1: App Sends Notification:**
 
-### Communication
+An app (e.g., a messaging app) sends a short message to your UnifiedPush distributor (e.g. ntfy, NextPush).
 
-* You can reach us on our main chat room on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)
+### **Step 2. Distributor Delivers Notification:**
+
+The distributor receives the message and forwards it to the targetted application.
+
+### **Step 3. Device Receives Notification:**
+
+The application wakes up and processes the received data, it usually uses the content to show a notification\* on the user interface.
+
+\* This is why it is called a _push notification_.
+
+## Communication
+
+You can reach us on our main chat room on Matrix at [#unifiedpush:matrix.org](https://matrix.to/#/#unifiedpush:matrix.org)
 
 ## Funding
 

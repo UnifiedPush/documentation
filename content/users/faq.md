@@ -61,7 +61,7 @@ UnifiedPush was born in the OpenPush chat. There are some similar core ideas as 
 
 ## Q: Can I contribute to UnifiedPush?
 
-Absolutely! UnifiedPush is an open-source project, and contributions are welcome. You can help by improving documentation, developing libraries, translating components, sharing feedback, or adding support for new frameworks.
+Absolutely! UnifiedPush is an open-source project, and contributions are welcome. You can help by [improving documentation](https://codeberg.org/UnifiedPush/documentation), developing libraries, [translating components](https://translate.codeberg.org/engage/unifiedpush/), sharing feedback (on [Mastodon](https://fosstodon.org/@unifiedpush), [Matrix](https://matrix.to/#/#unifiedpush:matrix.org) or [Codeberg](https://codeberg.org/UnifiedPush)), or adding support for new frameworks.
 
 ## Q: Should I use UnifiedPush, Unified Push, Unifiedpush or unified push? Is it related to the Aerogear UnifiedPush server or the Unified Push Alliance (UPA)?
 

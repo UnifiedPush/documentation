@@ -16,7 +16,7 @@ We provide a number of quickstart guides, written specifically to help you get u
 * [ntfy - Quickstart guide](/users/distributors/ntfy/)
 * [Conversations \(XMPP\) - Quickstart guide](/users/distributors/conversations/)
 * [NextPush - Quickstart guide](/users/distributors/nextpush/)
-* [gCombat UP-Distributor - Quickstart guide](/users/distributors/fcm/)
+* [gCompat UP-Distributor - Quickstart guide](/users/distributors/fcm/)
 
 
 ## Q: Can I self-host a UnifiedPush push service?

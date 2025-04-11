@@ -8,6 +8,11 @@ weight: -20221218
 > Published the 18/12/2022
 >
 > This blog post was originally posted on <https://f-droid.org/2022/12/18/unifiedpush.html>
+>
+> 11/04/2025 Edit:
+>
+> - Recommend Sunup in the TL;DR
+> - Add note in _Compatibility between UnifiedPush and WebPush_ and _Future plans_ sections.
 
 A modern Android smartphone relies on a lot of services, from app stores and calendars to messaging and push notifications. Most of them have open alternatives, but until now, the only option for push notifications was Google's proprietary service, *Firebase Cloud Messaging* (FCM). **UnifiedPush is a new alternative that allows you to get push notifications without being tied to a single company**.
 
@@ -17,6 +22,8 @@ Relying on Google-provided push notifications is a concern for both privacy and 
 
 ## The limitations of direct app-server connections
 
+> Edit 11/04/2025: Add note about applications that aren't used daily
+
 While it is technically possible for each application to connect to its own server and receive notifications directly, there are several reasons why this approach may not be practical or effective.
 
 Establishing and maintaining a direct connection between an app and a server can be resource-intensive, which can strain the device's battery, CPU, and network resources.
@@ -25,6 +32,7 @@ Establishing and maintaining a direct connection between an app and a server can
 * Multiple apps pinging their own servers at variable intervals can prevent the device from going into a low-power sleep mode, which can drain the device's battery faster.
 * Giving one special app the ability to make priority connections minimizes these problems and allows for the OS to efficiently suspend other applications and go to sleep, saving resources and reducing battery consumption.
 * As a developer, managing background services and optimizing connections can be complex and time-consuming. By using a push notification service, you can offload this responsibility to a dedicated app, allowing you to focus on other aspects of your app.
+* Most users have several applications that they rarely use. In this case, the battery drain, even if small, is already too high.
 
 ## How do I start with UnifiedPush, as a user?
 
@@ -41,9 +49,9 @@ To use UnifiedPush on an application that supports it, you have to install and c
 
 The easiest way to set UnifiedPush up with an [application that supports it](https://unifiedpush.org/users/apps/) is to:
 
-1. Install the [ntfy](https://ntfy.sh/#subscribe-phone) Android application; this is your distributor
+1. Install [Sunup](https://unifiedpush.org/users/distributors/sunup/) Android application; this is your distributor
 2. Open it, and disable battery optimization for it
-3. Turn on UnifiedPush in the application; it will detect ntfy automatically. (This step depends on the app's UX)
+3. Turn on UnifiedPush in the application; it will detect Sunup automatically. (This step depends on the app's UX)
 
 
 <img alt="A screenshot of the distributor selection screen showing Gotify-UP, Google Services, ntfy, UP-FCM Distributor, NextPush, NoProvider2Push" src="../../../blog/20221218_unifiedpush/distributor-selection.png" style="max-height:50rem;" >
@@ -94,11 +102,15 @@ _Push Provider = Push Server_
 
 ## Compatibility between UnifiedPush and WebPush
 
-Now, you might be looking at the elephant in the room: WebPush (RFC8030). WebPush is the open standard that browsers use for their push notifications. And the good news is that UnifiedPush is WebPush compatible ... mostly.
+> 11/04/2025 Note: UnifiedPush specifications have been updated to fully support and depend on WebPush. This is the protocol in use for (application) server to (push) server requests.
+
+Now, you might be looking at the elephant in the room: WebPush (RFC8030, RFC8291, RFC8292). WebPush is the open standard that browsers use for their push notifications. And the good news is that UnifiedPush is WebPush compatible ... mostly.
 
 Basically, application servers that support WebPush but *do not need its advanced features* and *do not restrict push to only popular WebPush servers* (those from browser vendors) should work without problems with UnifiedPush providers. We are working on solutions to ensure better and more stable WebPush support.
 
 ## Future plans
+
+> 11/04/2025 Note: UnifiedPush specifications have been updated to fully support WebPush and /e/OS ships a distributor by default.
 
 * The more apps that adopt UnifiedPush, the more useful it becomes. Currently, UnifiedPush is supported by many Matrix and Mastodon apps. We are also working on getting open-source versions of popular apps such as Telegram and Signal to support UnifiedPush.
 * Improving WebPush support will also help to increase the number of apps that can use UnifiedPush. We are working towards better WebPush compatibility with UnifiedPush.

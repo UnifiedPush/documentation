@@ -12,7 +12,7 @@ First, **if you self-host your matrix homeserver and your push server: there is 
 
   * Check your synapse's logs.
 
-Then, you should run the notifications troubleshooter feature on element.
+Then, you should run the notifications troubleshooter feature on Element, and check the push history on Element-X.
 
 If you don't receive the notification, the problem comes from your push provider:
 

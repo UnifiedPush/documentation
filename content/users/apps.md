@@ -35,6 +35,8 @@ This is a non-exhaustive list of the first few end-user applications that use Un
 | [DAVx⁵](https://www.davx5.com/)                                                                  | CalDAV/CardDAV/WebDAV | September 2024 | [v4.4.2-ose](https://github.com/bitfireAT/davx5-ose/releases/tag/v4.4.2-ose)        | [Nextcloud extension for WebDAV-Push](https://github.com/bitfireAT/nc_ext_dav_push)
 | [Momogram](https://github.com/dic1911/Momogram)                                                       | Telegram client    | December 2024     | [v11.4.2-1](https://github.com/dic1911/Momogram/releases/tag/v11.4.2-1)        | [generic](../distributors/)
 | [FOSS Warn](https://github.com/nucleus-ffm/foss_warn)                                                | Emergency alerts    | December 2024     | [1.0.0 alpha0](https://github.com/nucleus-ffm/foss_warn/releases/tag/pre-1.0.0-alpha_0) | [FOSS Warn Wiki](https://github.com/nucleus-ffm/foss_warn/wiki/What-is-UnifiedPush-and-how-to-select-a-distributor)
+| [Wafrn App](https://wafrn.net) | Social Network (Fediverse + Bluesky) | May 2025 | [v1.3.0](https://github.com/juandjara/wafrn-rn/releases/tag/v1.3.0) | [generic](../distributors) 
+
 
 ¹ App-specific documentation should not be needed. Compatible apps should just work after [installing a UnifiedPush distributor](../distributors/).
 
